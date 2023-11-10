@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.saipsc.visao.Campeonato.Polos;
+package com.mycompany.saipsc.Visao.Campeonato;
 
 /**
  *
