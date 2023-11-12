@@ -39,7 +39,7 @@ public class DaoCor extends BancoDeDadosMySql{
     
     public Boolean alterar(int id, String novodescricao){
         try{
-            sql = "UPDATE COR SET descricao = ? WHERE ID = ?";
+            sql = "UPDATE COR SET DESCRICAO = ? WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             

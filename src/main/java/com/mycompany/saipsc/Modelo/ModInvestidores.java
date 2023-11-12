@@ -60,6 +60,7 @@ public class ModInvestidores {
     public void setPeridodicidade(String periodicidade) {
         this.periodicidade = periodicidade;
     }
+    @Override
     public String toString() {
         return "ModInvestidores{" + "id=" + id + ", idPessoa=" + idPessoa + ", obs=" + obs + ", investimento=" +  investimento + ", periodicidade=" +  periodicidade + '}';
     }

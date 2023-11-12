@@ -83,4 +83,140 @@ public class DaoAluno extends BancoDeDadosMySql{
             return false;
         }
     }
+    
+    public ResultSet listarTodos(){
+        try{
+            sql = 
+    //id, idPessoa, idCor, nascimento, idade, responsavel, uGrad, pGrad, faltas, idPolo, cpfResp            " SELECT                            " +
+                "   AL.ID AS ID,                        " +
+                "   P.NOME AS NOME,                     " +
+                "   C.DESCRICAO AS FAIXA,               " +
+                "   AL.NACIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.IDADE AS IDADE,                  " +
+                "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
+                "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
+                "   AL.PGRAD AS PROVAVEL_PROX_GRAD,     " +
+                "   AL.FALTAS AS FALTAS,                " +
+                "   PL.NOME AS POLO                     " +
+                "   PL.CPF AS CPF                       " +
+                " FROM                                  " +
+//idPessoa, idCor, idPolo                    
+                "   ALUNO AL                            " +
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA                 " +
+                " JOIN COR C ON                         " +
+                "   C.ID = AL.ID_COR                    " +
+                " JOIN POLO PL ON                       " +
+                "   PL.ID = AL.ID_POLO                  " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
+    public ResultSet listarPorId(int id){
+        try{
+            sql = 
+                "   AL.ID AS ID,                        " +
+                "   P.NOME AS NOME,                     " +
+                "   C.DESCRICAO AS FAIXA,               " +
+                "   AL.NACIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.IDADE AS IDADE,                  " +
+                "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
+                "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
+                "   AL.PGRAD AS PROVAVEL_PROX_GRAD,     " +
+                "   AL.FALTAS AS FALTAS,                " +
+                "   PL.NOME AS POLO                     " +
+                "   PL.CPF AS CPF                       " +
+                " FROM                                  " +
+//idPessoa, idCor, idPolo                    
+                "   ALUNO AL                            " +
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA                 " +
+                " JOIN COR C ON                         " +
+                "   C.ID = AL.ID_COR                    " +
+                " JOIN POLO PL ON                       " +
+                "   PL.ID = AL.ID_POLO                  " +
+                " WHERE P.ID = ?                        " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
+    public ResultSet listarPorNome(String nome){
+        try{
+            sql = 
+                "   AL.ID AS ID,                        " +
+                "   P.NOME AS NOME,                     " +
+                "   C.DESCRICAO AS FAIXA,               " +
+                "   AL.NACIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.IDADE AS IDADE,                  " +
+                "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
+                "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
+                "   AL.PGRAD AS PROVAVEL_PROX_GRAD,     " +
+                "   AL.FALTAS AS FALTAS,                " +
+                "   PL.NOME AS POLO                     " +
+                "   PL.CPF AS CPF                       " +
+                " FROM                                  " +
+                "   ALUNO AL                            " +
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA                 " +
+                " JOIN COR C ON                         " +
+                "   C.ID = AL.ID_COR                    " +
+                " JOIN POLO PL ON                       " +
+                "   PL.ID = AL.ID_POLO                  " +
+                " WHERE P.NOME LIKE = ?                        " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
+    public ResultSet listarPorFaixa(String faixa){
+        try{
+            sql = 
+                "   AL.ID AS ID,                        " +
+                "   P.NOME AS NOME,                     " +
+                "   C.DESCRICAO AS FAIXA,               " +
+                "   AL.NACIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.IDADE AS IDADE,                  " +
+                "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
+                "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
+                "   AL.PGRAD AS PROVAVEL_PROX_GRAD,     " +
+                "   AL.FALTAS AS FALTAS,                " +
+                "   PL.NOME AS POLO                     " +
+                "   PL.CPF AS CPF                       " +
+                " FROM                                  " +
+                "   ALUNO AL                            " +
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA                 " +
+                " JOIN COR C ON                         " +
+                "   C.ID = AL.ID_COR                    " +
+                " JOIN POLO PL ON                       " +
+                "   PL.ID = AL.ID_POLO                  " +
+                " WHERE C.DESCRICAO LIKE = ?                        " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
 }
+

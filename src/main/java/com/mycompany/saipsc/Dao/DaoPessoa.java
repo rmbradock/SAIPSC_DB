@@ -20,9 +20,9 @@ import java.sql.ResultSet;
 public class DaoPessoa extends BancoDeDadosMySql{
     String sql;
     
-    public Boolean inserir(int id, String nome, String rg, String cpf, String endereco, String contato, String obs){
+    public Boolean inserir(int id, String nome, String rg, String cpf, String endereco, String contato, String obs, String genero, String usuario, String senha){
         try{
-            sql = "INSERT INTO PESSOA (ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO PESSOA (ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO, USUARIO, SENHA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -33,6 +33,9 @@ public class DaoPessoa extends BancoDeDadosMySql{
             getStatement().setString(5, endereco);
             getStatement().setString(6, contato);
             getStatement().setString(7, obs);
+            getStatement().setString(8, genero);
+            getStatement().setString(9, usuario);
+            getStatement().setString(10, senha);
             
             getStatement().executeUpdate();
             
@@ -42,19 +45,20 @@ public class DaoPessoa extends BancoDeDadosMySql{
             return false;
         }
     }
-    public Boolean alterar(int id, String nome, String rg, String cpf, String endereco, String contato, String obs){
+    public Boolean alterar(int id, String nome, String rg, String cpf, String endereco, String contato, String obs, String genero, String usuario, String senha){
         try{
-            sql = "UPDATE PESSOA SET NOME = ?, RG = ?, CPF = ?, ENDERECO =?, CONTATO =?, OBS =? = ? WHERE ID = ?";
+            sql = "UPDATE PESSOA SET NOME = ?, RG = ?, CPF = ?, ENDERECO =?, CONTATO =?, OBS =?, GENERO = ? WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
-            getStatement().setInt(7, id);
+            getStatement().setInt(8, id);
             getStatement().setString(1, nome);
             getStatement().setString(2, rg);
             getStatement().setString(3, cpf);
             getStatement().setString(4, endereco);
             getStatement().setString(5, contato);
             getStatement().setString(6, obs);
+            getStatement().setString(7, genero);
             
             getStatement().executeUpdate();
             
@@ -64,6 +68,24 @@ public class DaoPessoa extends BancoDeDadosMySql{
             return false;
         }
     }
+    public Boolean alterarSenha(int id, String novaSenha){
+        try{
+            sql = "UPDATE PESSOA SET SENHA = ? WHERE ID = ?";
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setInt(2, id);
+            getStatement().setString(1, novaSenha);
+            
+            getStatement().executeUpdate();
+            
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
     public Boolean excluir(int id){
         try{
             sql = "DELETE FROM PESSOA WHERE ID = ?";
@@ -82,7 +104,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
     }
     public ResultSet listarTodos(){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS FROM PESSOA";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA";
                 
             
             setStatement(getConexao().prepareStatement(sql));
@@ -96,7 +118,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
     }
     public ResultSet listarPorId(int id){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS FROM PESSOA WHERE ID = ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -111,7 +133,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
     }
     public ResultSet listarPorNome(String nome){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS FROM PESSOA WHERE NOME = ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE NOME = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -126,7 +148,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
     }
     public ResultSet listarPorRg(String rg){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS FROM PESSOA WHERE RG = ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE RG = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -141,11 +163,26 @@ public class DaoPessoa extends BancoDeDadosMySql{
     }
     public ResultSet listarPorCpf(String cpf){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS FROM PESSOA WHERE CPF = ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE CPF = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
             getStatement().setString(1, cpf + "%");
+            
+            setResultado(getStatement().executeQuery());
+            
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return getResultado();
+    }
+    public ResultSet listarPorGenero(String genero){
+        try{
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE CPF = ?";
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setString(1, genero + "%");
             
             setResultado(getStatement().executeQuery());
             

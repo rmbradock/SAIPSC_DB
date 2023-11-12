@@ -46,6 +46,7 @@ public class ModAcesso {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    @Override
     public String toString() {
         return "ModCategoria{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + '}';
     }

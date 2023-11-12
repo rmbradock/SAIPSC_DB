@@ -60,6 +60,7 @@ public class ModPatrimonio {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    @Override
     public String toString() {
         return "ModPatrimonio{" + "id=" + id + ", material=" + material + ", quantidade=" + quantidade + ", situacao=" + situacao + ", descricao=" + descricao + '}';
     }

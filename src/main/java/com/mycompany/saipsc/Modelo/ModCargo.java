@@ -45,6 +45,7 @@ public class ModCargo {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    @Override
     public String toString() {
         return "ModCargo{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + '}';
     }

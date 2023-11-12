@@ -10,12 +10,12 @@ package com.mycompany.saipsc.Modelo;
  */
 public class ModPessoa {
     private int id;
-    private String nome, rg, cpf, endereco, contato, obs;
+    private String nome, rg, cpf, endereco, contato, obs, genero, usuario, senha;
     
     public ModPessoa(){
     }
     
-    public ModPessoa (int id, String nome, String rg, String cpf, String endereco, String contato, String obs){
+    public ModPessoa (int id, String nome, String rg, String cpf, String endereco, String contato, String obs, String genero, String usuario, String senha){
     this.id = id;
     this.nome = nome;
     this.rg = rg;
@@ -23,6 +23,9 @@ public class ModPessoa {
     this.endereco = endereco;
     this.contato = contato;
     this.obs = obs;
+    this.genero = genero;
+    this.usuario = usuario;
+    this.senha = senha;
     }
     public int getId() {
         return id;
@@ -77,7 +80,8 @@ public class ModPessoa {
     public void setObs(String obs) {
         this.obs = obs;
     }
+    @Override
     public String toString() {
-        return "ModPessoa{" + "id=" + id + ", nome=" + nome + ", rg=" + rg + ", cpf=" + cpf + ", endereco=" + endereco + ", contato=" + contato + ", obs=" + obs + '}';
+        return "ModPessoa{" + "id=" + id + ", nome=" + nome + ", rg=" + rg + ", cpf=" + cpf + ", endereco=" + endereco + ", contato=" + contato + ", obs=" + obs + ", genero=" + genero + ", usuario=" + usuario + ", senha=" + senha + '}';
     }
 }

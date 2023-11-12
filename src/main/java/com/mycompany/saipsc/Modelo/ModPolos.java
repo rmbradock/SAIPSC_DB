@@ -61,6 +61,7 @@ public class ModPolos {
     public void setContato(String contato) {
         this.contato = contato;
     }
+    @Override
     public String toString() {
         return "ModPessoa{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", responsavel=" + responsavel + " contato=" + contato + '}';
     }
