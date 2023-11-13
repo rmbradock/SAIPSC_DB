@@ -52,7 +52,7 @@ import java.sql.Date;
         return idPessoa;
     }
 
-    public void setIdPessoa(int id) {
+    public void setIdPessoa(int idPessoa) {
         this.idPessoa = idPessoa;
     }
     
@@ -84,7 +84,7 @@ import java.sql.Date;
         return responsavel;
     }
 
-    public void setResponsavel(String resonsavel) {
+    public void setResponsavel(String responsavel) {
         this.responsavel = responsavel;
     }
     
@@ -130,6 +130,6 @@ import java.sql.Date;
     @Override
     public String toString() {
         //id, idPessoa, idCor, nascimento, idade, responsavel, uGrad, pGrad, faltas,idPolo,cpfResp
-        return "ModAluno{" + "id=" + id + ", idPessoa=" + idPessoa + ", idCor=" + idCor + ", nascimento=" + ", idade=" + idade + ", responsavel=" + responsavel + ", uGrad=" + uGrad + ", faltas=" + faltas + ", idPolo=" + idPolo + ", cpfResp=" + cpfResp + '}';
+        return "ModAluno{" + "id=" + id + ", idPessoa=" + idPessoa + ", idCor=" + idCor + ", nascimento=" + nascimento + ", idade=" + idade + ", responsavel=" + responsavel + ", uGrad=" + uGrad + ", faltas=" + faltas + ", idPolo=" + idPolo + ", cpfResp=" + cpfResp + '}';
     }
 }

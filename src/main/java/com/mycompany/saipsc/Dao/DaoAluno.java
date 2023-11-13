@@ -91,7 +91,7 @@ public class DaoAluno extends BancoDeDadosMySql{
                 "   AL.ID AS ID,                        " +
                 "   P.NOME AS NOME,                     " +
                 "   C.DESCRICAO AS FAIXA,               " +
-                "   AL.NACIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.NASCIMENTO AS DATA_DE_NASCIMENTO, " +
                 "   AL.IDADE AS IDADE,                  " +
                 "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
                 "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
@@ -124,7 +124,7 @@ public class DaoAluno extends BancoDeDadosMySql{
                 "   AL.ID AS ID,                        " +
                 "   P.NOME AS NOME,                     " +
                 "   C.DESCRICAO AS FAIXA,               " +
-                "   AL.NACIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.NASCIMENTO AS DATA_DE_NASCIMENTO, " +
                 "   AL.IDADE AS IDADE,                  " +
                 "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
                 "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
@@ -145,6 +145,8 @@ public class DaoAluno extends BancoDeDadosMySql{
             
             setStatement(getConexao().prepareStatement(sql));
             
+            getStatement().setInt(1, id);
+            
             setResultado(getStatement().executeQuery());
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -158,7 +160,7 @@ public class DaoAluno extends BancoDeDadosMySql{
                 "   AL.ID AS ID,                        " +
                 "   P.NOME AS NOME,                     " +
                 "   C.DESCRICAO AS FAIXA,               " +
-                "   AL.NACIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.NASCIMENTO AS DATA_DE_NASCIMENTO, " +
                 "   AL.IDADE AS IDADE,                  " +
                 "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
                 "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
@@ -178,6 +180,8 @@ public class DaoAluno extends BancoDeDadosMySql{
             
             setStatement(getConexao().prepareStatement(sql));
             
+            getStatement().setString(1, nome + "%");
+            
             setResultado(getStatement().executeQuery());
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -191,7 +195,7 @@ public class DaoAluno extends BancoDeDadosMySql{
                 "   AL.ID AS ID,                        " +
                 "   P.NOME AS NOME,                     " +
                 "   C.DESCRICAO AS FAIXA,               " +
-                "   AL.NACIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.NASCIMENTO AS DATA_DE_NASCIMENTO, " +
                 "   AL.IDADE AS IDADE,                  " +
                 "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
                 "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
@@ -211,6 +215,8 @@ public class DaoAluno extends BancoDeDadosMySql{
             
             setStatement(getConexao().prepareStatement(sql));
             
+            getStatement().setString(1, faixa + "%");
+            
             setResultado(getStatement().executeQuery());
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -218,5 +224,233 @@ public class DaoAluno extends BancoDeDadosMySql{
         
         return getResultado();
     }
+    public ResultSet listarPorNascimento(String nascimento){
+        try{
+            sql = 
+                "   AL.ID AS ID,                        " +
+                "   P.NOME AS NOME,                     " +
+                "   C.DESCRICAO AS FAIXA,               " +
+                "   AL.NASCIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.IDADE AS IDADE,                  " +
+                "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
+                "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
+                "   AL.PGRAD AS PROVAVEL_PROX_GRAD,     " +
+                "   AL.FALTAS AS FALTAS,                " +
+                "   PL.NOME AS POLO                     " +
+                "   PL.CPF AS CPF                       " +
+                " FROM                                  " +
+                "   ALUNO AL                            " +
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA                 " +
+                " JOIN COR C ON                         " +
+                "   C.ID = AL.ID_COR                    " +
+                " JOIN POLO PL ON                       " +
+                "   PL.ID = AL.ID_POLO                  " +
+                " WHERE AL.NASCIMENTO LIKE = ?                        " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setString(1, nascimento + "%");
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
+    public ResultSet listarPorIdade(String idade){
+        try{
+            sql = 
+                "   AL.ID AS ID,                        " +
+                "   P.NOME AS NOME,                     " +
+                "   C.DESCRICAO AS FAIXA,               " +
+                "   AL.NASCIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.IDADE AS IDADE,                  " +
+                "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
+                "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
+                "   AL.PGRAD AS PROVAVEL_PROX_GRAD,     " +
+                "   AL.FALTAS AS FALTAS,                " +
+                "   PL.NOME AS POLO                     " +
+                "   PL.CPF AS CPF                       " +
+                " FROM                                  " +
+                "   ALUNO AL                            " +
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA                 " +
+                " JOIN COR C ON                         " +
+                "   C.ID = AL.ID_COR                    " +
+                " JOIN POLO PL ON                       " +
+                "   PL.ID = AL.ID_POLO                  " +
+                " WHERE AL.IDADE LIKE = ?                        " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setString(1, idade + "%");
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
+    public ResultSet listarPorUGrad(String uGrad){
+        try{
+            sql = 
+                "   AL.ID AS ID,                        " +
+                "   P.NOME AS NOME,                     " +
+                "   C.DESCRICAO AS FAIXA,               " +
+                "   AL.NASCIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.IDADE AS IDADE,                  " +
+                "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
+                "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
+                "   AL.PGRAD AS PROVAVEL_PROX_GRAD,     " +
+                "   AL.FALTAS AS FALTAS,                " +
+                "   PL.NOME AS POLO                     " +
+                "   PL.CPF AS CPF                       " +
+                " FROM                                  " +
+                "   ALUNO AL                            " +
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA                 " +
+                " JOIN COR C ON                         " +
+                "   C.ID = AL.ID_COR                    " +
+                " JOIN POLO PL ON                       " +
+                "   PL.ID = AL.ID_POLO                  " +
+                " WHERE AL.UGRAD LIKE = ?                        " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setString(1, uGrad + "%");
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
+    public ResultSet listarPorPGrad(String pGrad){
+        try{
+            sql = 
+                "   AL.ID AS ID,                        " +
+                "   P.NOME AS NOME,                     " +
+                "   C.DESCRICAO AS FAIXA,               " +
+                "   AL.NASCIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.IDADE AS IDADE,                  " +
+                "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
+                "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
+                "   AL.PGRAD AS PROVAVEL_PROX_GRAD,     " +
+                "   AL.FALTAS AS FALTAS,                " +
+                "   PL.NOME AS POLO                     " +
+                "   PL.CPF AS CPF                       " +
+                " FROM                                  " +
+                "   ALUNO AL                            " +
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA                 " +
+                " JOIN COR C ON                         " +
+                "   C.ID = AL.ID_COR                    " +
+                " JOIN POLO PL ON                       " +
+                "   PL.ID = AL.ID_POLO                  " +
+                " WHERE C.DESCRICAO LIKE = ?                        " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setString(1, pGrad + "%");
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
+    public ResultSet listarPorFaltas(String faltas){
+        try{
+            sql = 
+                "   AL.ID AS ID,                        " +
+                "   P.NOME AS NOME,                     " +
+                "   C.DESCRICAO AS FAIXA,               " +
+                "   AL.NASCIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.IDADE AS IDADE,                  " +
+                "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
+                "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
+                "   AL.PGRAD AS PROVAVEL_PROX_GRAD,     " +
+                "   AL.FALTAS AS FALTAS,                " +
+                "   PL.NOME AS POLO                     " +
+                "   PL.CPF AS CPF                       " +
+                " FROM                                  " +
+                "   ALUNO AL                            " +
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA                 " +
+                " JOIN COR C ON                         " +
+                "   C.ID = AL.ID_COR                    " +
+                " JOIN POLO PL ON                       " +
+                "   PL.ID = AL.ID_POLO                  " +
+                " WHERE AL.FALTAS LIKE = ?                        " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setString(1, faltas + "%");
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
+    public ResultSet listarPorPolo(String polo){
+        try{
+            sql = 
+                "   AL.ID AS ID,                        " +
+                "   P.NOME AS NOME,                     " +
+                "   C.DESCRICAO AS FAIXA,               " +
+                "   AL.NASCIMENTO AS DATA_DE_NASCIMENTO, " +
+                "   AL.IDADE AS IDADE,                  " +
+                "   AL.RESPONSAVEL AS RESPONSAVEL,      " +
+                "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
+                "   AL.PGRAD AS PROVAVEL_PROX_GRAD,     " +
+                "   AL.FALTAS AS FALTAS,                " +
+                "   PL.NOME AS POLO                     " +
+                "   PL.CPF AS CPF                       " +
+                " FROM                                  " +
+                "   ALUNO AL                            " +
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA                 " +
+                " JOIN COR C ON                         " +
+                "   C.ID = AL.ID_COR                    " +
+                " JOIN POLO PL ON                       " +
+                "   PL.ID = AL.ID_POLO                  " +
+                " WHERE PL.NOME LIKE = ?                        " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setString(1, polo + "%");
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
+    public int buscarProximoId(){
+        int id = -1;
+        
+        try{
+            sql = "SELECT IFNULL(MAX(ID), 0) + 1 FROM ALUNO";
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            setResultado(getStatement().executeQuery());
+            
+            getResultado().next(); //Move para o primeiro registro.
+            
+            id = getResultado().getInt(1); //Pega o valor retornado na consulta
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return id;
+    }
 }
-

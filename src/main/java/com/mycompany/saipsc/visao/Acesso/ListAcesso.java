@@ -22,7 +22,8 @@ public class ListAcesso extends javax.swing.JFrame {
      */
     public ListAcesso() {
         initComponents();
-    setLocationRelativeTo(null);
+        
+        setLocationRelativeTo(null);
         
         listarTodos();
     }

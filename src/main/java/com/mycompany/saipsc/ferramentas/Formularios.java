@@ -16,6 +16,9 @@ public class Formularios {
     public static JFrame cadAcesso;
     public static JFrame listAcesso;
     
+    public static JFrame cadAluno;
+    public static JFrame listAluno;
+    
     public static JFrame cadCampeonato;
     public static JFrame listCampeonato;
     
@@ -31,8 +34,20 @@ public class Formularios {
     public static JFrame cadCor;
     public static JFrame listCor;
     
+    public static JFrame cadEquipe;
+    public static JFrame listEquipe;
+    
+    public static JFrame cadInvestidores;
+    public static JFrame listInvestidores;
+    
+    public static JFrame cadKimonoF;
+    public static JFrame listKimonoF;
+    
     public static JFrame cadMarca;
     public static JFrame listMarca;
+    
+    public static JFrame cadParticipacao;
+    public static JFrame listParticipacao;
     
     public static JFrame cadPatrimonio;
     public static JFrame listPatrimonio;
