@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 public class DaoAluno extends BancoDeDadosMySql{
     String sql;
     
-    public Boolean inserir(int id, int idPessoa, int idCor, Date nascimento, String idade, String responsavel, Date uGrad, Date pGrad, String faltas, int idPolo, String cpfResp){
+    public Boolean inserir(int id, int idPessoa, int idCor, String nascimento, int idade, String responsavel, String uGrad, String pGrad, String faltas, int idPolo, String cpfResp){
         try{
             sql = "INSERT INTO ALUNO (ID, ID_PESSOA, ID_COR, NASCIMENTO, IDADE, RESPONSAVEL, UGRAD, PGRAD, FALTAS, ID_POLO, CPFRESP) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
@@ -24,11 +24,11 @@ public class DaoAluno extends BancoDeDadosMySql{
             getStatement().setInt(1, id);
             getStatement().setInt(2, idPessoa);
             getStatement().setInt(3, idCor);
-            getStatement().setDate(4, nascimento);
-            getStatement().setString(5, idade);
+            getStatement().setString(4, nascimento);
+            getStatement().setInt(5, idade);
             getStatement().setString(6, responsavel);
-            getStatement().setDate(7, uGrad);
-            getStatement().setDate(8, pGrad);
+            getStatement().setString(7, uGrad);
+            getStatement().setString(8, pGrad);
             getStatement().setString(9, faltas);
             getStatement().setInt(10,idPolo );
             getStatement().setString(11,cpfResp );
@@ -87,7 +87,8 @@ public class DaoAluno extends BancoDeDadosMySql{
     public ResultSet listarTodos(){
         try{
             sql = 
-    //id, idPessoa, idCor, nascimento, idade, responsavel, uGrad, pGrad, faltas, idPolo, cpfResp                           " +
+                " SELECT " +
+                //id, idPessoa, idCor, nascimento, idade, responsavel, uGrad, pGrad, faltas, idPolo, cpfResp                           " +
                 "   AL.ID AS ID,                        " +
                 "   P.NOME AS NOME,                     " +
                 "   C.DESCRICAO AS FAIXA,               " +
@@ -97,8 +98,8 @@ public class DaoAluno extends BancoDeDadosMySql{
                 "   AL.UGRAD AS ULTIMA_GRADUACAO,       " +
                 "   AL.PGRAD AS PROVAVEL_PROX_GRAD,     " +
                 "   AL.FALTAS AS FALTAS,                " +
-                "   PL.NOME AS POLO                     " +
-                "   PL.CPF AS CPF                       " +
+                "   PL.NOME AS POLO,                     " +
+                "   AL.CPFRESP AS CPF                       " +
                 " FROM                                  " +
 //idPessoa, idCor, idPolo                    
                 "   ALUNO AL                            " +
@@ -106,7 +107,7 @@ public class DaoAluno extends BancoDeDadosMySql{
                 "   P.ID = AL.ID_PESSOA                 " +
                 " JOIN COR C ON                         " +
                 "   C.ID = AL.ID_COR                    " +
-                " JOIN POLO PL ON                       " +
+                " JOIN POLOS PL ON                       " +
                 "   PL.ID = AL.ID_POLO                  " ;
             
             setStatement(getConexao().prepareStatement(sql));

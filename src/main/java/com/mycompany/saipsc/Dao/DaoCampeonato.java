@@ -5,7 +5,6 @@
 package com.mycompany.saipsc.Dao;
 
 import com.mycompany.saipsc.ferramentas.BancoDeDadosMySql;
-import java.sql.Date;
 import java.sql.ResultSet;
 
 /**
@@ -16,7 +15,7 @@ public class DaoCampeonato extends BancoDeDadosMySql{
     
     String sql;
     
-    public Boolean inserir(int id, String nome, String local, String responsavel, String contato, Date data, String inscricao){
+    public Boolean inserir(int id, String nome, String local, String responsavel, String contato, String data, String inscricao){
         try{
             sql = "INSERT INTO CAMPEONATO (ID, NOME, LOCAL, RESPONSAVEL, CONTATO, DATA, INSCRICAO) VALUES (?, ?, ?, ?, ?, ?, ?)";
             
@@ -27,7 +26,7 @@ public class DaoCampeonato extends BancoDeDadosMySql{
             getStatement().setString(3, local);
             getStatement().setString(4, responsavel);
             getStatement().setString(5, contato);
-            getStatement().setDate(6, data);
+            getStatement().setString(6, data);
             getStatement().setString(7, inscricao);            
             
             getStatement().executeUpdate();
@@ -38,7 +37,7 @@ public class DaoCampeonato extends BancoDeDadosMySql{
             return false;
         }
     }
-    public Boolean alterar(int id, String nome, String local, String responsavel, String contato, Date data, String inscricao){
+    public Boolean alterar(int id, String nome, String local, String responsavel, String contato, String data, String inscricao){
         try{
             sql = "UPDATE CAMPEONATO SET NOME = ?, LOCAL = ?, RESPONSAVEL = ?, CONTATO = ?, DATA = ?, INSCRICAO? = ? WHERE ID = ?";
             
@@ -49,7 +48,7 @@ public class DaoCampeonato extends BancoDeDadosMySql{
             getStatement().setString(2, local);
             getStatement().setString(3, responsavel);
             getStatement().setString(4, contato);
-            getStatement().setDate(5, data);
+            getStatement().setString(5, data);
             getStatement().setString(6, inscricao);
             
             getStatement().executeUpdate();

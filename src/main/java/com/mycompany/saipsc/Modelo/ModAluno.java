@@ -15,16 +15,16 @@ import java.sql.Date;
         private int id;
         private int idPessoa;
         private int idCor;
-        private Date nascimento;
+        private String nascimento;
         private String idade;
         private String responsavel;
-        private Date uGrad;
-        private Date pGrad;
+        private String uGrad;
+        private String pGrad;
         private String faltas;
         private int idPolo;
         private String cpfResp;
 
-        public ModAluno(int id, int idPessoa, int idCor, Date nascimento, String idade, String responsavel, Date uGrad, Date pGrad, String faltas, int idPolo, String cpfResp){
+    public ModAluno(int id, int idPessoa, int idCor, String nascimento, String idade, String responsavel, String uGrad, String pGrad, String faltas, int idPolo, String cpfResp){
         this.id = id;
         this.idPessoa = idPessoa;
         this.idCor = idCor;
@@ -64,11 +64,11 @@ import java.sql.Date;
         this.idCor = idCor;
     }
     
-    public Date getNascimento() {
+    public String getNascimento() {
         return nascimento;
     }
 
-    public void setNascimento(Date nascimento) {
+    public void setNascimento(String nascimento) {
         this.nascimento = nascimento;
     }
     
@@ -88,19 +88,19 @@ import java.sql.Date;
         this.responsavel = responsavel;
     }
     
-    public Date getUGrad() {
+    public String getUGrad() {
         return uGrad;
     }
 
-    public void setUGrad(Date uGrad) {
+    public void setUGrad(String uGrad) {
         this.uGrad = uGrad;
     }
     
-    public Date getPGrad() {
+    public String getPGrad() {
         return pGrad;
     }
 
-    public void setPGrad(Date pGrad) {
+    public void setPGrad(String pGrad) {
         this.pGrad = pGrad;
     }
     

@@ -11,6 +11,7 @@ import com.mycompany.saipsc.Dao.DaoPolos;
 import com.mycompany.saipsc.Modelo.ModAluno;
 import com.mycompany.saipsc.ferramentas.Constantes;
 import com.mycompany.saipsc.ferramentas.DadosTemporarios;
+import com.mycompany.saipsc.ferramentas.Formularios;
 import java.sql.Date;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -49,7 +50,7 @@ public class CadAluno extends javax.swing.JFrame {
         }
 
         recuperaIdPessoa();
-        recuperaIdCor();
+        recuperaIdFaixa();
         recuperaIdPolo();
         
         setLocationRelativeTo(null);
@@ -57,26 +58,27 @@ public class CadAluno extends javax.swing.JFrame {
         tfId.setEnabled(false);
               
     }
+    
     private Boolean existeDadosTemporarios(){        
         if(DadosTemporarios.tempObject instanceof ModAluno){
             int id = ((ModAluno) DadosTemporarios.tempObject).getId();
             int idPessoa = ((ModAluno) DadosTemporarios.tempObject).getIdPessoa();
             int idCor = ((ModAluno) DadosTemporarios.tempObject).getIdCor();
-            Date nascimento = ((ModAluno) DadosTemporarios.tempObject).getNascimento();
+            String nascimento = ((ModAluno) DadosTemporarios.tempObject).getNascimento();
             String idade = ((ModAluno) DadosTemporarios.tempObject).getIdade();
             String responsavel = ((ModAluno) DadosTemporarios.tempObject).getResponsavel();    
-            Date uGrad = ((ModAluno) DadosTemporarios.tempObject).getUGrad();
-            Date pGrad = ((ModAluno) DadosTemporarios.tempObject).getPGrad();
+            String uGrad = ((ModAluno) DadosTemporarios.tempObject).getUGrad();
+            String pGrad = ((ModAluno) DadosTemporarios.tempObject).getPGrad();
             String faltas = ((ModAluno) DadosTemporarios.tempObject).getFaltas();
             int idPolo = ((ModAluno) DadosTemporarios.tempObject).getIdPolo();
             String cpfResp = ((ModAluno) DadosTemporarios.tempObject).getCpfResp();
             
             tfId.setText(String.valueOf(id));
-            tfNasc.setText(Date.valueOf(nascimento));
+            tfNasc.setText(String.valueOf(nascimento));
             tfIdade.setText(idade);
             tfResp.setText(responsavel);
             tfUgrad.setText(uGrad);
-            tfPGrad.setText(Pgrad);
+            tfPGrad.setText(pGrad);
             tfFaltas.setText(faltas);
             tfCpfResp.setText(cpfResp);
             
@@ -130,22 +132,149 @@ public class CadAluno extends javax.swing.JFrame {
             
             return true;
         }else
-            return false;
-            
-        }
-        private void inserir(){
+            return false;        
+    }
+        
+    private void inserir(){
         DaoAluno daoAluno = new DaoAluno();
         
-        if (daoAluno.inserir(Integer.parseInt(tfId.getText()){
-            JOptionPane.showMessageDialog(null, "Produto salvo com sucesso!");
+        if (daoAluno.inserir(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdPessoa.getText()), Integer.parseInt(tfIdFaixa.getText()), tfNasc.getText(), Integer.parseInt(tfIdade.getText()), tfResp.getText(), tfUgrad.getText(), tfPGrad.getText(), tfFaltas.getText(), Integer.parseInt(tfIdPolo.getText()), tfCpfResp.getText())){
+            JOptionPane.showMessageDialog(null, "Aluno salvo com sucesso!");
             
             tfId.setText(String.valueOf(daoAluno.buscarProximoId()));
+            tfIdPessoa.setText("");
+            tfIdFaixa.setText("");
+            tfNasc.setText("");
+            tfIdade.setText("");
+            tfResp.setText("");
+            tfUgrad.setText("");
+            tfPGrad.setText("");
+            tfFaltas.setText("");
+            tfIdPolo.setText("");
+            tfCpfResp.setText("");
             
         }else{
-            JOptionPane.showMessageDialog(null, "Não foi possível salvar o Produto!");
+            JOptionPane.showMessageDialog(null, "Não foi possível salvar o Aluno!");
         }
     }
+    private void alterar(){
+        DaoAluno daoAluno = new DaoAluno();
+        
+        if (daoAluno.inserir(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdPessoa.getText()), Integer.parseInt(tfIdFaixa.getText()), tfNasc.getText(), Integer.parseInt(tfIdade.getText()), tfResp.getText(), tfUgrad.getText(), tfPGrad.getText(), tfFaltas.getText(), Integer.parseInt(tfIdPolo.getText()), tfCpfResp.getText())){
+            JOptionPane.showMessageDialog(null, "Aluno alterado com sucesso!");
+            
+            tfId.setText("");
+            tfIdPessoa.setText("");
+            tfIdFaixa.setText("");
+            tfNasc.setText("");
+            tfIdade.setText("");
+            tfResp.setText("");
+            tfUgrad.setText("");
+            tfPGrad.setText("");
+            tfFaltas.setText("");
+            tfIdPolo.setText("");
+            tfCpfResp.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível alterar o aluno!");
+        }
+        
+        ((ListAluno) Formularios.listAluno).listarTodos();
+        
+        dispose();
+    }
+    private void excluir(){
+        DaoAluno daoAluno = new DaoAluno();
+        
+        if (daoAluno.excluir(Integer.parseInt(tfId.getText()))){
+            JOptionPane.showMessageDialog(null, "Aluno " + tfIdPessoa.getText() + " excluída com sucesso!");
+            
+            tfId.setText("");
+            tfIdPessoa.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível excluir o aluno!");
+        }
+        
+        ((ListAluno) Formularios.listAluno).listarTodos();
+        
+        dispose();
+    }
 
+    public void carregarPessoas(){
+        try{
+            DaoPessoa daoPessoa = new DaoPessoa();
+
+            ResultSet resultSet = daoPessoa.listarTodos();
+
+            while(resultSet.next())
+                jcbNome.addItem(resultSet.getString("NOME"));
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    
+    private void recuperaIdPessoa(){
+        try{
+            DaoPessoa daoPessoa = new DaoPessoa();
+            ResultSet resultSet = daoPessoa.listarPorNome(jcbNome.getSelectedItem().toString());
+            
+            resultSet.next();
+            tfIdPessoa.setText(resultSet.getString("ID"));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+        
+    public void carregarFaixas(){
+        try{
+            DaoCor daoCor = new DaoCor();
+
+            ResultSet resultSet = daoCor.listarTodos();
+
+            while(resultSet.next())
+                jcbFaixa.addItem(resultSet.getString("DESCRICAO"));
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    private void recuperaIdFaixa(){
+        try{
+            DaoCor daoCor = new DaoCor();
+            ResultSet resultSet = daoCor.listarPorDescricao(jcbFaixa.getSelectedItem().toString());
+            
+            resultSet.next();
+            tfIdFaixa.setText(resultSet.getString("ID"));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
+    public void carregarPolos(){
+        try{
+            DaoPolos daoPolos = new DaoPolos();
+
+            ResultSet resultSet = daoPolos.listarTodos();
+
+            while(resultSet.next())
+                jcbPolo.addItem(resultSet.getString("NOME"));
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    private void recuperaIdPolo(){
+        try{
+            DaoPolos daoPolos = new DaoPolos();
+            ResultSet resultSet = daoPolos.listarPorNome(jcbPolo.getSelectedItem().toString());
+            
+            resultSet.next();
+            tfIdPolo.setText(resultSet.getString("ID"));
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -179,8 +308,16 @@ public class CadAluno extends javax.swing.JFrame {
         tfCpfResp = new javax.swing.JTextField();
         btnAcao = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        tfIdPessoa = new javax.swing.JTextField();
+        tfIdFaixa = new javax.swing.JTextField();
+        tfIdPolo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setText("ID");
 
@@ -194,6 +331,18 @@ public class CadAluno extends javax.swing.JFrame {
 
         jLabel6.setText("Responsavel");
 
+        jcbNome.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbNomeItemStateChanged(evt);
+            }
+        });
+
+        jcbFaixa.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbFaixaItemStateChanged(evt);
+            }
+        });
+
         jLabel7.setText("Ultima Graducação");
 
         jLabel8.setText("Proxima Graduação");
@@ -202,11 +351,27 @@ public class CadAluno extends javax.swing.JFrame {
 
         jLabel10.setText("Polo");
 
+        jcbPolo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbPoloItemStateChanged(evt);
+            }
+        });
+
         jLabel11.setText("CPF Responsável");
 
         btnAcao.setText("Salvar");
+        btnAcao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcaoActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,55 +381,58 @@ public class CadAluno extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAcao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExcluir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfCpfResp)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfUgrad, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfPGrad, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfFaltas, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jcbPolo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tfIdPolo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jcbNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcbFaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(247, 247, 247))
+                            .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jcbFaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcbNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfIdPessoa)
+                                    .addComponent(tfIdFaixa)))))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfResp, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfUgrad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfPGrad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfFaltas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jcbPolo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfCpfResp, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(14, Short.MAX_VALUE))
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfResp))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAcao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnExcluir))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfIdade, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,11 +443,13 @@ public class CadAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jcbNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfIdPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jcbFaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbFaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfIdFaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -305,7 +475,8 @@ public class CadAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jcbPolo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbPolo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfIdPolo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -318,6 +489,48 @@ public class CadAluno extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jcbNomeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbNomeItemStateChanged
+        recuperaIdPessoa();
+    }//GEN-LAST:event_jcbNomeItemStateChanged
+
+    private void jcbFaixaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbFaixaItemStateChanged
+        recuperaIdFaixa();
+    }//GEN-LAST:event_jcbFaixaItemStateChanged
+
+    private void jcbPoloItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbPoloItemStateChanged
+        recuperaIdPolo();
+    }//GEN-LAST:event_jcbPoloItemStateChanged
+
+    private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoActionPerformed
+        if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT){
+            inserir();
+            
+            if(Formularios.cadAluno != null){
+             
+                dispose();
+            }
+        }else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT)
+            alterar();
+    }//GEN-LAST:event_btnAcaoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int escolha = 
+                JOptionPane.showConfirmDialog(
+                        null, 
+                        "Deseja realmente excluir o aluno " + tfIdPessoa.getText() + "?");
+        
+        if(escolha == JOptionPane.YES_OPTION)
+            excluir();
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.cadAluno = null;
+        
+        if(Formularios.cadAluno != null){
+        
+        }
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -374,6 +587,9 @@ public class CadAluno extends javax.swing.JFrame {
     private javax.swing.JTextField tfCpfResp;
     private javax.swing.JTextField tfFaltas;
     private javax.swing.JTextField tfId;
+    private javax.swing.JTextField tfIdFaixa;
+    private javax.swing.JTextField tfIdPessoa;
+    private javax.swing.JTextField tfIdPolo;
     private javax.swing.JTextField tfIdade;
     private javax.swing.JTextField tfNasc;
     private javax.swing.JTextField tfPGrad;

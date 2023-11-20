@@ -106,7 +106,7 @@ public class DaoPolos extends BancoDeDadosMySql{
     }
     public ResultSet listarPorNome(String nome){
         try{
-            sql = "SELECT ID, NOME, ENDERECO, RESPONSAVEL, CONTATO, OBS FROM POLOS WHERE NOME = ?";
+            sql = "SELECT ID, NOME, ENDERECO, RESPONSAVEL, CONTATO, OBS FROM POLOS WHERE NOME LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             

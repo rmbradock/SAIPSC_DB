@@ -11,15 +11,24 @@ package com.mycompany.saipsc.Modelo;
 public class ModCampeonato {
     private int id;
     private String nome;
-    private String descricao;
+    private String local;
+    private String responsavel;
+    private String contato;
+    private String data;
+    private String inscricao;
+    
 //Alt + insert Constructor
     public ModCampeonato() {
     }
 //Alt + insert Construcot - selecionar todos
-    public ModCampeonato(int id, String nome, String descricao) {
+    public ModCampeonato(int id, String nome, String local, String responsavel, String contato, String data, String inscricao) {
         this.id = id;
         this.nome = nome;
-        this.descricao = descricao;
+        this.local = local;
+        this.responsavel = responsavel;
+        this.contato = contato;
+        this.data = data;
+        this.inscricao = inscricao;
     }
 //alt + insert 
     public int getId() {
@@ -38,15 +47,43 @@ public class ModCampeonato {
         this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getLocal() {
+        return local;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setLocal(String local) {
+        this.local = local;
+    }
+     public String getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(String responsavel) {
+        this.responsavel = responsavel;
+    }
+    public String getContato() {
+        return contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
+    }
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+    public String getInscricao() {
+        return inscricao;
+    }
+
+    public void setInscricao(String inscricao) {
+        this.inscricao = inscricao;
     }
     @Override
     public String toString() {
-        return "ModCampeonato{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + '}';
+        return "ModCampeonato{" + "id=" + id + ", nome=" + nome + ", local=" + local + "responsavel=" + responsavel + "contato=" + contato + "data=" + data + "inscricao=" + inscricao + '}';
     }
 }

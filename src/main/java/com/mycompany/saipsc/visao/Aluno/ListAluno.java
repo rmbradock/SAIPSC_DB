@@ -15,9 +15,7 @@ import com.mycompany.saipsc.Modelo.ModPessoa;
 import com.mycompany.saipsc.Modelo.ModPolos;
 import com.mycompany.saipsc.ferramentas.DadosTemporarios;
 import com.mycompany.saipsc.ferramentas.Formularios;
-import java.sql.Date;
 import java.sql.ResultSet;
-import java.time.LocalDate;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -49,11 +47,11 @@ public class ListAluno extends javax.swing.JFrame {
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
-//int id, int idPessoa, int idCor, Date nascimento, String idade, String responsavel, Date uGrad, Date pGrad, String faltas, int idPolo, String cpfResp
+//int id, int idPessoa, int idCor, String nascimento, String idade, String responsavel, String uGrad, String pGrad, String faltas, int idPolo, String cpfResp
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String faixa = resultSet.getString(3);
-                String nasc = resultSet.getString(4);
+                String nascimento = resultSet.getString(4);
                 String idade = resultSet.getString(5);
                 String resp = resultSet.getString(6);
                 String uGrad = resultSet.getString(7);
@@ -62,7 +60,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String polo = resultSet.getString(10);
                 String cpfResp = resultSet.getString(11);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nascimento, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -85,7 +83,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String faixa = resultSet.getString(3);
-                String nasc = resultSet.getString(4);
+                String nascimento = resultSet.getString(4);
                 String idade = resultSet.getString(5);
                 String resp = resultSet.getString(6);
                 String uGrad = resultSet.getString(7);
@@ -94,7 +92,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String polo = resultSet.getString(10);
                 String cpfResp = resultSet.getString(11);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nascimento, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -115,7 +113,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String faixa = resultSet.getString(3);
-                String nasc = resultSet.getString(4);
+                String nascimento = resultSet.getString(4);
                 String idade = resultSet.getString(5);
                 String resp = resultSet.getString(6);
                 String uGrad = resultSet.getString(7);
@@ -124,7 +122,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String polo = resultSet.getString(10);
                 String cpfResp = resultSet.getString(11);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nascimento, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -145,7 +143,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String faixa = resultSet.getString(3);
-                String nasc = resultSet.getString(4);
+                String nascimento = resultSet.getString(4);
                 String idade = resultSet.getString(5);
                 String resp = resultSet.getString(6);
                 String uGrad = resultSet.getString(7);
@@ -154,7 +152,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String polo = resultSet.getString(10);
                 String cpfResp = resultSet.getString(11);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nascimento, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -175,7 +173,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String faixa = resultSet.getString(3);
-                String nasc = resultSet.getString(4);
+                String nascimento = resultSet.getString(4);
                 String idade = resultSet.getString(5);
                 String resp = resultSet.getString(6);
                 String uGrad = resultSet.getString(7);
@@ -184,7 +182,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String polo = resultSet.getString(10);
                 String cpfResp = resultSet.getString(11);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nascimento, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -205,7 +203,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String faixa = resultSet.getString(3);
-                String nasc = resultSet.getString(4);
+                String nascimento = resultSet.getString(4);
                 String idade = resultSet.getString(5);
                 String resp = resultSet.getString(6);
                 String uGrad = resultSet.getString(7);
@@ -214,7 +212,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String polo = resultSet.getString(10);
                 String cpfResp = resultSet.getString(11);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nascimento, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -235,7 +233,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String faixa = resultSet.getString(3);
-                String nasc = resultSet.getString(4);
+                String nascimento = resultSet.getString(4);
                 String idade = resultSet.getString(5);
                 String resp = resultSet.getString(6);
                 String uGrad = resultSet.getString(7);
@@ -244,7 +242,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String polo = resultSet.getString(10);
                 String cpfResp = resultSet.getString(11);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nascimento, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -265,7 +263,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String faixa = resultSet.getString(3);
-                String nasc = resultSet.getString(4);
+                String nascimento = resultSet.getString(4);
                 String idade = resultSet.getString(5);
                 String resp = resultSet.getString(6);
                 String uGrad = resultSet.getString(7);
@@ -274,7 +272,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String polo = resultSet.getString(10);
                 String cpfResp = resultSet.getString(11);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nascimento, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -295,7 +293,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String faixa = resultSet.getString(3);
-                String nasc = resultSet.getString(4);
+                String nascimento = resultSet.getString(4);
                 String idade = resultSet.getString(5);
                 String resp = resultSet.getString(6);
                 String uGrad = resultSet.getString(7);
@@ -304,7 +302,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String polo = resultSet.getString(10);
                 String cpfResp = resultSet.getString(11);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nascimento, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -325,7 +323,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String faixa = resultSet.getString(3);
-                String nasc = resultSet.getString(4);
+                String nascimento = resultSet.getString(4);
                 String idade = resultSet.getString(5);
                 String resp = resultSet.getString(6);
                 String uGrad = resultSet.getString(7);
@@ -334,7 +332,7 @@ public class ListAluno extends javax.swing.JFrame {
                 String polo = resultSet.getString(10);
                 String cpfResp = resultSet.getString(11);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nascimento, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -508,19 +506,17 @@ public class ListAluno extends javax.swing.JFrame {
         try{
             if (evt.getClickCount() == 2){
                 ModAluno modAluno = new ModAluno();
-
-//                String nasc = resultSet.getString(3);
-                modAluno.setNascimento(Date.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 3));
-//                String uGrad = resultSet.getString(6);
-                modAluno.setUGrad(Date.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 6));
-//                String pGrad = resultSet.getString(7);
-                modAluno.setPGrad(Date.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 7));
+                
                 modAluno.setId(Integer.parseInt(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 0))));
                 modAluno.setIdade(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 4)));
                 modAluno.setResponsavel(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 5)));
                 modAluno.setFaltas(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 8)));
                 modAluno.setCpfResp(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 10)));
-//                String nome = resultSet.getString(1);
+                modAluno.setNascimento(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 3)));
+                modAluno.setUGrad(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 6)));
+                //7
+                modAluno.setPGrad(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 7)));
+                        
                 DaoPessoa daoPessoa = new DaoPessoa();
                 ResultSet resultSet = daoPessoa.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 1)));
                 
@@ -531,9 +527,9 @@ public class ListAluno extends javax.swing.JFrame {
                 modAluno.setIdPessoa(idPessoa);
                 
                 DadosTemporarios.tempObject = (ModAluno) modAluno;
-//                String faixa = resultSet.getString(2);
+                String faixa = resultSet.getString(2);
                 DaoCor daoCor = new DaoCor();
-                ResultSet resultSet = daoCor.listarPorDescricao(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 2)));
+                resultSet = daoCor.listarPorDescricao(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 2)));
                 
                 int idCor = -1;
                 while (resultSet.next ())
@@ -543,9 +539,9 @@ public class ListAluno extends javax.swing.JFrame {
                 
                 DadosTemporarios.tempObject2 = (ModAluno) modAluno;
 
-//                String polo = resultSet.getString(9);
+                String polo = resultSet.getString(9);
                 DaoPolos daoPolos = new DaoPolos();
-                ResultSet resultSet = daoPolos.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 9)));
+                resultSet = daoPolos.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 9)));
                 
                 int idPolo = -1;
                 while (resultSet.next ())

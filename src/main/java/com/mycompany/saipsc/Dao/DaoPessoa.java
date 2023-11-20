@@ -131,9 +131,10 @@ public class DaoPessoa extends BancoDeDadosMySql{
         }
         return getResultado();
     }
+    
     public ResultSet listarPorNome(String nome){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE NOME = ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE NOME LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -146,9 +147,10 @@ public class DaoPessoa extends BancoDeDadosMySql{
         }
         return getResultado();
     }
+    
     public ResultSet listarPorRg(String rg){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE RG = ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE RG LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -161,9 +163,10 @@ public class DaoPessoa extends BancoDeDadosMySql{
         }
         return getResultado();
     }
+    
     public ResultSet listarPorCpf(String cpf){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE CPF = ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE CPF LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -176,9 +179,10 @@ public class DaoPessoa extends BancoDeDadosMySql{
         }
         return getResultado();
     }
+    
     public ResultSet listarPorGenero(String genero){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE CPF = ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE CPF LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -191,6 +195,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
         }
         return getResultado();
     }
+    
     public int buscarProximoId(){
            int id = -1;
 
