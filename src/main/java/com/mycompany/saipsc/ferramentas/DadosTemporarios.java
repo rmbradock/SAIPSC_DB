@@ -13,6 +13,10 @@ public class DadosTemporarios {
     public static Object tempObject; 
     public static Object tempObject2;
     public static Object tempObject3;
+    public static Object tempObject4;
+    public static Object tempObject5;
+    public static Object tempObject6;
+    public static Object tempObject7;
     
     //Informações da sessão do usuário
     public static int idUsuarioLogado;

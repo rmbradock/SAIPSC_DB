@@ -4,9 +4,20 @@
  */
 package com.mycompany.saipsc.Visao.Aluno;
 
+import com.mycompany.saipsc.Dao.DaoAcesso;
 import com.mycompany.saipsc.Dao.DaoAluno;
+import com.mycompany.saipsc.Dao.DaoCor;
+import com.mycompany.saipsc.Dao.DaoPessoa;
+import com.mycompany.saipsc.Dao.DaoPolos;
 import com.mycompany.saipsc.Modelo.ModAluno;
+import com.mycompany.saipsc.Modelo.ModCor;
+import com.mycompany.saipsc.Modelo.ModPessoa;
+import com.mycompany.saipsc.Modelo.ModPolos;
+import com.mycompany.saipsc.ferramentas.DadosTemporarios;
+import com.mycompany.saipsc.ferramentas.Formularios;
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,7 +49,7 @@ public class ListAluno extends javax.swing.JFrame {
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
-//int id, int idAluno, int idCor, Date nascimento, String idade, String responsavel, Date uGrad, Date pGrad, String faltas, int idPolo, String cpfResp
+//int id, int idPessoa, int idCor, Date nascimento, String idade, String responsavel, Date uGrad, Date pGrad, String faltas, int idPolo, String cpfResp
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String faixa = resultSet.getString(3);
@@ -91,1772 +102,245 @@ public class ListAluno extends javax.swing.JFrame {
     }
     public void listarPorNome(){
         try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
             DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
             
             tableAluno.setModel(defaultTableModel);
 
             DaoAluno daoAluno = new DaoAluno();
 
-            //Atribui o resultset retornado a uma variável para ser usada.
             ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
                 String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
+                String nome = resultSet.getString(2);
+                String faixa = resultSet.getString(3);
+                String nasc = resultSet.getString(4);
+                String idade = resultSet.getString(5);
+                String resp = resultSet.getString(6);
+                String uGrad = resultSet.getString(7);
+                String pGrad = resultSet.getString(8);
+                String faltas = resultSet.getString(9);
+                String polo = resultSet.getString(10);
+                String cpfResp = resultSet.getString(11);
                 
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.getModel();
-            
-            tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.setModel(defaultTableModel);
-
-            Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } = new Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.getModel();
-            
-            tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.getModel();
-            
-            tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.setModel(defaultTableModel);
-
-            Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } = new Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.setModel(defaultTableModel);
-
-            Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } = new Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.getModel();
-            
-            tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.getModel();
-            
-            tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.setModel(defaultTableModel);
-
-            Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } = new Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.setModel(defaultTableModel);
-
-            Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.getModel();
-            
-            tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.setModel(defaultTableModel);
-
-            Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } = new Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.getModel();
-            
-            tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.setModel(defaultTableModel);
-
-            Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } = new Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } = new Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.getModel();
-            
-            tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.setModel(defaultTableModel);
-
-            Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } = new Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.getModel();
-            
-            tablepublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.setModel(defaultTableModel);
-
-            Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    } = new Daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daopublic void listarPorNome(){
-        try{
-            //Pega o model da tabela definido no design
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
-            
-            tableAluno.setModel(defaultTableModel);
-
-            DaoAluno daoAluno = new DaoAluno();
-
-            //Atribui o resultset retornado a uma variável para ser usada.
-            ResultSet resultSet = daoAluno.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }.listarPorNome(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String cidade = resultSet.getString(2);
-                String rua = resultSet.getString(3);
-                String cep = resultSet.getString(4);
-                String numRes = resultSet.getString(5);
-                String nome = resultSet.getString(6);
-                String sobrenome = resultSet.getString(7);
-                String genero = resultSet.getString(8);
-                String telefone = resultSet.getString(9);
-                String email = resultSet.getString(10);
-                String estCivil = resultSet.getString(11);
-                
-                defaultTableModel.addRow(new Object[]{id, cidade, rua, cep, numRes, nome, sobrenome, genero, telefone, email, estCivil});
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
     }
+    public void listarPorFaixa(){
+        try{
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
+            
+            tableAluno.setModel(defaultTableModel);
+
+            DaoAluno daoAluno = new DaoAluno();
+
+            ResultSet resultSet = daoAluno.listarPorFaixa(tfFiltro.getText());
+            
+            defaultTableModel.setRowCount(0);
+            while (resultSet.next()){
+                String id = resultSet.getString(1);
+                String nome = resultSet.getString(2);
+                String faixa = resultSet.getString(3);
+                String nasc = resultSet.getString(4);
+                String idade = resultSet.getString(5);
+                String resp = resultSet.getString(6);
+                String uGrad = resultSet.getString(7);
+                String pGrad = resultSet.getString(8);
+                String faltas = resultSet.getString(9);
+                String polo = resultSet.getString(10);
+                String cpfResp = resultSet.getString(11);
+                
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public void listarPorNascimento(){
+        try{
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
+            
+            tableAluno.setModel(defaultTableModel);
+
+            DaoAluno daoAluno = new DaoAluno();
+
+            ResultSet resultSet = daoAluno.listarPorNascimento(tfFiltro.getText());
+            
+            defaultTableModel.setRowCount(0);
+            while (resultSet.next()){
+                String id = resultSet.getString(1);
+                String nome = resultSet.getString(2);
+                String faixa = resultSet.getString(3);
+                String nasc = resultSet.getString(4);
+                String idade = resultSet.getString(5);
+                String resp = resultSet.getString(6);
+                String uGrad = resultSet.getString(7);
+                String pGrad = resultSet.getString(8);
+                String faltas = resultSet.getString(9);
+                String polo = resultSet.getString(10);
+                String cpfResp = resultSet.getString(11);
+                
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public void listarPorIdade(){
+        try{
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
+            
+            tableAluno.setModel(defaultTableModel);
+
+            DaoAluno daoAluno = new DaoAluno();
+
+            ResultSet resultSet = daoAluno.listarPorIdade(tfFiltro.getText());
+            
+            defaultTableModel.setRowCount(0);
+            while (resultSet.next()){
+                String id = resultSet.getString(1);
+                String nome = resultSet.getString(2);
+                String faixa = resultSet.getString(3);
+                String nasc = resultSet.getString(4);
+                String idade = resultSet.getString(5);
+                String resp = resultSet.getString(6);
+                String uGrad = resultSet.getString(7);
+                String pGrad = resultSet.getString(8);
+                String faltas = resultSet.getString(9);
+                String polo = resultSet.getString(10);
+                String cpfResp = resultSet.getString(11);
+                
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public void listarPorUGrad(){
+        try{
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
+            
+            tableAluno.setModel(defaultTableModel);
+
+            DaoAluno daoAluno = new DaoAluno();
+
+            ResultSet resultSet = daoAluno.listarPorUGrad(tfFiltro.getText());
+            
+            defaultTableModel.setRowCount(0);
+            while (resultSet.next()){
+                String id = resultSet.getString(1);
+                String nome = resultSet.getString(2);
+                String faixa = resultSet.getString(3);
+                String nasc = resultSet.getString(4);
+                String idade = resultSet.getString(5);
+                String resp = resultSet.getString(6);
+                String uGrad = resultSet.getString(7);
+                String pGrad = resultSet.getString(8);
+                String faltas = resultSet.getString(9);
+                String polo = resultSet.getString(10);
+                String cpfResp = resultSet.getString(11);
+                
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public void listarPorPGrad(){
+        try{
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
+            
+            tableAluno.setModel(defaultTableModel);
+
+            DaoAluno daoAluno = new DaoAluno();
+
+            ResultSet resultSet = daoAluno.listarPorPGrad(tfFiltro.getText());
+            
+            defaultTableModel.setRowCount(0);
+            while (resultSet.next()){
+                String id = resultSet.getString(1);
+                String nome = resultSet.getString(2);
+                String faixa = resultSet.getString(3);
+                String nasc = resultSet.getString(4);
+                String idade = resultSet.getString(5);
+                String resp = resultSet.getString(6);
+                String uGrad = resultSet.getString(7);
+                String pGrad = resultSet.getString(8);
+                String faltas = resultSet.getString(9);
+                String polo = resultSet.getString(10);
+                String cpfResp = resultSet.getString(11);
+                
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public void listarPorFaltas(){
+        try{
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
+            
+            tableAluno.setModel(defaultTableModel);
+
+            DaoAluno daoAluno = new DaoAluno();
+
+            ResultSet resultSet = daoAluno.listarPorFaltas(tfFiltro.getText());
+            
+            defaultTableModel.setRowCount(0);
+            while (resultSet.next()){
+                String id = resultSet.getString(1);
+                String nome = resultSet.getString(2);
+                String faixa = resultSet.getString(3);
+                String nasc = resultSet.getString(4);
+                String idade = resultSet.getString(5);
+                String resp = resultSet.getString(6);
+                String uGrad = resultSet.getString(7);
+                String pGrad = resultSet.getString(8);
+                String faltas = resultSet.getString(9);
+                String polo = resultSet.getString(10);
+                String cpfResp = resultSet.getString(11);
+                
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public void listarPorPolo(){
+        try{
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
+            
+            tableAluno.setModel(defaultTableModel);
+
+            DaoAluno daoAluno = new DaoAluno();
+
+            ResultSet resultSet = daoAluno.listarPorPolo(tfFiltro.getText());
+            
+            defaultTableModel.setRowCount(0);
+            while (resultSet.next()){
+                String id = resultSet.getString(1);
+                String nome = resultSet.getString(2);
+                String faixa = resultSet.getString(3);
+                String nasc = resultSet.getString(4);
+                String idade = resultSet.getString(5);
+                String resp = resultSet.getString(6);
+                String uGrad = resultSet.getString(7);
+                String pGrad = resultSet.getString(8);
+                String faltas = resultSet.getString(9);
+                String polo = resultSet.getString(10);
+                String cpfResp = resultSet.getString(11);
+                
+                defaultTableModel.addRow(new Object[]{id, nome, faixa, nasc, idade, resp, uGrad, pGrad, faltas, polo, cpfResp});
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1875,7 +359,12 @@ public class ListAluno extends javax.swing.JFrame {
         jcbBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ID", "RUA", "CEP", "NÚM. RESIDÊNCIA", "NOME", "SOBRENOME", "GENERO", "TELEFONE", "EMAIL", "ESTADO CIVIL" }));
 
@@ -1975,112 +464,107 @@ public class ListAluno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBuscarActionPerformed
+        switch (jcbTipoFiltro.getSelectedIndex()){
+            case 0:
+                listarTodos();
+                break;
+            case 1:
+                listarPorId();
+                break;
+            case 2:
+                listarPorNome();
+                break;
+            case 3:
+                listarPorFaixa();
+                break;
+            case 4:
+                listarPorNascimento();
+                break;
+            case 5:
+                listarPorIdade();
+                break;
+            case 6:
+                listarPorUGrad();
+                break;
+            case 7:
+                listarPorPGrad();
+                break;
+            case 8:
+                listarPorFaltas();
+                break;
+            case 9:
+                listarPorPolo();
+                break;
+            
+        }
+    }//GEN-LAST:event_jcbBuscarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.listAluno = null;
+    }//GEN-LAST:event_formWindowClosed
+
     private void tableAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableAlunoMouseClicked
         try{
             if (evt.getClickCount() == 2){
-                
                 ModAluno modAluno = new ModAluno();
 
+//                String nasc = resultSet.getString(3);
+                modAluno.setNascimento(Date.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 3));
+//                String uGrad = resultSet.getString(6);
+                modAluno.setUGrad(Date.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 6));
+//                String pGrad = resultSet.getString(7);
+                modAluno.setPGrad(Date.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 7));
                 modAluno.setId(Integer.parseInt(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 0))));
-                //                modAluno.setIdEndereco(Integer.parseInt(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 1))));
-                //                modAluno.setIdEstadoCivil(Integer.parseInt(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 2))));;;
-                modAluno.setNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 5)));
-                modAluno.setSobrenome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 6)));
-                modAluno.setGenero(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 7)));
-                modAluno.setTelefone(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 8)));
-                modAluno.setEmail(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 9)));
-
-                //
-                DaoEndereco daoEndereco = new DaoEndereco();
-                ResultSet resultSet = daoEndereco.listarPorId(Integer.parseInt(tableAluno.getValueAt(tableAluno.getSelectedRow(), 0).toString()));
-
-                int idEndereco = -1;
-                while(resultSet.next())
-                idEndereco = resultSet.getInt("ID");
-
-                modAluno.setIdEndereco(idEndereco);
-                //
-
-                //
-                DaoEstadoCivil daoEstadoCivil = new DaoEstadoCivil();
-                resultSet = daoEstadoCivil.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 10)));
-
-                int idEstadoCivil = -1;
-                while(resultSet.next())
-                idEstadoCivil = resultSet.getInt("ID");
-
-                modAluno.setIdEstadoCivil(idEstadoCivil);
-                //
-
-                //Pega os dados do endereço
-                ModEndereco modEndereco = new ModEndereco();
-
-                modEndereco.setNomeRua(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 2)));
-                modEndereco.setCep(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 3)));
-                modEndereco.setNumeroResidencia(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 4)));
-                //
-
-                //
-                DaoCliente daoCliente = new DaoCliente();
-                resultSet = daoCliente.listarPorIdAluno(Integer.parseInt(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 0))));
-
-                ModCliente modCliente = new ModCliente();
-
-                int idCliente = -1;
-                while(resultSet.next())
-                idCliente = resultSet.getInt("ID");
-
-                modCliente.setId(idCliente);
-
+                modAluno.setIdade(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 4)));
+                modAluno.setResponsavel(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 5)));
+                modAluno.setFaltas(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 8)));
+                modAluno.setCpfResp(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 10)));
+//                String nome = resultSet.getString(1);
+                DaoPessoa daoPessoa = new DaoPessoa();
+                ResultSet resultSet = daoPessoa.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 1)));
+                
+                int idPessoa = -1;
+                while (resultSet.next ())
+                    idPessoa = resultSet.getInt("ID");
+                
+                modAluno.setIdPessoa(idPessoa);
+                
                 DadosTemporarios.tempObject = (ModAluno) modAluno;
-                DadosTemporarios.tempObject2 = (ModEndereco) modEndereco;
-                DadosTemporarios.tempObject3 = (ModCliente) modCliente;
+//                String faixa = resultSet.getString(2);
+                DaoCor daoCor = new DaoCor();
+                ResultSet resultSet = daoCor.listarPorDescricao(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 2)));
+                
+                int idCor = -1;
+                while (resultSet.next ())
+                    idCor = resultSet.getInt("ID");
+                
+                modAluno.setIdCor(idCor);
+                
+                DadosTemporarios.tempObject2 = (ModAluno) modAluno;
 
+//                String polo = resultSet.getString(9);
+                DaoPolos daoPolos = new DaoPolos();
+                ResultSet resultSet = daoPolos.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 9)));
+                
+                int idPolo = -1;
+                while (resultSet.next ())
+                    idPolo = resultSet.getInt("ID");
+                
+                modAluno.setIdPolo(idPolo);
+                
+                DadosTemporarios.tempObject3 = (ModAluno) modAluno;
+
+                
                 CadAluno cadAluno = new CadAluno();
                 cadAluno.setVisible(true);
             }
         }catch(Exception e){
             System.err.println(e.getMessage());
         }
-    }//GEN-LAST:event_tableAlunoMouseClicked
+                                            
 
-    private void jcbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBuscarActionPerformed
-        switch (jcbTipoFiltro.getSelectedIndex()){
-            case 0:
-            listarTodos();
-            break;
-            case 1:
-            listarPorId();
-            break;
-            case 2:
-            listarPorRua();
-            break;
-            case 3:
-            listarCep();
-            break;
-            case 4:
-            listarPorNumeroResidencia();
-            break;
-            case 5:
-            listarPorNome();
-            break;
-            case 6:
-            listarPorSobrenome();
-            break;
-            case 7:
-            listarPorGenero();
-            break;
-            case 8:
-            listarPorTelefone();
-            break;
-            case 9:
-            listarPorEmail();
-            break;
-            case 10:
-            listarPorEstadoCivil();
-            break;
-        }
-    }//GEN-LAST:event_jcbBuscarActionPerformed
+    }//GEN-LAST:event_tableAlunoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2126,4 +610,5 @@ public class ListAluno extends javax.swing.JFrame {
     private javax.swing.JTable tableAluno;
     private javax.swing.JTextField tfFiltro;
     // End of variables declaration//GEN-END:variables
+
 }

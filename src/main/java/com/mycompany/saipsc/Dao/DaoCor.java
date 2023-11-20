@@ -113,7 +113,7 @@ public class DaoCor extends BancoDeDadosMySql{
         return getResultado();
     }
     
-    public ResultSet listarPordescricao(String descricao){
+    public ResultSet listarPorDescricao(String descricao){
         try{
             sql = 
                 " SELECT                            " +
@@ -121,7 +121,7 @@ public class DaoCor extends BancoDeDadosMySql{
                 "   descricao                            " +
                 " FROM                              " +
                 "   COR                           " +
-                " WHERE descricao LIKE ?                    " ;
+                " WHERE DESCRICAO LIKE ?                    " ;
             
             setStatement(getConexao().prepareStatement(sql));
             

@@ -87,7 +87,7 @@ public class DaoAluno extends BancoDeDadosMySql{
     public ResultSet listarTodos(){
         try{
             sql = 
-    //id, idPessoa, idCor, nascimento, idade, responsavel, uGrad, pGrad, faltas, idPolo, cpfResp            " SELECT                            " +
+    //id, idPessoa, idCor, nascimento, idade, responsavel, uGrad, pGrad, faltas, idPolo, cpfResp                           " +
                 "   AL.ID AS ID,                        " +
                 "   P.NOME AS NOME,                     " +
                 "   C.DESCRICAO AS FAIXA,               " +
