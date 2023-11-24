@@ -40,7 +40,6 @@ public class ListCampeonato extends javax.swing.JFrame {
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
-//int id, int idPessoa, int idCor, String nascimento, String idade, String responsavel, String uGrad, String pGrad, String faltas, int idPolo, String cpfResp
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String local = resultSet.getString(3);
@@ -284,10 +283,10 @@ public class ListCampeonato extends javax.swing.JFrame {
                 modCampeonato.setId(Integer.parseInt(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 0))));
                 modCampeonato.setNome(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 1)));
                 modCampeonato.setLocal(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 2)));
-                modCampeonato.setResponsavel(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 3)));
-                modCampeonato.setContato(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 4)));
-                modCampeonato.setData(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 5)));
-                modCampeonato.setInscricao(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 6)));
+//               modCampeonato.setResponsavel(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 3)));
+//                modCampeonato.setContato(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 4)));
+                modCampeonato.setData(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 3)));
+//                modCampeonato.setInscricao(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 6)));
                 
 
                 DadosTemporarios.tempObject = (ModCampeonato) modCampeonato;
@@ -313,16 +312,7 @@ public class ListCampeonato extends javax.swing.JFrame {
             listarPorLocal();
             break;
             case 4:
- //           listarPorResponsavel();
-            break;
-            case 5:
- //           listarPorContato();
-            break;
-            case 6:
             listarPorData();
-            break;
-            case 7:
- //           listarPorInscricao();
             break;
             
         }

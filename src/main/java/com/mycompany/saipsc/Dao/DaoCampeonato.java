@@ -91,7 +91,7 @@ public class DaoCampeonato extends BancoDeDadosMySql{
     }
     public ResultSet listarPorId(int id){
         try{
-            sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM CAMPEONATO WHERE ID = ?";
+            sql = "SELECT ID, NOME, IFNULL(ID, '') FROM CAMPEONATO WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -106,25 +106,11 @@ public class DaoCampeonato extends BancoDeDadosMySql{
     }
     public ResultSet listarPorNome(String nome){
         try{
-            sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM CAMPEONATO WHERE NOME LIKE ?";
+            sql = "SELECT ID, NOME, IFNULL(NOME, '') FROM CAMPEONATO WHERE NOME LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
             getStatement().setString(1, nome + "%");
-            
-            setResultado(getStatement().executeQuery());
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-        return getResultado();
-    }
-    public ResultSet listarPorDescricao(String descricao){
-        try{
-            sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM CAMPEONATO WHERE DESCRICAO LIKE ?";
-            
-            setStatement(getConexao().prepareStatement(sql));
-            
-            getStatement().setString(1, descricao + "%");
             
             setResultado(getStatement().executeQuery());
         }catch(Exception e){
