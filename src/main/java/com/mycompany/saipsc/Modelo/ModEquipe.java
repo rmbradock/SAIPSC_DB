@@ -4,7 +4,6 @@
  */
 package com.mycompany.saipsc.Modelo;
 
-import java.sql.Date;
 
 /**
  *
@@ -16,11 +15,11 @@ import java.sql.Date;
         private int idPessoa;
         private int idCargo;
         private int idCor;
-        private Date graduacao;
+        private String graduacao;
         private String salario;
         private int idAcesso;
 
-        public ModEquipe(int id, int idPessoa, int idCargo, int idCor, Date graduacao, String salario, int idAcesso){
+        public ModEquipe(int id, int idPessoa, int idCargo, int idCor, String graduacao, String salario, int idAcesso){
         this.id = id;
         this.idPessoa = idPessoa;
         this.idCargo = idCargo;
@@ -65,11 +64,11 @@ import java.sql.Date;
         this.idCor = idCor;
     }
     
-    public Date getGraduacao() {
+    public String getGraduacao() {
         return graduacao;
     }
 
-    public void setGraduacao(Date graduacao) {
+    public void setGraduacao(String graduacao) {
         this.graduacao = graduacao;
     }
     
@@ -91,7 +90,7 @@ import java.sql.Date;
     
     @Override
     public String toString() {
-        //int id, int idPessoa, int idCargo, int idCor, Date graduacao, String salario, int idAcesso
+        //int id, int idPessoa, int idCargo, int idCor, String graduacao, String salario, int idAcesso
         return "ModAEquipe{" + "id=" + id + ", idPessoa=" + idPessoa + "idCargo=" + idCargo + ", idCor=" + idCor + ", graduacao=" + graduacao + ", salario=" + salario + ", idAcesso=" + idAcesso + '}';
     }
 }

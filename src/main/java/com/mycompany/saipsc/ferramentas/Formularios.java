@@ -25,8 +25,8 @@ public class Formularios {
     public static JFrame cadCargo;
     public static JFrame listCargo;
     
-    public static JFrame cadCategoria;
-    public static JFrame listCategoria;
+    public static JFrame cadCategoriaKF;
+    public static JFrame listCategoriaKF;
     
     public static JFrame cadCondicao;
     public static JFrame listCondicao;
@@ -60,4 +60,14 @@ public class Formularios {
     
     public static JFrame cadTamanho;
     public static JFrame listTamanho;
+    
+    public static JFrame MenuProfessores;
+    
+    public static JFrame MenuInstrutores;
+    
+    public static JFrame TelaLogin;
+    
+    public static JDialog TelaAlteracaoSenha;
+    
+    public static JDialog TelaAlteracaoSenha1;
 }

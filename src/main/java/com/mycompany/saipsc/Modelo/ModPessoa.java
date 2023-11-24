@@ -43,7 +43,7 @@ public class ModPessoa {
         this.nome = nome;
     }
     
-    public String getRG() {
+    public String getRg() {
         return rg;
     }
 
@@ -79,6 +79,27 @@ public class ModPessoa {
 
     public void setObs(String obs) {
         this.obs = obs;
+    }
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
     @Override
     public String toString() {

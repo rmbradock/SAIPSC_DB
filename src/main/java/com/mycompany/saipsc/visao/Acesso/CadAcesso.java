@@ -252,7 +252,7 @@ public class CadAcesso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Formularios.cadCategoria = null;
+        Formularios.cadAcesso = null;
     }//GEN-LAST:event_formWindowClosed
 
     /**

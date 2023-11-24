@@ -4,6 +4,13 @@
  */
 package com.mycompany.saipsc.visao.Cor;
 
+import com.mycompany.saipsc.Dao.DaoCor;
+import com.mycompany.saipsc.Modelo.ModCor;
+import com.mycompany.saipsc.ferramentas.Constantes;
+import com.mycompany.saipsc.ferramentas.DadosTemporarios;
+import com.mycompany.saipsc.ferramentas.Formularios;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Batista
@@ -15,6 +22,85 @@ public class CadCor extends javax.swing.JFrame {
      */
     public CadCor() {
         initComponents();
+    if(!existeDadosTemporarios()){
+                DaoCor daoCor = new DaoCor();
+                
+                int id = daoCor.buscarProximoId(); 
+                if (id >= 0)
+                    tfId.setText(String.valueOf(id));
+
+                btnAcao.setText(Constantes.BTN_SALVAR_TEXT);
+                btnExcluir.setVisible(false);
+            }else{
+                btnAcao.setText(Constantes.BTN_ALTERAR_TEXT);
+                btnExcluir.setVisible(true);
+            }
+
+            setLocationRelativeTo(null);
+
+            tfId.setEnabled(false);
+        }
+
+        private Boolean existeDadosTemporarios(){        
+            if(DadosTemporarios.tempObject instanceof ModCor){
+                int id = ((ModCor) DadosTemporarios.tempObject).getId();
+                String descricao = ((ModCor) DadosTemporarios.tempObject).getDescricao();
+
+                tfId.setText(String.valueOf(id));
+                taDescricao.setText(descricao);
+
+                DadosTemporarios.tempObject = null;
+
+                return true;
+            }else
+                return false;
+        }
+
+        private void inserir(){
+            DaoCor daoCor = new DaoCor();
+
+            if (daoCor.inserir(Integer.parseInt(tfId.getText()), taDescricao.getText())){
+                JOptionPane.showMessageDialog(null, "Cor salva com sucesso!");
+
+                tfId.setText(String.valueOf(daoCor.buscarProximoId()));
+                taDescricao.setText("");
+            }else{
+                JOptionPane.showMessageDialog(null, "Não foi possível salvar a Cor!");
+            }
+        }
+
+        private void alterar(){
+            DaoCor daoCor = new DaoCor();
+
+            if (daoCor.alterar(Integer.parseInt(tfId.getText()), taDescricao.getText())){
+                JOptionPane.showMessageDialog(null, "Cor alterada com sucesso!");
+
+                tfId.setText("");
+                taDescricao.setText("");
+            }else{
+                JOptionPane.showMessageDialog(null, "Não foi possível alterar a Cor!");
+            }
+
+            ((ListCor) Formularios.listCor).listarTodos();
+
+            dispose();
+        }
+
+        private void excluir(){
+            DaoCor daoCor = new DaoCor();
+
+            if (daoCor.excluir(Integer.parseInt(tfId.getText()))){
+                JOptionPane.showMessageDialog(null, "Cor " + taDescricao.getText() + " excluída com sucesso!");
+
+                tfId.setText("");
+                taDescricao.setText("");
+            }else{
+                JOptionPane.showMessageDialog(null, "Não foi possível excluir a Cor!");
+            }
+
+            ((ListCor) Formularios.listCor).listarTodos();
+
+            dispose();
     }
 
     /**
@@ -26,21 +112,131 @@ public class CadCor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        tfId = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taDescricao = new javax.swing.JTextArea();
+        btnAcao = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
+
+        jLabel1.setText("ID");
+
+        jLabel3.setText("Descrição");
+
+        taDescricao.setColumns(20);
+        taDescricao.setRows(5);
+        jScrollPane1.setViewportView(taDescricao);
+
+        btnAcao.setText("Salvar");
+        btnAcao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcaoActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnAcao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnExcluir)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                .addGap(68, 68, 68)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAcao)
+                    .addComponent(btnExcluir))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoActionPerformed
+        DaoCor daoCor = new DaoCor();
+
+        if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT){
+            inserir();
+
+            tfId.setText(String.valueOf(daoCor.buscarProximoId()));
+            taDescricao.setText("");
+        }
+        else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT){
+            alterar();
+            ((ListCor) Formularios.listCor).listarTodos();
+            dispose();
+        }
+    }//GEN-LAST:event_btnAcaoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int escolha =
+        JOptionPane.showConfirmDialog(
+            null,
+            "Deseja realmente excluir a Cor " + taDescricao.getText() + "?");
+
+        if(escolha == JOptionPane.YES_OPTION)
+        excluir();
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Formularios.cadAcesso = null;
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -78,5 +274,13 @@ public class CadCor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAcao;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea taDescricao;
+    private javax.swing.JTextField tfId;
     // End of variables declaration//GEN-END:variables
 }

@@ -214,4 +214,45 @@ public class DaoPessoa extends BancoDeDadosMySql{
         }
         return id;
     }
+    public ResultSet listarPorUsuario(String usuario, boolean buscaParcial){
+        try{
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE RG LIKE ?";
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            if(buscaParcial)
+                getStatement().setString(1, usuario + "%");
+            else
+                getStatement().setString(1, usuario);
+            
+            setResultado(getStatement().executeQuery());
+            
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return getResultado();
+    }
+    
+        public ResultSet recuperaSenha(String usuario){
+        try{
+            sql = 
+                " SELECT                            " +
+                "   ID,                             " +
+                "   SENHA                           " +
+                " FROM                              " +
+                "   PESSOA                          " +
+                " WHERE LOGIN = ?                   " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setString(1, usuario);
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
 }
+

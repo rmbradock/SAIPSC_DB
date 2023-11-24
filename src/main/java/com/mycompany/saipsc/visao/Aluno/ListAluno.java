@@ -42,12 +42,10 @@ public class ListAluno extends javax.swing.JFrame {
 
             DaoAluno daoAluno = new DaoAluno();
 
-            //Atribui o resultset retornado a uma variável para ser usada.
             ResultSet resultSet = daoAluno.listarTodos();
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
-//int id, int idPessoa, int idCor, String nascimento, String idade, String responsavel, String uGrad, String pGrad, String faltas, int idPolo, String cpfResp
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String faixa = resultSet.getString(3);
@@ -68,14 +66,12 @@ public class ListAluno extends javax.swing.JFrame {
     }
     public void listarPorId(){
         try{
-            //Pega o model da tabela definido no design
             DefaultTableModel defaultTableModel = (DefaultTableModel) tableAluno.getModel();
             
             tableAluno.setModel(defaultTableModel);
 
             DaoAluno daoAluno = new DaoAluno();
 
-            //Atribui o resultset retornado a uma variável para ser usada.
             ResultSet resultSet = daoAluno.listarPorId(Integer.parseInt(tfFiltro.getText()));
             
             defaultTableModel.setRowCount(0);
@@ -364,7 +360,7 @@ public class ListAluno extends javax.swing.JFrame {
             }
         });
 
-        jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ID", "RUA", "CEP", "NÚM. RESIDÊNCIA", "NOME", "SOBRENOME", "GENERO", "TELEFONE", "EMAIL", "ESTADO CIVIL" }));
+        jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ID", "NOME", "FAIXA", "NASCIMENTO", "IDADE", "ULTIMA GRADUAÇÃO", "PROXIMA GRADUAÇÃO", "FALTAS", "POLO", " ", " ", " " }));
 
         tableAluno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -514,43 +510,33 @@ public class ListAluno extends javax.swing.JFrame {
                 modAluno.setCpfResp(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 10)));
                 modAluno.setNascimento(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 3)));
                 modAluno.setUGrad(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 6)));
-                //7
                 modAluno.setPGrad(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 7)));
                         
-                DaoPessoa daoPessoa = new DaoPessoa();
-                ResultSet resultSet = daoPessoa.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 1)));
-                
+                DaoAluno daoAluno = new DaoAluno();
+                ResultSet resultSet = daoAluno.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 1)));
                 int idPessoa = -1;
                 while (resultSet.next ())
                     idPessoa = resultSet.getInt("ID");
-                
-                modAluno.setIdPessoa(idPessoa);
-                
-                DadosTemporarios.tempObject = (ModAluno) modAluno;
+                    modAluno.setIdPessoa(idPessoa);
+                    DadosTemporarios.tempObject = (ModAluno) modAluno;
+
                 String faixa = resultSet.getString(2);
                 DaoCor daoCor = new DaoCor();
                 resultSet = daoCor.listarPorDescricao(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 2)));
-                
                 int idCor = -1;
                 while (resultSet.next ())
                     idCor = resultSet.getInt("ID");
-                
-                modAluno.setIdCor(idCor);
-                
-                DadosTemporarios.tempObject2 = (ModAluno) modAluno;
+                    modAluno.setIdCor(idCor);
+                    DadosTemporarios.tempObject2 = (ModAluno) modAluno;
 
                 String polo = resultSet.getString(9);
                 DaoPolos daoPolos = new DaoPolos();
                 resultSet = daoPolos.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 9)));
-                
                 int idPolo = -1;
                 while (resultSet.next ())
                     idPolo = resultSet.getInt("ID");
-                
-                modAluno.setIdPolo(idPolo);
-                
-                DadosTemporarios.tempObject3 = (ModAluno) modAluno;
-
+                    modAluno.setIdPolo(idPolo);
+                    DadosTemporarios.tempObject3 = (ModAluno) modAluno;
                 
                 CadAluno cadAluno = new CadAluno();
                 cadAluno.setVisible(true);

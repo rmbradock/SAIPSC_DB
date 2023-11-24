@@ -20,5 +20,5 @@ public class Constantes {
     public static String PREFIXO_USUARIO_LOGADO = "Usuário logado: ";
         
     public static String USUARIO_SENHA_INVALIDOS = "Usuário ou senha inválido";
-        public static String CONFIRMACAO_SENHA_DIFERENTE = "As senhas não são condizentes!";
+    public static String CONFIRMACAO_SENHA_DIFERENTE = "As senhas não são condizentes!";
 }

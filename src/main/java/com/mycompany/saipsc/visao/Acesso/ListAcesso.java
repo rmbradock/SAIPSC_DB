@@ -269,7 +269,7 @@ public class ListAcesso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Formularios.listCategoria = null;
+        Formularios.listAcesso = null;
     }//GEN-LAST:event_formWindowClosed
 
     /**

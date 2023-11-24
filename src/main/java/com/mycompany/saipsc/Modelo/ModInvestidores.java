@@ -57,7 +57,7 @@ public class ModInvestidores {
         return periodicidade;
     }
 
-    public void setPeridodicidade(String periodicidade) {
+    public void setPeriodicidade(String periodicidade) {
         this.periodicidade = periodicidade;
     }
     @Override

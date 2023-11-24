@@ -121,7 +121,7 @@ public class DaoInvestidores extends BancoDeDadosMySql{
         
         return getResultado();
     }
-    public ResultSet listarPorNome(String nome, boolean buscaParcial){
+    public ResultSet listarPorNome(String nome){
         try{
             sql = 
                 "   SELECT                  " +
@@ -139,11 +139,8 @@ public class DaoInvestidores extends BancoDeDadosMySql{
             
             setStatement(getConexao().prepareStatement(sql));
             
-            if(buscaParcial)
-                getStatement().setString(1, nome + "%");
-            else
-                getStatement().setString(1, nome);
-           
+            getStatement().setString(1, nome + "%");
+            
             setResultado(getStatement().executeQuery());
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -151,7 +148,7 @@ public class DaoInvestidores extends BancoDeDadosMySql{
         
         return getResultado();
     }
-    public ResultSet listarPorObs(String obs, boolean buscaParcial){
+    public ResultSet listarPorObs(String obs){
         try{
             sql = 
                 "   SELECT                  " +
@@ -169,11 +166,8 @@ public class DaoInvestidores extends BancoDeDadosMySql{
             
             setStatement(getConexao().prepareStatement(sql));
             
-            if(buscaParcial)
-                getStatement().setString(1, obs + "%");
-            else
-                getStatement().setString(1, obs);
-           
+            getStatement().setString(1, obs + "%");
+            
             setResultado(getStatement().executeQuery());
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -181,7 +175,7 @@ public class DaoInvestidores extends BancoDeDadosMySql{
         
         return getResultado();
     }
-    public ResultSet listarPorInvestimento(String investimento, boolean buscaParcial){
+    public ResultSet listarPorInvestimento(String investimento){
         try{
             sql = 
                 "   SELECT                  " +
@@ -199,11 +193,8 @@ public class DaoInvestidores extends BancoDeDadosMySql{
             
             setStatement(getConexao().prepareStatement(sql));
             
-            if(buscaParcial)
-                getStatement().setString(1, investimento + "%");
-            else
-                getStatement().setString(1, investimento);
-           
+            getStatement().setString(1, investimento + "%");
+            
             setResultado(getStatement().executeQuery());
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -211,7 +202,7 @@ public class DaoInvestidores extends BancoDeDadosMySql{
         
         return getResultado();
     }
-    public ResultSet listarPorPeriodicidade(String periodicidade, boolean buscaParcial){
+    public ResultSet listarPorPeriodicidade(String periodicidade){
         try{
             sql = 
                 "   SELECT                  " +
@@ -229,11 +220,8 @@ public class DaoInvestidores extends BancoDeDadosMySql{
             
             setStatement(getConexao().prepareStatement(sql));
             
-            if(buscaParcial)
-                getStatement().setString(1, periodicidade + "%");
-            else
-                getStatement().setString(1, periodicidade);
-           
+            getStatement().setString(1, periodicidade + "%");
+            
             setResultado(getStatement().executeQuery());
         }catch(Exception e){
             System.out.println(e.getMessage());

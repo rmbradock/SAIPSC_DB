@@ -12,7 +12,6 @@ import com.mycompany.saipsc.Modelo.ModAluno;
 import com.mycompany.saipsc.ferramentas.Constantes;
 import com.mycompany.saipsc.ferramentas.DadosTemporarios;
 import com.mycompany.saipsc.ferramentas.Formularios;
-import java.sql.Date;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
@@ -74,7 +73,7 @@ public class CadAluno extends javax.swing.JFrame {
             String cpfResp = ((ModAluno) DadosTemporarios.tempObject).getCpfResp();
             
             tfId.setText(String.valueOf(id));
-            tfNasc.setText(String.valueOf(nascimento));
+            tfNasc.setText(nascimento);
             tfIdade.setText(idade);
             tfResp.setText(responsavel);
             tfUgrad.setText(uGrad);
@@ -160,7 +159,7 @@ public class CadAluno extends javax.swing.JFrame {
     private void alterar(){
         DaoAluno daoAluno = new DaoAluno();
         
-        if (daoAluno.inserir(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdPessoa.getText()), Integer.parseInt(tfIdFaixa.getText()), tfNasc.getText(), Integer.parseInt(tfIdade.getText()), tfResp.getText(), tfUgrad.getText(), tfPGrad.getText(), tfFaltas.getText(), Integer.parseInt(tfIdPolo.getText()), tfCpfResp.getText())){
+        if (daoAluno.alterar(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdPessoa.getText()), Integer.parseInt(tfIdFaixa.getText()), tfNasc.getText(), tfIdade.getText(), tfResp.getText(), tfUgrad.getText(), tfPGrad.getText(), tfFaltas.getText(), Integer.parseInt(tfIdPolo.getText()), tfCpfResp.getText())){
             JOptionPane.showMessageDialog(null, "Aluno alterado com sucesso!");
             
             tfId.setText("");
@@ -336,6 +335,11 @@ public class CadAluno extends javax.swing.JFrame {
                 jcbNomeItemStateChanged(evt);
             }
         });
+        jcbNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbNomeActionPerformed(evt);
+            }
+        });
 
         jcbFaixa.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -370,6 +374,12 @@ public class CadAluno extends javax.swing.JFrame {
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
+            }
+        });
+
+        tfIdPessoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdPessoaActionPerformed(evt);
             }
         });
 
@@ -431,7 +441,7 @@ public class CadAluno extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfIdade, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))
+                        .addComponent(tfIdade, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -531,6 +541,14 @@ public class CadAluno extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_formWindowClosed
+
+    private void tfIdPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdPessoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdPessoaActionPerformed
+
+    private void jcbNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbNomeActionPerformed
 
     /**
      * @param args the command line arguments

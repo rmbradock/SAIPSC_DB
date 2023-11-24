@@ -5,7 +5,6 @@
 package com.mycompany.saipsc.Dao;
 
 import com.mycompany.saipsc.ferramentas.BancoDeDadosMySql;
-import java.sql.Date;
 import java.sql.ResultSet;
 
 /**
@@ -41,7 +40,7 @@ public class DaoAluno extends BancoDeDadosMySql{
             return false;
         }
     }
-    public Boolean alterar(int id, int idPessoa, int idCor, Date nascimento, String idade, String responsavel, Date uGrad, Date pGrad, String faltas, int idPolo, String cpfResp){
+    public Boolean alterar(int id, int idPessoa, int idCor, String nascimento, String idade, String responsavel, String uGrad, String pGrad, String faltas, int idPolo, String cpfResp){
         try{
             sql = "UPDATE ALUNO SET ID_PESSOA = ?, ID_COR = ?, NASCIMENTO = ?, IDADE = ?, RESPONSAVEL = ?, UGRAD = ?, PGRAD = ?, FALTAS = ?, ID_POLO = ?, CPFRESP = ? WHERE ID = ?";
             
@@ -50,11 +49,11 @@ public class DaoAluno extends BancoDeDadosMySql{
             getStatement().setInt(11, id);
             getStatement().setInt(1, idPessoa);
             getStatement().setInt(2, idCor);
-            getStatement().setDate(3, nascimento);
+            getStatement().setString(3, nascimento);
             getStatement().setString(4, idade);
             getStatement().setString(5, responsavel);
-            getStatement().setDate(6, uGrad);
-            getStatement().setDate(7, pGrad);
+            getStatement().setString(6, uGrad);
+            getStatement().setString(7, pGrad);
             getStatement().setString(8, faltas);
             getStatement().setInt(9,idPolo );
             getStatement().setString(10,cpfResp );
