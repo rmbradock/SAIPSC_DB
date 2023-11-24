@@ -50,20 +50,20 @@ DROP TABLE IF EXISTS `aluno`;
 CREATE TABLE `aluno` (
   `id` int NOT NULL,
   `id_pessoa` int DEFAULT NULL,
-  `id_cor_faixa` int DEFAULT NULL,
-  `data_de_nascimento` date DEFAULT NULL,
+  `id_cor` int DEFAULT NULL,
+  `nascimento` date DEFAULT NULL,
   `idade` int DEFAULT NULL,
-  `responsavel` int DEFAULT NULL,
-  `ultima_grad` date DEFAULT NULL,
-  `projec_grad` date DEFAULT NULL,
+  `responsavel` varchar(100) DEFAULT NULL,
+  `uGrad` date DEFAULT NULL,
+  `pGrad` date DEFAULT NULL,
   `faltas` varchar(100) DEFAULT NULL,
   `id_polo` int DEFAULT NULL,
-  `cpf_resp` varchar(100) DEFAULT NULL,
+  `cpfResp` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `Aluno_FK` (`id_cor_faixa`),
+  KEY `Aluno_FK` (`id_cor`),
   KEY `Aluno_FK_1` (`responsavel`),
   KEY `aluno_FK1` (`id_polo`),
-  CONSTRAINT `Aluno_FK` FOREIGN KEY (`id_cor_faixa`) REFERENCES `cor` (`id`),
+  CONSTRAINT `Aluno_FK` FOREIGN KEY (`id_cor`) REFERENCES `cor` (`id`),
   CONSTRAINT `aluno_FK1` FOREIGN KEY (`id_polo`) REFERENCES `polos` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -74,7 +74,7 @@ CREATE TABLE `aluno` (
 
 LOCK TABLES `aluno` WRITE;
 /*!40000 ALTER TABLE `aluno` DISABLE KEYS */;
-INSERT INTO `aluno` VALUES (1,1,1,'1975-11-29',47,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `aluno` VALUES (1,1,1,'1975-11-29',47,NULL,NULL,NULL,NULL,NULL,NULL),(2,1,1,'1975-11-29',47,'ricardo','2023-01-01','2023-01-02','0',1,'123123456.6');
 /*!40000 ALTER TABLE `aluno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,7 +251,7 @@ DROP TABLE IF EXISTS `investidores`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `investidores` (
   `id` int NOT NULL,
-  `observacao` varchar(100) DEFAULT NULL,
+  `obs` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `investimento` varchar(100) DEFAULT NULL,
   `periodicidade` varchar(100) DEFAULT NULL,
   `id_pessoa` int DEFAULT NULL,
@@ -367,6 +367,9 @@ CREATE TABLE `pessoa` (
   `endereco` varchar(100) DEFAULT NULL,
   `contato` varchar(100) DEFAULT NULL,
   `obs` varchar(100) DEFAULT NULL,
+  `login` varchar(100) DEFAULT NULL,
+  `senha` varchar(100) DEFAULT NULL,
+  `genero` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -377,7 +380,7 @@ CREATE TABLE `pessoa` (
 
 LOCK TABLES `pessoa` WRITE;
 /*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (1,'Ricardo','62424796','02046234995','rua akibono','44998130695','B');
+INSERT INTO `pessoa` VALUES (1,'Ricardo','62424796','02046234995','rua akibono','44998130695','B','ricardo','1234',''),(2,'Teste','12345678','123456789','teste end','4444444','A','teste','123','Masculino');
 /*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -394,6 +397,7 @@ CREATE TABLE `polos` (
   `endereco` varchar(100) DEFAULT NULL,
   `responsavel` varchar(100) DEFAULT NULL,
   `contato` varchar(100) DEFAULT NULL,
+  `obs` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -404,18 +408,18 @@ CREATE TABLE `polos` (
 
 LOCK TABLES `polos` WRITE;
 /*!40000 ALTER TABLE `polos` DISABLE KEYS */;
-INSERT INTO `polos` VALUES (1,'CT Centro','R. São Josafat, 1778','Pastor Gustavo','');
+INSERT INTO `polos` VALUES (1,'CT Centro','R. São Josafat, 1778','Pastor Gustavo','',NULL);
 /*!40000 ALTER TABLE `polos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `quimonos_e_faixas`
+-- Table structure for table `quimonof`
 --
 
-DROP TABLE IF EXISTS `quimonos_e_faixas`;
+DROP TABLE IF EXISTS `quimonof`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `quimonos_e_faixas` (
+CREATE TABLE `quimonof` (
   `id` int NOT NULL,
   `id_cor` int DEFAULT NULL,
   `id_categoria` int DEFAULT NULL,
@@ -423,6 +427,7 @@ CREATE TABLE `quimonos_e_faixas` (
   `id_condicao` int DEFAULT NULL,
   `id_marca` int DEFAULT NULL,
   `Obs.` varchar(100) DEFAULT NULL,
+  `quantidade` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `quimonos_e_faixas_FK` (`id_cor`),
   KEY `quimonos_e_faixas_FK_1` (`id_categoria`),
@@ -438,13 +443,13 @@ CREATE TABLE `quimonos_e_faixas` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `quimonos_e_faixas`
+-- Dumping data for table `quimonof`
 --
 
-LOCK TABLES `quimonos_e_faixas` WRITE;
-/*!40000 ALTER TABLE `quimonos_e_faixas` DISABLE KEYS */;
-INSERT INTO `quimonos_e_faixas` VALUES (1,1,1,1,1,1,NULL);
-/*!40000 ALTER TABLE `quimonos_e_faixas` ENABLE KEYS */;
+LOCK TABLES `quimonof` WRITE;
+/*!40000 ALTER TABLE `quimonof` DISABLE KEYS */;
+INSERT INTO `quimonof` VALUES (1,1,1,1,1,1,NULL,NULL);
+/*!40000 ALTER TABLE `quimonof` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -485,4 +490,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-08 11:56:03
+-- Dump completed on 2023-11-24 11:28:13
