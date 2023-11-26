@@ -10,17 +10,18 @@ package com.mycompany.saipsc.Modelo;
  */
 public class ModPolos {
     private int id;
-    private String nome, endereco, responsavel, contato;
+    private String nome, endereco, responsavel, contato, obs;
     
     public ModPolos(){
     }
     
-    public ModPolos (int id, String nome, String endereco, String responsavel, String contato){
+    public ModPolos (int id, String nome, String endereco, String responsavel, String contato, String obs){
     this.id = id;
     this.nome = nome;
     this.endereco = endereco;
     this.responsavel = responsavel;
     this.contato = contato;
+    this.obs = obs;
     }
     public int getId() {
         return id;
@@ -61,8 +62,15 @@ public class ModPolos {
     public void setContato(String contato) {
         this.contato = contato;
     }
+    public String getObs() {
+        return obs;
+    }
+
+    public void setObs(String obs) {
+        this.obs = obs;
+    }
     @Override
     public String toString() {
-        return "ModPessoa{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", responsavel=" + responsavel + " contato=" + contato + '}';
+        return "ModPessoa{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", responsavel=" + responsavel + " contato=" + contato + " obs=" + obs +'}';
     }
 }

@@ -49,7 +49,7 @@ public class MenuInstrutores extends javax.swing.JFrame {
         jmlPatrimonio = new javax.swing.JMenuItem();
         jMenuItem27 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel1.setText("SAIPSC");
@@ -139,7 +139,7 @@ public class MenuInstrutores extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(181, Short.MAX_VALUE)
+                .addContainerGap(203, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
@@ -149,47 +149,12 @@ public class MenuInstrutores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMLAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMLAlunoActionPerformed
-        if (Formularios.listAluno == null)
-        Formularios.listAluno = new ListAluno();
+    private void jMenuItem27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem27ActionPerformed
+        if (Formularios.listPolos == null)
+        Formularios.listPolos = new ListPolos();
 
-        Formularios.listAluno.setVisible(true);
-    }//GEN-LAST:event_jMLAlunoActionPerformed
-
-    private void jmlCampeonatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlCampeonatoActionPerformed
-        if (Formularios.listCampeonato == null)
-        Formularios.listCampeonato = new ListCampeonato();
-
-        Formularios.listCampeonato.setVisible(true);
-    }//GEN-LAST:event_jmlCampeonatoActionPerformed
-
-    private void jmlEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlEquipeActionPerformed
-        if (Formularios.listEquipe == null)
-        Formularios.listEquipe = new ListEquipe();
-
-        Formularios.listEquipe.setVisible(true);
-    }//GEN-LAST:event_jmlEquipeActionPerformed
-
-    private void jmlInvestidoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlInvestidoresActionPerformed
-        if (Formularios.listInvestidores == null)
-        Formularios.listInvestidores = new ListInvestidores();
-
-        Formularios.listInvestidores.setVisible(true);
-    }//GEN-LAST:event_jmlInvestidoresActionPerformed
-
-    private void jmlKimonoFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlKimonoFActionPerformed
-        if (Formularios.listKimonoF == null)
-        Formularios.listKimonoF = new ListKimonoF();
-
-        Formularios.listKimonoF.setVisible(true);
-    }//GEN-LAST:event_jmlKimonoFActionPerformed
-
-    private void jmlParticipacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlParticipacaoActionPerformed
-        if (Formularios.listParticipacao == null)
-        Formularios.listParticipacao = new ListParticipacao();
-
-        Formularios.listParticipacao.setVisible(true);
-    }//GEN-LAST:event_jmlParticipacaoActionPerformed
+        Formularios.listPolos.setVisible(true);
+    }//GEN-LAST:event_jMenuItem27ActionPerformed
 
     private void jmlPatrimonioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlPatrimonioActionPerformed
         if (Formularios.listPatrimonio == null)
@@ -198,12 +163,47 @@ public class MenuInstrutores extends javax.swing.JFrame {
         Formularios.listPatrimonio.setVisible(true);
     }//GEN-LAST:event_jmlPatrimonioActionPerformed
 
-    private void jMenuItem27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem27ActionPerformed
-        if (Formularios.listPolos == null)
-        Formularios.listPolos = new ListPolos();
+    private void jmlParticipacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlParticipacaoActionPerformed
+        if (Formularios.listParticipacao == null)
+        Formularios.listParticipacao = new ListParticipacao();
 
-        Formularios.listPolos.setVisible(true);
-    }//GEN-LAST:event_jMenuItem27ActionPerformed
+        Formularios.listParticipacao.setVisible(true);
+    }//GEN-LAST:event_jmlParticipacaoActionPerformed
+
+    private void jmlKimonoFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlKimonoFActionPerformed
+        if (Formularios.listKimonoF == null)
+        Formularios.listKimonoF = new ListKimonoF();
+
+        Formularios.listKimonoF.setVisible(true);
+    }//GEN-LAST:event_jmlKimonoFActionPerformed
+
+    private void jmlInvestidoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlInvestidoresActionPerformed
+        if (Formularios.listInvestidores == null)
+        Formularios.listInvestidores = new ListInvestidores();
+
+        Formularios.listInvestidores.setVisible(true);
+    }//GEN-LAST:event_jmlInvestidoresActionPerformed
+
+    private void jmlEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlEquipeActionPerformed
+        if (Formularios.listEquipe == null)
+        Formularios.listEquipe = new ListEquipe();
+
+        Formularios.listEquipe.setVisible(true);
+    }//GEN-LAST:event_jmlEquipeActionPerformed
+
+    private void jmlCampeonatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlCampeonatoActionPerformed
+        if (Formularios.listCampeonato == null)
+        Formularios.listCampeonato = new ListCampeonato();
+
+        Formularios.listCampeonato.setVisible(true);
+    }//GEN-LAST:event_jmlCampeonatoActionPerformed
+
+    private void jMLAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMLAlunoActionPerformed
+        if (Formularios.listAluno == null)
+        Formularios.listAluno = new ListAluno();
+
+        Formularios.listAluno.setVisible(true);
+    }//GEN-LAST:event_jMLAlunoActionPerformed
 
     /**
      * @param args the command line arguments

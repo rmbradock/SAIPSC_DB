@@ -91,7 +91,7 @@ public class DaoCampeonato extends BancoDeDadosMySql{
     }
     public ResultSet listarPorId(int id){
         try{
-            sql = "SELECT ID, NOME, IFNULL(ID, '') FROM CAMPEONATO WHERE ID = ?";
+            sql = "SELECT ID, NOME, LOCAL, RESPONSAVEL, CONTATO, DATA, INSCRICAO FROM CAMPEONATO WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -106,7 +106,7 @@ public class DaoCampeonato extends BancoDeDadosMySql{
     }
     public ResultSet listarPorNome(String nome){
         try{
-            sql = "SELECT ID, NOME, IFNULL(NOME, '') FROM CAMPEONATO WHERE NOME LIKE ?";
+            sql = "SELECT ID, NOME, LOCAL, RESPONSAVEL, CONTATO, DATA, INSCRICAO FROM CAMPEONATO WHERE NOME LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -120,7 +120,7 @@ public class DaoCampeonato extends BancoDeDadosMySql{
     }
     public ResultSet listarPorLocal(String local){
         try{
-            sql = "SELECT ID, NOME, IFNULL(LOCAL, '') FROM CAMPEONATO WHERE LOCAL LIKE ?";
+            sql = "SELECT ID, NOME, LOCAL, RESPONSAVEL, CONTATO, DATA, INSCRICAO FROM CAMPEONATO WHERE LOCAL LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -134,7 +134,7 @@ public class DaoCampeonato extends BancoDeDadosMySql{
     }
     public ResultSet listarPorData(String data){
         try{
-            sql = "SELECT ID, NOME, IFNULL(DATA, '') FROM CAMPEONATO WHERE DATA LIKE ?";
+            sql = "SELECT ID, NOME, LOCAL, RESPONSAVEL, CONTATO, DATA, INSCRICAO FROM CAMPEONATO WHERE DATA LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             

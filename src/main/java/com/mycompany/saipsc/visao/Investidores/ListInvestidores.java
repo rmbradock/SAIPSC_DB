@@ -5,6 +5,7 @@
 package com.mycompany.saipsc.visao.Investidores;
 
 import com.mycompany.saipsc.Dao.DaoInvestidores;
+import com.mycompany.saipsc.Dao.DaoPessoa;
 import com.mycompany.saipsc.Modelo.ModInvestidores;
 import com.mycompany.saipsc.ferramentas.DadosTemporarios;
 import com.mycompany.saipsc.ferramentas.Formularios;
@@ -305,14 +306,14 @@ public class ListInvestidores extends javax.swing.JFrame {
                 modInvestidores.setInvestimento(String.valueOf(tableInvestidores.getValueAt(tableInvestidores.getSelectedRow(), 3)));
                 modInvestidores.setPeriodicidade(String.valueOf(tableInvestidores.getValueAt(tableInvestidores.getSelectedRow(), 4)));
                 
-                DaoInvestidores daoInvestidores = new DaoInvestidores();
-                ResultSet resultSet = daoInvestidores.listarPorNome(String.valueOf(tableInvestidores.getValueAt(tableInvestidores.getSelectedRow(), 1)));
+                DaoPessoa daoPessoa = new DaoPessoa();
+                ResultSet resultSet = daoPessoa.listarPorNome(String.valueOf(tableInvestidores.getValueAt(tableInvestidores.getSelectedRow(), 1)));
                 int idPessoa = -1;
-                while (resultSet.next ())
                 idPessoa = resultSet.getInt("ID");
                 modInvestidores.setIdPessoa(idPessoa);
+                
                 DadosTemporarios.tempObject = (ModInvestidores) modInvestidores;
-
+                
                 CadInvestidores cadInvestidores = new CadInvestidores();
                 cadInvestidores.setVisible(true);
             }

@@ -65,6 +65,8 @@ public class Formularios {
     
     public static JFrame MenuInstrutores;
     
+    public static JFrame MenuColaboradores;
+    
     public static JFrame TelaLogin;
     
     public static JDialog TelaAlteracaoSenha;

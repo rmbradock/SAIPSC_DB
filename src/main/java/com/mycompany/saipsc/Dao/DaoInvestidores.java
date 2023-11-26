@@ -74,16 +74,17 @@ public class DaoInvestidores extends BancoDeDadosMySql{
     public ResultSet listarTodos(){
         try{
             sql = 
-                " SELECT                    " +
-                "   INV.ID,                 " +
+                "   SELECT                  " +
+                "   INV.ID AS ID,           " +
                 "   PE.NOME AS NOME,        " +
                 "   INV. OBS,               " +
-                "   INV. IVESTIMENTO,       " +
+                "   INV. INVESTIMENTO,       " +
                 "   INV. PERIODICIDADE      " +
                 "   FROM                    " +
                 "   INVESTIDORES INV        " +
                 "   JOIN PESSOA PE ON       " +
                 "   PE.ID = INV.ID_PESSOA   " ;
+               
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -101,7 +102,7 @@ public class DaoInvestidores extends BancoDeDadosMySql{
                 "   INV.ID AS ID,           " +
                 "   PE.NOME AS NOME,        " +
                 "   INV. OBS,               " +
-                "   INV. IVESTIMENTO,       " +
+                "   INV. INVESTIMENTO,       " +
                 "   INV. PERIODICIDADE      " +
                 "   FROM                    " +
                 "   INVESTIDORES INV        " +
@@ -124,11 +125,11 @@ public class DaoInvestidores extends BancoDeDadosMySql{
     public ResultSet listarPorNome(String nome){
         try{
             sql = 
-                "   SELECT                  " +
-                "   INV.ID,                 " +
+                " SELECT                    " +
+                "   INV.ID AS ID,           " +
                 "   PE.NOME AS NOME,        " +
                 "   INV. OBS,               " +
-                "   INV. IVESTIMENTO,       " +
+                "   INV. INVESTIMENTO,       " +
                 "   INV. PERIODICIDADE      " +
                 "   FROM                    " +
                 "   INVESTIDORES INV        " +
@@ -151,11 +152,11 @@ public class DaoInvestidores extends BancoDeDadosMySql{
     public ResultSet listarPorObs(String obs){
         try{
             sql = 
-                "   SELECT                  " +
-                "   INV.ID,                 " +
+                " SELECT                    " +
+                "   INV.ID AS ID,           " +
                 "   PE.NOME AS NOME,        " +
                 "   INV. OBS,               " +
-                "   INV. IVESTIMENTO,       " +
+                "   INV. INVESTIMENTO,       " +
                 "   INV. PERIODICIDADE      " +
                 "   FROM                    " +
                 "   INVESTIDORES INV        " +
@@ -178,11 +179,11 @@ public class DaoInvestidores extends BancoDeDadosMySql{
     public ResultSet listarPorInvestimento(String investimento){
         try{
             sql = 
-                "   SELECT                  " +
-                "   INV.ID,                 " +
+                " SELECT                    " +
+                "   INV.ID AS ID,           " +
                 "   PE.NOME AS NOME,        " +
                 "   INV. OBS,               " +
-                "   INV. IVESTIMENTO,       " +
+                "   INV. INVESTIMENTO,       " +
                 "   INV. PERIODICIDADE      " +
                 "   FROM                    " +
                 "   INVESTIDORES INV        " +
@@ -205,11 +206,11 @@ public class DaoInvestidores extends BancoDeDadosMySql{
     public ResultSet listarPorPeriodicidade(String periodicidade){
         try{
             sql = 
-                "   SELECT                  " +
-                "   INV.ID,                 " +
+                " SELECT                    " +
+                "   INV.ID AS ID,           " +
                 "   PE.NOME AS NOME,        " +
                 "   INV. OBS,               " +
-                "   INV. IVESTIMENTO,       " +
+                "   INV. INVESTIMENTO,       " +
                 "   INV. PERIODICIDADE      " +
                 "   FROM                    " +
                 "   INVESTIDORES INV        " +

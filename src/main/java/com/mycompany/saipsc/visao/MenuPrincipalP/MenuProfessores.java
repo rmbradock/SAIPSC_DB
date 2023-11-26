@@ -14,6 +14,7 @@ import com.mycompany.saipsc.ferramentas.DadosTemporarios;
 import com.mycompany.saipsc.ferramentas.Formularios;
 import com.mycompany.saipsc.visao.Acesso.CadAcesso;
 import com.mycompany.saipsc.visao.Acesso.ListAcesso;
+import com.mycompany.saipsc.visao.Cargo.CadCargo;
 import com.mycompany.saipsc.visao.Cargo.ListCargo;
 import com.mycompany.saipsc.visao.CategoriaKF.CadCategoriaKF;
 import com.mycompany.saipsc.visao.CategoriaKF.ListCategoriaKF;
@@ -114,7 +115,7 @@ public class MenuProfessores extends javax.swing.JFrame {
         jMenuItem27 = new javax.swing.JMenuItem();
         jmlTamano = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel1.setText("SAIPSC");
@@ -400,7 +401,7 @@ public class MenuProfessores extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(173, Short.MAX_VALUE)
+                .addContainerGap(174, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
@@ -440,7 +441,7 @@ public class MenuProfessores extends javax.swing.JFrame {
 
     private void jmcCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmcCargoActionPerformed
         if (Formularios.cadCargo == null)
-            Formularios.cadCargo = new CadAluno();
+            Formularios.cadCargo = new CadCargo();
         
         Formularios.cadCargo.setVisible(true);
     }//GEN-LAST:event_jmcCargoActionPerformed

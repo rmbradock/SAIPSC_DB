@@ -22,7 +22,7 @@ public class DaoKimonoF extends BancoDeDadosMySql {
     
     public Boolean inserir(int id, String quantidade, int idCategoria, int idTamanho, int idCor, int idMarca, int idCondicao){
         try{
-            sql = "INSERT INTO KIMONOF (ID, QUANTIDADE, ID_CATEGORIA, ID_TAMANHO, ID_COR, ID_MARCA, ID_CONDICAO) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO KIMONOF (ID, QUANTIDADE, ID_CATEGORIAKF, ID_TAMANHO, ID_COR, ID_MARCA, ID_CONDICAO) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
             setStatement(getConexao().prepareStatement(sql));
             
@@ -44,11 +44,11 @@ public class DaoKimonoF extends BancoDeDadosMySql {
     }
     public Boolean alterar(int id, String quantidade, int idCategoria, int idTamanho, int idCor, int idMarca, int idCondicao){
         try{
-            sql = "UPDATE KIMONOF SET QUANTIDADE = ?, ID_CATEGORIA, ID_TAMANHO = ?, ID_COR = ?, ID_MARCA = ?, ID_CONDICAO = ? WHERE ID = ?";
+            sql = "UPDATE KIMONOF SET QUANTIDADE = ?, ID_CATEGORIAKF = ?, ID_TAMANHO = ?, ID_COR = ?, ID_MARCA = ?, ID_CONDICAO = ? WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
-            getStatement().setInt(8, id);
+            getStatement().setInt(7, id);
             getStatement().setString(1, quantidade);
             getStatement().setInt(2, idCategoria);
             getStatement().setInt(3, idTamanho);
@@ -82,24 +82,25 @@ public class DaoKimonoF extends BancoDeDadosMySql {
     }
     public ResultSet listarTodos(){
         try{
-            sql = 
+            sql =
+                " SELECT                                 " +
                 "   K.ID AS ID,                          " +
                 "   K.QUANTIDADE AS QUANTIDADE,          " +
                 "   CA.NOME AS KIMONO_OU_FAIXA,          " +
-                "   TM.TAMANHO AS TAMANHO,               " +
+                "   TM.TAM AS TAMANHO,               " +
                 "   C.DESCRICAO AS COR,                  " +
                 "   M.NOME AS MARCA,                     " +
-                "   CD.ESTADO AS CONDICAO,               " +
+                "   CD.ESTADO AS CONDICAO               " +
                 " FROM                                   " +
                 "   KIMONOF K                            " +
-                " JOIN CATEGORIA CA ON                   " +
-                "   CA.ID = K.ID_CATEGORIA               " +
+                " JOIN CATEGORIAKF CA ON                   " +
+                "   CA.ID = K.ID_CATEGORIA              " +
                 " JOIN TAMANHO TM ON                     " +
                 "   TM.ID = K.ID_TAMANHO                 " +    
                 " JOIN COR C ON                          " +
                 "   C.ID = K.ID_COR                      " +
                 " JOIN MARCA M ON                        " +
-                "   M.ID = K.ID_ACESSO                   " +
+                "   M.ID = K.ID_MARCA                   " +
                 " JOIN CONDICAO CD ON                    " +
                 "   CD.ID = K.ID_CONDICAO                " ;
             
@@ -115,26 +116,27 @@ public class DaoKimonoF extends BancoDeDadosMySql {
     public ResultSet listarPorId(int id){
         try{
             sql =
+                " SELECT                                 " +
                 "   K.ID AS ID,                          " +
                 "   K.QUANTIDADE AS QUANTIDADE,          " +
                 "   CA.NOME AS KIMONO_OU_FAIXA,          " +
-                "   TM.TAMANHO AS TAMANHO,               " +
+                "   TM.TAM AS TAMANHO,               " +
                 "   C.DESCRICAO AS COR,                  " +
                 "   M.NOME AS MARCA,                     " +
-                "   CD.ESTADO AS CONDICAO,               " +
+                "   CD.ESTADO AS CONDICAO               " +
                 " FROM                                   " +
                 "   KIMONOF K                            " +
-                " JOIN CATEGORIA CA ON                   " +
-                "   CA.ID = K.ID_CATEGORIA               " +
+                " JOIN CATEGORIAKF CA ON                   " +
+                "   CA.ID = K.ID_CATEGORIA              " +
                 " JOIN TAMANHO TM ON                     " +
                 "   TM.ID = K.ID_TAMANHO                 " +    
                 " JOIN COR C ON                          " +
                 "   C.ID = K.ID_COR                      " +
                 " JOIN MARCA M ON                        " +
-                "   M.ID = K.ID_ACESSO                   " +
+                "   M.ID = K.ID_MARCA                   " +
                 " JOIN CONDICAO CD ON                    " +
                 "   CD.ID = K.ID_CONDICAO                " +
-                " WHERE P.ID = ?                         " ;
+                " WHERE K.ID = ?                         " ;
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -147,33 +149,34 @@ public class DaoKimonoF extends BancoDeDadosMySql {
         
         return getResultado();
     }
-     public ResultSet listarPorQuantidade(String quantidade){
+     public ResultSet listarPorCategoria(String categoria){
         try{
             sql =
+                " SELECT                                 " +
                 "   K.ID AS ID,                          " +
                 "   K.QUANTIDADE AS QUANTIDADE,          " +
                 "   CA.NOME AS KIMONO_OU_FAIXA,          " +
-                "   TM.TAMANHO AS TAMANHO,               " +
+                "   TM.TAM AS TAMANHO,               " +
                 "   C.DESCRICAO AS COR,                  " +
                 "   M.NOME AS MARCA,                     " +
-                "   CD.ESTADO AS CONDICAO,               " +
+                "   CD.ESTADO AS CONDICAO               " +
                 " FROM                                   " +
                 "   KIMONOF K                            " +
-                " JOIN CATEGORIA CA ON                   " +
-                "   CA.ID = K.ID_CATEGORIA               " +
+                " JOIN CATEGORIAKF CA ON                   " +
+                "   CA.ID = K.ID_CATEGORIA              " +
                 " JOIN TAMANHO TM ON                     " +
                 "   TM.ID = K.ID_TAMANHO                 " +    
                 " JOIN COR C ON                          " +
                 "   C.ID = K.ID_COR                      " +
                 " JOIN MARCA M ON                        " +
-                "   M.ID = K.ID_ACESSO                   " +
+                "   M.ID = K.ID_MARCA                   " +
                 " JOIN CONDICAO CD ON                    " +
                 "   CD.ID = K.ID_CONDICAO                " +
-                " WHERE K.QUANTIDADE LIKE = ?                        " ;
+                " WHERE CA.NOME LIKE ?                        " ;
             
             setStatement(getConexao().prepareStatement(sql));
             
-            getStatement().setString(1, quantidade + "%");
+            getStatement().setString(1, categoria + "%");
             
             setResultado(getStatement().executeQuery());
         }catch(Exception e){
@@ -182,65 +185,31 @@ public class DaoKimonoF extends BancoDeDadosMySql {
         
         return getResultado();
         
-    }
-    public ResultSet listarPorNome(String nome){
-        try{
-            sql =
-                "   K.ID AS ID,                          " +
-                "   K.QUANTIDADE AS QUANTIDADE,          " +
-                "   CA.NOME AS KIMONO_OU_FAIXA,          " +
-                "   TM.TAMANHO AS TAMANHO,               " +
-                "   C.DESCRICAO AS COR,                  " +
-                "   M.NOME AS MARCA,                     " +
-                "   CD.ESTADO AS CONDICAO,               " +
-                " FROM                                   " +
-                "   KIMONOF K                            " +
-                " JOIN CATEGORIA CA ON                   " +
-                "   CA.ID = K.ID_CATEGORIA               " +
-                " JOIN TAMANHO TM ON                     " +
-                "   TM.ID = K.ID_TAMANHO                 " +    
-                " JOIN COR C ON                          " +
-                "   C.ID = K.ID_COR                      " +
-                " JOIN MARCA M ON                        " +
-                "   M.ID = K.ID_ACESSO                   " +
-                " JOIN CONDICAO CD ON                    " +
-                "   CD.ID = K.ID_CONDICAO                " +
-                " WHERE CA.NOME LIKE = ?                        " ;
-            
-            setStatement(getConexao().prepareStatement(sql));
-            
-            getStatement().setString(1, nome + "%");
-            
-            setResultado(getStatement().executeQuery());
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-        
-        return getResultado();
     }
     public ResultSet listarPorTamanho(String tamanho){
         try{
             sql =
+                " SELECT                                 " +
                 "   K.ID AS ID,                          " +
                 "   K.QUANTIDADE AS QUANTIDADE,          " +
                 "   CA.NOME AS KIMONO_OU_FAIXA,          " +
-                "   TM.TAMANHO AS TAMANHO,               " +
+                "   TM.TAM AS TAMANHO,               " +
                 "   C.DESCRICAO AS COR,                  " +
                 "   M.NOME AS MARCA,                     " +
-                "   CD.ESTADO AS CONDICAO,               " +
+                "   CD.ESTADO AS CONDICAO               " +
                 " FROM                                   " +
                 "   KIMONOF K                            " +
-                " JOIN CATEGORIA CA ON                   " +
-                "   CA.ID = K.ID_CATEGORIA               " +
+                " JOIN CATEGORIAKF CA ON                   " +
+                "   CA.ID = K.ID_CATEGORIA              " +
                 " JOIN TAMANHO TM ON                     " +
                 "   TM.ID = K.ID_TAMANHO                 " +    
                 " JOIN COR C ON                          " +
                 "   C.ID = K.ID_COR                      " +
                 " JOIN MARCA M ON                        " +
-                "   M.ID = K.ID_ACESSO                   " +
+                "   M.ID = K.ID_MARCA                   " +
                 " JOIN CONDICAO CD ON                    " +
                 "   CD.ID = K.ID_CONDICAO                " +
-                " WHERE TM.TAMANHO LIKE = ?              " ;
+                " WHERE TM.TAM LIKE  ?              " ;
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -256,26 +225,27 @@ public class DaoKimonoF extends BancoDeDadosMySql {
     public ResultSet listarPorCor(String cor){
         try{
             sql =
+                " SELECT                                 " +
                 "   K.ID AS ID,                          " +
                 "   K.QUANTIDADE AS QUANTIDADE,          " +
                 "   CA.NOME AS KIMONO_OU_FAIXA,          " +
-                "   TM.TAMANHO AS TAMANHO,               " +
+                "   TM.TAM AS TAMANHO,               " +
                 "   C.DESCRICAO AS COR,                  " +
                 "   M.NOME AS MARCA,                     " +
-                "   CD.ESTADO AS CONDICAO,               " +
+                "   CD.ESTADO AS CONDICAO               " +
                 " FROM                                   " +
                 "   KIMONOF K                            " +
-                " JOIN CATEGORIA CA ON                   " +
-                "   CA.ID = K.ID_CATEGORIA               " +
+                " JOIN CATEGORIAKF CA ON                   " +
+                "   CA.ID = K.ID_CATEGORIA              " +
                 " JOIN TAMANHO TM ON                     " +
                 "   TM.ID = K.ID_TAMANHO                 " +    
                 " JOIN COR C ON                          " +
                 "   C.ID = K.ID_COR                      " +
                 " JOIN MARCA M ON                        " +
-                "   M.ID = K.ID_ACESSO                   " +
+                "   M.ID = K.ID_MARCA                   " +
                 " JOIN CONDICAO CD ON                    " +
                 "   CD.ID = K.ID_CONDICAO                " +
-                " WHERE C.DESCRICAO LIKE = ?                        " ;
+                " WHERE C.DESCRICAO LIKE  ?                        " ;
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -291,26 +261,27 @@ public class DaoKimonoF extends BancoDeDadosMySql {
     public ResultSet listarPorMarca(String marca){
         try{
             sql =
+                " SELECT                                 " +
                 "   K.ID AS ID,                          " +
                 "   K.QUANTIDADE AS QUANTIDADE,          " +
                 "   CA.NOME AS KIMONO_OU_FAIXA,          " +
-                "   TM.TAMANHO AS TAMANHO,               " +
+                "   TM.TAM AS TAMANHO,               " +
                 "   C.DESCRICAO AS COR,                  " +
                 "   M.NOME AS MARCA,                     " +
-                "   CD.ESTADO AS CONDICAO,               " +
+                "   CD.ESTADO AS CONDICAO               " +
                 " FROM                                   " +
                 "   KIMONOF K                            " +
-                " JOIN CATEGORIA CA ON                   " +
-                "   CA.ID = K.ID_CATEGORIA               " +
+                " JOIN CATEGORIAKF CA ON                   " +
+                "   CA.ID = K.ID_CATEGORIA              " +
                 " JOIN TAMANHO TM ON                     " +
                 "   TM.ID = K.ID_TAMANHO                 " +    
                 " JOIN COR C ON                          " +
                 "   C.ID = K.ID_COR                      " +
                 " JOIN MARCA M ON                        " +
-                "   M.ID = K.ID_ACESSO                   " +
+                "   M.ID = K.ID_MARCA                   " +
                 " JOIN CONDICAO CD ON                    " +
                 "   CD.ID = K.ID_CONDICAO                " +
-                " WHERE M.NOME LIKE = ?                        " ;
+                " WHERE M.NOME LIKE  ?                        " ;
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -326,26 +297,27 @@ public class DaoKimonoF extends BancoDeDadosMySql {
     public ResultSet listarPorEstado(String estado){
         try{
             sql =
+               " SELECT                                 " +
                 "   K.ID AS ID,                          " +
                 "   K.QUANTIDADE AS QUANTIDADE,          " +
                 "   CA.NOME AS KIMONO_OU_FAIXA,          " +
-                "   TM.TAMANHO AS TAMANHO,               " +
+                "   TM.TAM AS TAMANHO,               " +
                 "   C.DESCRICAO AS COR,                  " +
                 "   M.NOME AS MARCA,                     " +
-                "   CD.ESTADO AS CONDICAO,               " +
+                "   CD.ESTADO AS CONDICAO               " +
                 " FROM                                   " +
                 "   KIMONOF K                            " +
-                " JOIN CATEGORIA CA ON                   " +
-                "   CA.ID = K.ID_CATEGORIA               " +
+                " JOIN CATEGORIAKF CA ON                   " +
+                "   CA.ID = K.ID_CATEGORIA              " +
                 " JOIN TAMANHO TM ON                     " +
                 "   TM.ID = K.ID_TAMANHO                 " +    
                 " JOIN COR C ON                          " +
                 "   C.ID = K.ID_COR                      " +
                 " JOIN MARCA M ON                        " +
-                "   M.ID = K.ID_ACESSO                   " +
+                "   M.ID = K.ID_MARCA                   " +
                 " JOIN CONDICAO CD ON                    " +
                 "   CD.ID = K.ID_CONDICAO                " +
-                " WHERE DC.ESTADO LIKE = ?                        " ;
+                " WHERE CD.ESTADO LIKE  ?                        " ;
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -359,7 +331,7 @@ public class DaoKimonoF extends BancoDeDadosMySql {
         return getResultado();
     }
     public int buscarProximoId(){
-            int id = -1;
+            int id = 0;
 
             try{
                 sql = "SELECT IFNULL(MAX(ID), 0) + 1 FROM KIMONOF";

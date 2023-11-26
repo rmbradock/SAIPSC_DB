@@ -20,7 +20,7 @@ public class DaoTamanho extends BancoDeDadosMySql{
     private String sql;
         public Boolean inserir(int id, String nome, String descricao){
                 try{
-                    sql = "INSERT INTO TAMANHO (ID, NOME, DESCRICAO) VALUES (?,?,?)";
+                    sql = "INSERT INTO TAMANHO (ID, TAM, DESCRICAO) VALUES (?,?,?)";
 
                     setStatement(getConexao().prepareStatement(sql));
 
@@ -38,7 +38,7 @@ public class DaoTamanho extends BancoDeDadosMySql{
             }
             public Boolean alterar(int id, String novoNome, String novaDescricao){
                 try{
-                    sql = "UPDATE TAMANHO SET NOME = ?, DESCRICAO = ? WHERE ID = ?";
+                    sql = "UPDATE TAMANHO SET TAM = ?, DESCRICAO = ? WHERE ID = ?";
 
                     setStatement(getConexao().prepareStatement(sql));
 
@@ -72,7 +72,7 @@ public class DaoTamanho extends BancoDeDadosMySql{
             }
             public ResultSet listarTodos(){
                 try{
-                    sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM TAMANHO";
+                    sql = "SELECT ID, TAM, IFNULL(DESCRICAO, '') FROM TAMANHO";
 
                     setStatement(getConexao().prepareStatement(sql));
 
@@ -85,7 +85,7 @@ public class DaoTamanho extends BancoDeDadosMySql{
 
             public ResultSet listarPorId(int id){
                 try{
-                    sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM TAMANHO WHERE ID = ?";
+                    sql = "SELECT ID, TAM, IFNULL(DESCRICAO, '') FROM TAMANHO WHERE ID = ?";
 
                     setStatement(getConexao().prepareStatement(sql));
 
@@ -101,7 +101,7 @@ public class DaoTamanho extends BancoDeDadosMySql{
 
             public ResultSet listarPorNome(String nome){
                 try{
-                    sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM TAMANHO WHERE NOME LIKE ?";
+                    sql = "SELECT ID, TAM, IFNULL(DESCRICAO, '') FROM TAMANHO WHERE TAM LIKE ?";
 
                     setStatement(getConexao().prepareStatement(sql));
 
@@ -116,7 +116,7 @@ public class DaoTamanho extends BancoDeDadosMySql{
 
             public ResultSet listarPorDescricao(String descricao){
                 try{
-                    sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM TAMANHO WHERE DESCRICAO LIKE ?";
+                    sql = "SELECT ID, TAM, IFNULL(DESCRICAO, '') FROM TAMANHO WHERE DESCRICAO LIKE ?";
 
                     setStatement(getConexao().prepareStatement(sql));
 

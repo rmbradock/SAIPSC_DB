@@ -77,18 +77,22 @@ public class DaoParticipacao extends BancoDeDadosMySql{
     
     public ResultSet listarTodos(){
         try{
-            sql = 
+            sql =
+                " SELECT                    " +
                 "   PA.ID AS ID,                        " +
-                "   AL.NOME AS ALUNO_COMPETIDOR,        " +
+                "   P.NOME AS COMPETIDOR,        " +
                 "   C.NOME AS COMPETICAO,               " +
-                "   PA.RESULTADO AS RESULTADO,          " +
+                "   PA.RESULTADO AS RESULTADO          " +
                 " FROM                                  " +
                 "   PARTICIPACAO PA                     " +
                 " JOIN ALUNO AL ON                      " +
                 "   AL.ID = PA.ID_ALUNO                 " +
                 " JOIN CAMPEONATO C ON                  " +
-                "   C.ID = PA.ID_CAMPEONATO             ";
-            
+                "   C.ID = PA.ID_CAMPEONATO             " +
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA             ";    
+               
+                            
             setStatement(getConexao().prepareStatement(sql));
             
             setResultado(getStatement().executeQuery());
@@ -101,16 +105,19 @@ public class DaoParticipacao extends BancoDeDadosMySql{
     public ResultSet listarPorId(int id){
         try{
             sql = 
+                " SELECT                    " +
                 "   PA.ID AS ID,                        " +
-                "   AL.NOME AS ALUNO_COMPETIDOR,        " +
+                "   P.NOME AS COMPETIDOR,        " +
                 "   C.NOME AS COMPETICAO,               " +
-                "   PA.RESULTADO AS RESULTADO,          " +
+                "   PA.RESULTADO AS RESULTADO          " +
                 " FROM                                  " +
                 "   PARTICIPACAO PA                     " +
                 " JOIN ALUNO AL ON                      " +
                 "   AL.ID = PA.ID_ALUNO                 " +
                 " JOIN CAMPEONATO C ON                  " +
                 "   C.ID = PA.ID_CAMPEONATO             " +
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA             " +
                 " WHERE P.ID = ?                        " ;
             
             setStatement(getConexao().prepareStatement(sql));
@@ -127,17 +134,20 @@ public class DaoParticipacao extends BancoDeDadosMySql{
     public ResultSet listarPorNome(String nome){
         try{
             sql = 
+                " SELECT                    " +
                 "   PA.ID AS ID,                        " +
-                "   AL.NOME AS ALUNO_COMPETIDOR,        " +
+                "   P.NOME AS COMPETIDOR,        " +
                 "   C.NOME AS COMPETICAO,               " +
-                "   PA.RESULTADO AS RESULTADO,          " +
+                "   PA.RESULTADO AS RESULTADO          " +
                 " FROM                                  " +
                 "   PARTICIPACAO PA                     " +
                 " JOIN ALUNO AL ON                      " +
                 "   AL.ID = PA.ID_ALUNO                 " +
                 " JOIN CAMPEONATO C ON                  " +
                 "   C.ID = PA.ID_CAMPEONATO             " +
-                " WHERE AL.NOME LIKE = ?                        " ;
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA             " +
+                " WHERE P.NOME LIKE ?                        " ;
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -153,17 +163,20 @@ public class DaoParticipacao extends BancoDeDadosMySql{
     public ResultSet listarPorCompeticao(String competicao){
         try{
             sql = 
+                " SELECT                    " +
                 "   PA.ID AS ID,                        " +
-                "   AL.NOME AS ALUNO_COMPETIDOR,        " +
+                "   P.NOME AS COMPETIDOR,        " +
                 "   C.NOME AS COMPETICAO,               " +
-                "   PA.RESULTADO AS RESULTADO,          " +
+                "   PA.RESULTADO AS RESULTADO          " +
                 " FROM                                  " +
                 "   PARTICIPACAO PA                     " +
                 " JOIN ALUNO AL ON                      " +
                 "   AL.ID = PA.ID_ALUNO                 " +
                 " JOIN CAMPEONATO C ON                  " +
                 "   C.ID = PA.ID_CAMPEONATO             " +
-                " WHERE C.NOME LIKE = ?                        " ;
+                " JOIN PESSOA P ON                      " +
+                "   P.ID = AL.ID_PESSOA             " +
+                " WHERE C.NOME LIKE ?                        " ;
             
             setStatement(getConexao().prepareStatement(sql));
             

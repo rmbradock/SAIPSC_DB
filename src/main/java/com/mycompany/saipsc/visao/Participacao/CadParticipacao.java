@@ -7,6 +7,7 @@ package com.mycompany.saipsc.visao.Participacao;
 import com.mycompany.saipsc.Dao.DaoAluno;
 import com.mycompany.saipsc.Dao.DaoCampeonato;
 import com.mycompany.saipsc.Dao.DaoParticipacao;
+import com.mycompany.saipsc.Dao.DaoPessoa;
 import com.mycompany.saipsc.Modelo.ModParticipacao;
 import com.mycompany.saipsc.ferramentas.Constantes;
 import com.mycompany.saipsc.ferramentas.DadosTemporarios;
@@ -31,8 +32,11 @@ public class CadParticipacao extends javax.swing.JFrame {
         
         if(!existeDadosTemporarios()){
             DaoParticipacao daoParticipacao = new DaoParticipacao();
+            DaoAluno daoAluno = new DaoAluno();
+            DaoCampeonato daoCampeonato = new DaoCampeonato ();
+            
             int id = daoParticipacao.buscarProximoId(); 
-            if (id > 0)
+            if (id>0)
                 tfId.setText(String.valueOf(id));
             
             btnAcao.setText(Constantes.BTN_SALVAR_TEXT);
@@ -47,8 +51,7 @@ public class CadParticipacao extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         tfId.setEnabled(false);
-        tfAluno.setVisible(false);
-        tfCampeonato.setVisible(false);
+        
     }
     private Boolean existeDadosTemporarios(){        
         if(DadosTemporarios.tempObject instanceof ModParticipacao){
@@ -58,13 +61,11 @@ public class CadParticipacao extends javax.swing.JFrame {
             String resultado = ((ModParticipacao) DadosTemporarios.tempObject).getResultado();
             
             tfId.setText(String.valueOf(id));
-            tfAluno.setText(String.valueOf(idAluno));
-            tfCampeonato.setText(String.valueOf(idCampeonato));
             tfResultado.setText(resultado);
             
             try{
-                DaoAluno daoAluno = new DaoAluno();
-                ResultSet resultSet = daoAluno.listarPorId(idAluno);
+                DaoPessoa daoPessoa = new DaoPessoa();
+                ResultSet resultSet = daoPessoa.listarPorId(idAluno);
                 resultSet.next();
                 String aluno = resultSet.getString("NOME");
                 int index = 0;
@@ -75,9 +76,8 @@ public class CadParticipacao extends javax.swing.JFrame {
                     }
                 }
                 jcbAluno.setSelectedIndex(index);
-            }catch(Exception e){
-            System.out.println(e.getMessage());
-            }
+            }catch(Exception e){}
+            
             try{
                 DaoCampeonato daoCampeonato = new DaoCampeonato();
                 ResultSet resultSet = daoCampeonato.listarPorId(idCampeonato);
@@ -91,9 +91,7 @@ public class CadParticipacao extends javax.swing.JFrame {
                     }
                 }
                 jcbCampeonato.setSelectedIndex(index);
-            }catch(Exception e){
-            System.out.println(e.getMessage());
-            }
+            }catch(Exception e){}
             
             DadosTemporarios.tempObject = null;
             
@@ -105,11 +103,11 @@ public class CadParticipacao extends javax.swing.JFrame {
             DaoParticipacao daoParticipacao = new DaoParticipacao();
 
             if (daoParticipacao.inserir(Integer.parseInt(tfId.getText()), Integer.parseInt(tfAluno.getText()), Integer.parseInt(tfCampeonato.getText()),tfResultado.getText())){
-                JOptionPane.showMessageDialog(null, "Campeonato salva com sucesso!");
+                JOptionPane.showMessageDialog(null, "Participação salva com sucesso!");
 
                 tfId.setText(String.valueOf(daoParticipacao.buscarProximoId()));
-                tfAluno.setText(String.valueOf(""));
-                tfCampeonato.setText(String.valueOf(""));
+                tfAluno.setText("");
+                tfCampeonato.setText("");
                 tfResultado.setText("");
             }else{
                 JOptionPane.showMessageDialog(null, "Não foi possível salvar a Participacao!");
@@ -122,9 +120,9 @@ public class CadParticipacao extends javax.swing.JFrame {
             if (daoParticipacao.alterar(Integer.parseInt(tfId.getText()), Integer.parseInt(tfAluno.getText()), Integer.parseInt(tfCampeonato.getText()),tfResultado.getText())){
                 JOptionPane.showMessageDialog(null, "Campeonato alterado com sucesso!");
 
-                tfId.setText(String.valueOf(daoParticipacao.buscarProximoId()));
-                tfAluno.setText(String.valueOf(""));
-                tfCampeonato.setText(String.valueOf(""));
+                tfId.setText("");
+                tfAluno.setText("");
+                tfCampeonato.setText("");
                 tfResultado.setText("");
             }else{
                 JOptionPane.showMessageDialog(null, "Não foi possível alterar a Participacao!");
@@ -143,7 +141,6 @@ public class CadParticipacao extends javax.swing.JFrame {
 
                 tfId.setText("");
                 tfAluno.setText("");
-                tfCampeonato.setText("");
             }else{
                 JOptionPane.showMessageDialog(null, "Não foi possível excluir a Participacao!");
             }
@@ -154,27 +151,27 @@ public class CadParticipacao extends javax.swing.JFrame {
     }
     public void carregarAlunos(){
         try{
-            DaoAluno daoAluno = new DaoAluno();
+            DaoPessoa daoPessoa = new DaoPessoa();
 
-            ResultSet resultSet = daoAluno.listarTodos();
+            ResultSet resultSet = daoPessoa.listarTodos();
 
             while(resultSet.next()){
                 jcbAluno.addItem(resultSet.getString("NOME"));
             }
         }catch(Exception e){
-            
+            System.out.println(e.getMessage());
         }
     }
     
     private void recuperaIdAluno(){
         try{
-            DaoAluno daoAluno = new DaoAluno();
-            ResultSet resultSet = daoAluno.listarPorNome(jcbAluno.getSelectedItem().toString());
+            DaoPessoa daoPessoa = new DaoPessoa();
+            ResultSet resultSet = daoPessoa.listarPorNome(jcbAluno.getSelectedItem().toString());
             
             resultSet.next();
-            tfAluno.setText(resultSet.getString("NOME"));
+            tfAluno.setText(resultSet.getString("ID"));
         }catch(Exception e){
-            System.out.println(e.getMessage());            
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }   
     public void carregarCampeonatos(){
@@ -187,7 +184,7 @@ public class CadParticipacao extends javax.swing.JFrame {
                 jcbCampeonato.addItem(resultSet.getString("NOME"));
             }
         }catch(Exception e){
-            
+           System.out.println(e.getMessage()); 
         }
     }
     
@@ -197,9 +194,9 @@ public class CadParticipacao extends javax.swing.JFrame {
             ResultSet resultSet = daoCampeonato.listarPorNome(jcbCampeonato.getSelectedItem().toString());
             
             resultSet.next();
-            tfCampeonato.setText(resultSet.getString("NOME"));
+            tfCampeonato.setText(resultSet.getString("ID"));
         }catch(Exception e){
-            System.out.println(e.getMessage());            
+            JOptionPane.showMessageDialog(null, e.getMessage());           
         }
     }   
 
@@ -340,9 +337,13 @@ public class CadParticipacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoActionPerformed
-        if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT)
+        if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT){
             inserir();
-        else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT)
+        if(Formularios.cadParticipacao != null){
+             
+                dispose();
+            }
+        }else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT)
             alterar();
     }//GEN-LAST:event_btnAcaoActionPerformed
 

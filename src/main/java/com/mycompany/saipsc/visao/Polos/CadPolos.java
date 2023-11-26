@@ -49,12 +49,14 @@ public class CadPolos extends javax.swing.JFrame {
             String endereco = ((ModPolos) DadosTemporarios.tempObject).getEndereco();
             String responsavel = ((ModPolos) DadosTemporarios.tempObject).getResponsavel();
             String contato = ((ModPolos) DadosTemporarios.tempObject).getContato();
+            String obs = ((ModPolos) DadosTemporarios.tempObject).getObs ();
             
             tfId.setText(String.valueOf(id));
             tfNome.setText(nome);
             tfEndereco.setText(endereco);
             tfResponsavel.setText(responsavel);
             tfContato.setText(contato);
+            taObs.setText(obs);
             
         
             DadosTemporarios.tempObject = null;
@@ -67,7 +69,7 @@ public class CadPolos extends javax.swing.JFrame {
     private void inserir(){
         DaoPolos daoPolos = new DaoPolos();
         
-        if (daoPolos.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), tfEndereco.getText(), tfResponsavel.getText(), tfContato.getText())){
+        if (daoPolos.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), tfEndereco.getText(), tfResponsavel.getText(), tfContato.getText(), taObs.getText())){
             JOptionPane.showMessageDialog(null, "Polo salva com sucesso!");
             
             tfId.setText(String.valueOf(daoPolos.buscarProximoId()));
@@ -75,6 +77,7 @@ public class CadPolos extends javax.swing.JFrame {
             tfEndereco.setText("");
             tfResponsavel.setText("");
             tfContato.setText("");
+            taObs.setText("");
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possível salvar Polo!");
         }
@@ -83,7 +86,7 @@ public class CadPolos extends javax.swing.JFrame {
     private void alterar(){
         DaoPolos daoPolos = new DaoPolos();
         
-        if (daoPolos.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), tfEndereco.getText(), tfResponsavel.getText(), tfContato.getText())){
+        if (daoPolos.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), tfEndereco.getText(), tfResponsavel.getText(), tfContato.getText(), taObs.getText())){
             JOptionPane.showMessageDialog(null, "Polo alterado com sucesso!");
             
             tfId.setText(String.valueOf(daoPolos.buscarProximoId()));
@@ -91,6 +94,7 @@ public class CadPolos extends javax.swing.JFrame {
             tfEndereco.setText("");
             tfResponsavel.setText("");
             tfContato.setText("");
+            taObs.setText("");
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possível alterar Polo!");
         }
@@ -103,14 +107,12 @@ public class CadPolos extends javax.swing.JFrame {
     private void excluir(){
         DaoPolos daoPolos = new DaoPolos();
         
-        if (daoPolos.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), tfEndereco.getText(), tfResponsavel.getText(), tfContato.getText())){
+        if (daoPolos.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), tfEndereco.getText(), tfResponsavel.getText(), tfContato.getText(), taObs.getText())){
             JOptionPane.showMessageDialog(null, "Polo excluido com sucesso!");
             
             tfId.setText(String.valueOf(daoPolos.buscarProximoId()));
             tfNome.setText("");
-            tfEndereco.setText("");
-            tfResponsavel.setText("");
-            tfContato.setText("");
+            
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possível excluir o Polo!");
         }
@@ -141,6 +143,9 @@ public class CadPolos extends javax.swing.JFrame {
         tfContato = new javax.swing.JTextField();
         btnAcao = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taObs = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -173,6 +178,12 @@ public class CadPolos extends javax.swing.JFrame {
             }
         });
 
+        taObs.setColumns(20);
+        taObs.setRows(5);
+        jScrollPane1.setViewportView(taObs);
+
+        jLabel6.setText("OBS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -180,18 +191,6 @@ public class CadPolos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfContato, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-                            .addComponent(tfResponsavel)
-                            .addComponent(tfEndereco)
-                            .addComponent(tfNome)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -199,8 +198,22 @@ public class CadPolos extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAcao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
-                        .addComponent(btnExcluir)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExcluir))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addComponent(tfContato, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                            .addComponent(tfResponsavel)
+                            .addComponent(tfEndereco)
+                            .addComponent(tfNome))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -210,7 +223,7 @@ public class CadPolos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -226,7 +239,13 @@ public class CadPolos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(tfContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel6)))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAcao)
                     .addComponent(btnExcluir))
@@ -247,6 +266,7 @@ public class CadPolos extends javax.swing.JFrame {
             tfEndereco.setText("");
             tfResponsavel.setText("");
             tfContato.setText("");
+            taObs.setText("");
         }
         else if (btnAcao.getText() == Constantes.BTN_ALTERAR_TEXT){
             alterar();
@@ -312,6 +332,9 @@ public class CadPolos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea taObs;
     private javax.swing.JTextField tfContato;
     private javax.swing.JTextField tfEndereco;
     private javax.swing.JTextField tfId;

@@ -27,14 +27,12 @@ public class ListPolos extends javax.swing.JFrame {
     }
     public void listarTodos(){
         try{
-            //Pega o model da tabela definido no design
             DefaultTableModel defaultTableModel = (DefaultTableModel) tablePolos.getModel();
             
             tablePolos.setModel(defaultTableModel);
 
             DaoPolos daoPolos = new DaoPolos();
 
-            //Atribui o resultset retornado a uma variável para ser usada.
             ResultSet resultSet = daoPolos.listarTodos();
             
             defaultTableModel.setRowCount(0);
@@ -54,7 +52,6 @@ public class ListPolos extends javax.swing.JFrame {
     
     public void listarPorId(int pId){
         try{
-            //Define o model da tabela.
             DefaultTableModel defaultTableModel = (DefaultTableModel) tablePolos.getModel();
 
             tablePolos.setModel(defaultTableModel);
@@ -133,11 +130,11 @@ public class ListPolos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NOME", "ENDERECO", "RESPONSAVEL", "CONTATO"
+                "ID", "NOME", "ENDERECO", "RESPONSAVEL", "CONTATO", "OBS"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true
+                false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

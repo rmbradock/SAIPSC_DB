@@ -112,7 +112,7 @@ public class DaoAcesso extends BancoDeDadosMySql{
     
     public ResultSet listarPorDescricao(String descricao){
         try{
-            sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM ACESSO WHERE ACESSO LIKE ?";
+            sql = "SELECT ID, NOME, IFNULL(DESCRICAO, '') FROM ACESSO WHERE DESCRICAO LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -122,14 +122,15 @@ public class DaoAcesso extends BancoDeDadosMySql{
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
+        
         return getResultado();
     }
     
     public int buscarProximoId(){
-           int id = -1;
+           int id = 0;
 
            try{
-               sql = "SELECT MAX(ID) + 1 FROM ACESSO";
+               sql = "SELECT IFNULL (MAX(ID), 0) + 1 FROM ACESSO";
 
                setStatement(getConexao().prepareStatement(sql));
 

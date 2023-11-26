@@ -146,7 +146,7 @@ public class ListPatrimonio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "MATERIAL", "QUANTIDADE", "SITUAÇÃOO", "DESCRIÇÃO" }));
+        jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ID", "MATERIAL", "DESCRIÇÃO" }));
 
         tablePatrimonio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

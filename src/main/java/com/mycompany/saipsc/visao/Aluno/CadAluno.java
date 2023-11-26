@@ -137,7 +137,7 @@ public class CadAluno extends javax.swing.JFrame {
     private void inserir(){
         DaoAluno daoAluno = new DaoAluno();
         
-        if (daoAluno.inserir(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdPessoa.getText()), Integer.parseInt(tfIdFaixa.getText()), tfNasc.getText(), Integer.parseInt(tfIdade.getText()), tfResp.getText(), tfUgrad.getText(), tfPGrad.getText(), tfFaltas.getText(), Integer.parseInt(tfIdPolo.getText()), tfCpfResp.getText())){
+        if (daoAluno.inserir(Integer.parseInt(tfId.getText()), Integer.parseInt(tfIdPessoa.getText()), Integer.parseInt(tfIdFaixa.getText()), tfNasc.getText(),tfIdade.getText(), tfResp.getText(), tfUgrad.getText(), tfPGrad.getText(), tfFaltas.getText(), Integer.parseInt(tfIdPolo.getText()), tfCpfResp.getText())){
             JOptionPane.showMessageDialog(null, "Aluno salvo com sucesso!");
             
             tfId.setText(String.valueOf(daoAluno.buscarProximoId()));

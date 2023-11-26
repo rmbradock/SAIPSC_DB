@@ -33,7 +33,7 @@ public class CadEquipe extends javax.swing.JFrame {
         carregarCargos();
         carregarAcessos();
         
-        if(existeDadosTemporarios()){
+        if(!existeDadosTemporarios()){
             DaoEquipe daoEquipe = new DaoEquipe();
             DaoPessoa daoPessoa = new DaoPessoa();
             DaoCor daoCor = new DaoCor();

@@ -117,7 +117,7 @@ public class DaoCondicao extends BancoDeDadosMySql{
     
     public ResultSet listarPorDescricao(String descricao){
         try{
-            sql = "SELECT ID, ESTADO, IFNULL(DESCRICAO, '') FROM CONDICAO WHERE CONDICAO LIKE ?";
+            sql = "SELECT ID, ESTADO, IFNULL(DESCRICAO, '') FROM CONDICAO WHERE DESCRICAO LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             

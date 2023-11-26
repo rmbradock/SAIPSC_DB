@@ -32,28 +32,29 @@ public class ListKimonoF extends javax.swing.JFrame {
     }
     public void listarTodos(){
         try{
+            //Pega o model da tabela definido no design
             DefaultTableModel defaultTableModel = (DefaultTableModel) tableKimonoF.getModel();
             
             tableKimonoF.setModel(defaultTableModel);
 
             DaoKimonoF daoKimonoF = new DaoKimonoF();
 
+            //Atribui o resultset retornado a uma variável para ser usada.
             ResultSet resultSet = daoKimonoF.listarTodos();
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
                 String id = resultSet.getString(1);
-                String quantidade = resultSet.getString(2);
-                String idCategoria = resultSet.getString(3);
-                String idTamanho = resultSet.getString(4);
-                String idCor = resultSet.getString(5);
-                String idMarca = resultSet.getString(6);
-                String idCondicao = resultSet.getString(7);
-                                
-                defaultTableModel.addRow(new Object[]{id, quantidade, idCategoria, idTamanho, idCor, idMarca, idCondicao});
+                String categoria = resultSet.getString(2);
+                String marca = resultSet.getString(3);
+                String nome =  resultSet.getString(4);
+                String descricao =  resultSet.getString(5);
+                String preco = resultSet.getString(6);
+                
+                defaultTableModel.addRow(new Object[]{id, categoria, marca, nome, descricao, preco});
             }
         }catch(Exception e){
-            System.out.println(e.getMessage());
+            
         }
     }
         public void listarPorId(){
@@ -82,7 +83,7 @@ public class ListKimonoF extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }
-    public void listarPorQuantidade(){
+    public void listarPorCategoria(){
         try{
             DefaultTableModel defaultTableModel = (DefaultTableModel) tableKimonoF.getModel();
             
@@ -90,34 +91,7 @@ public class ListKimonoF extends javax.swing.JFrame {
 
             DaoKimonoF daoKimonoF = new DaoKimonoF();
 
-            ResultSet resultSet = daoKimonoF.listarPorQuantidade(tfFiltro.getText());
-            
-            defaultTableModel.setRowCount(0);
-            while (resultSet.next()){
-                String id = resultSet.getString(1);
-                String quantidade = resultSet.getString(2);
-                String idCategoria = resultSet.getString(3);
-                String idTamanho = resultSet.getString(4);
-                String idCor = resultSet.getString(5);
-                String idMarca = resultSet.getString(6);
-                String idCondicao = resultSet.getString(7);
-                                
-                defaultTableModel.addRow(new Object[]{id, quantidade, idCategoria, idTamanho, idCor, idMarca, idCondicao});
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-//id, quantidade, idCategoria, idTamanho, idCor, idMarca, idCondicao
-    public void listarPorNome(){
-        try{
-            DefaultTableModel defaultTableModel = (DefaultTableModel) tableKimonoF.getModel();
-            
-            tableKimonoF.setModel(defaultTableModel);
-
-            DaoKimonoF daoKimonoF = new DaoKimonoF();
-
-            ResultSet resultSet = daoKimonoF.listarPorNome(tfFiltro.getText());
+            ResultSet resultSet = daoKimonoF.listarPorCategoria(tfFiltro.getText());
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
@@ -258,7 +232,7 @@ public class ListKimonoF extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ID", "QUANTIDADE", "CATEGORIA", "TAMANHO", "COR", "MARCA", "CONDICAO" }));
+        jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ID", "CATEGORIA", "TAMANHO", "COR", "MARCA", "CONDICAO" }));
 
         tableKimonoF.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -362,51 +336,43 @@ public class ListKimonoF extends javax.swing.JFrame {
                 ModKimonoF modKimonoF = new ModKimonoF();
 
                 modKimonoF.setId(Integer.parseInt(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 0))));
-                modKimonoF.setQuantidade(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 1)));
-                
+                                
                 DaoKimonoF daoKimonoF = new DaoKimonoF();
-                ResultSet resultSet = daoKimonoF.listarPorNome(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 2)));
+                ResultSet resultSet = daoKimonoF.listarPorCategoria(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 1)));
                 int idCategoria = -1;
-                while (resultSet.next ())
-                idCategoria = resultSet.getInt("NOME");
+                resultSet.next ();
+                idCategoria = resultSet.getInt("ID");
                 modKimonoF.setIdCategoria(idCategoria);
-                DadosTemporarios.tempObject = (ModKimonoF) modKimonoF;
-
-                String tamanho = resultSet.getString(3);
+                
                 DaoTamanho daoTamanho = new DaoTamanho();
-                resultSet = daoTamanho.listarPorNome(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 3)));
+                resultSet = daoTamanho.listarPorNome(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 2)));
                 int idTamanho = -1;
-                while (resultSet.next ())
-                idTamanho = resultSet.getInt("NOME");
+                idTamanho = resultSet.getInt("ID");
                 modKimonoF.setIdTamanho(idTamanho);
-                DadosTemporarios.tempObject2 = (ModKimonoF) modKimonoF;
-
-                String cor = resultSet.getString(4);
+                
                 DaoCor daoCor = new DaoCor();
-                resultSet = daoCor.listarPorDescricao(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 4)));
+                resultSet = daoCor.listarPorDescricao(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 3)));
                 int idCor = -1;
-                while (resultSet.next ())
-                idCor = resultSet.getInt("DESCRICAO");
+                idCor = resultSet.getInt("ID");
                 modKimonoF.setIdCor(idCor);
                 DadosTemporarios.tempObject3 = (ModKimonoF) modKimonoF;
                 
-                String marca = resultSet.getString(5);
                 DaoMarca daoMarca = new DaoMarca();
                 resultSet = daoMarca.listarPorNome(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 5)));
                 int idMarca = -1;
-                while (resultSet.next ())
-                idMarca = resultSet.getInt("NOME");
+                idMarca = resultSet.getInt("ID");
                 modKimonoF.setIdTamanho(idMarca);
-                DadosTemporarios.tempObject4 = (ModKimonoF) modKimonoF;
-
-                String condicao = resultSet.getString(6);
+                
                 DaoCondicao daoCondicao = new DaoCondicao();
                 resultSet = daoCondicao.listarPorEstado(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 6)));
                 int idCondicao = -1;
-                while (resultSet.next ())
-                idCondicao = resultSet.getInt("ESTADO");
+                idCondicao = resultSet.getInt("ID");
                 modKimonoF.setIdTamanho(idCondicao);
-                DadosTemporarios.tempObject5 = (ModKimonoF) modKimonoF;
+                
+                DadosTemporarios.tempObject = (ModKimonoF) modKimonoF;
+                
+                CadKimonoF cadKimonoF = new CadKimonoF();
+                cadKimonoF.setVisible(true);
 
             }
         }catch(Exception e){
@@ -424,23 +390,21 @@ public class ListKimonoF extends javax.swing.JFrame {
             listarPorId();
             break;
             case 2:
-            listarPorQuantidade();
+            listarPorCategoria();
             break;
             case 3:
-            listarPorNome();
-            break;
-            case 4:
             listarPorTamanho();
             break;
-            case 5:
+            case 4:
             listarPorCor();
             break;
-            case 6:
+            case 5:
             listarPorMarca();
             break;
-            case 7:
+            case 6:
             listarPorEstado();
-            break;            
+            break;
+                
         }
     }//GEN-LAST:event_jcbBuscarActionPerformed
 

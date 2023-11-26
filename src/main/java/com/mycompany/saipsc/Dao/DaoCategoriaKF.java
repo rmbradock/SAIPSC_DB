@@ -70,12 +70,7 @@ public class DaoCategoriaKF extends BancoDeDadosMySql{
     
     public ResultSet listarTodos(){
         try{
-            sql = 
-                " SELECT  " +
-                "   ID,   " +
-                "   NOME  " +
-                " FROM    " +
-                "   CATEGORIAKF " ;
+            sql = "SELECT ID, NOME FROM CATEGORIAKF";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -90,12 +85,7 @@ public class DaoCategoriaKF extends BancoDeDadosMySql{
     public ResultSet listarPorId(int id){
         try{
             sql = 
-                " SELECT                            " +
-                "   ID,                             " +
-                "   NOME                            " +
-                " FROM                              " +
-                "   CATEGORIAKF                           " +
-                " WHERE ID = ?                      " ;
+                " SELECT ID, NOME FROM CATEGORIAKF WHERE ID = ?                      " ;
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -112,12 +102,7 @@ public class DaoCategoriaKF extends BancoDeDadosMySql{
     public ResultSet listarPorNome(String nome){
         try{
             sql = 
-                " SELECT                            " +
-                "   ID,                             " +
-                "   NOME                            " +
-                " FROM                              " +
-                "   CATEGORIAKF                           " +
-                " WHERE NOME LIKE ?                    " ;
+                " SELECT ID, NOME FROM CATEGORIAKF WHERE NOME LIKE ?                    " ;
             
             setStatement(getConexao().prepareStatement(sql));
             

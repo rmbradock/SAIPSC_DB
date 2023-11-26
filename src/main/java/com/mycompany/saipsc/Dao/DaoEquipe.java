@@ -43,7 +43,7 @@ public class DaoEquipe extends BancoDeDadosMySql{
     }
     public Boolean alterar(int id, int idPessoa, int idCargo, int idCor, String graduacao, String salario, int idAcesso){
         try{
-            sql = "UPDATE EQUIPE SET ID_PESSOA = ?, ID_CARGO = ?, ID_COR = ?, GRADUACAO = ?, SALARIO = ?, ACESSO = ? WHERE ID = ?";
+            sql = "UPDATE EQUIPE SET ID_PESSOA = ?, ID_CARGO = ?, ID_COR = ?, GRADUACAO = ?, SALARIO = ?, ID_ACESSO = ? WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -82,13 +82,14 @@ public class DaoEquipe extends BancoDeDadosMySql{
     public ResultSet listarTodos(){
         try{
             sql = 
+                "   SELECT                              " +
                 "   EQ.ID AS ID,                        " +
                 "   P.NOME AS NOME,                     " +
-                "   C.NOME AS CARGO,                    " +
+                "   CG.NOME AS CARGO,                    " +
                 "   C.DESCRICAO AS FAIXA,               " +
                 "   EQ.GRADUACAO AS ULTIMA_GRADUACAO,   " +
                 "   EQ.SALARIO AS SALARIO,              " +
-                "   AC.NOME AS ACESSO,                  " +
+                "   AC.NOME AS ACESSO                  " +
                 " FROM                                  " +
                 "   EQUIPE EQ                           " +
                 " JOIN PESSOA P ON                      " +
@@ -112,13 +113,14 @@ public class DaoEquipe extends BancoDeDadosMySql{
     public ResultSet listarPorId(int id){
         try{
             sql =
+                "   SELECT                              " +
                 "   EQ.ID AS ID,                        " +
                 "   P.NOME AS NOME,                     " +
-                "   C.NOME AS CARGO,                    " +
+                "   CG.NOME AS CARGO,                    " +
                 "   C.DESCRICAO AS FAIXA,               " +
                 "   EQ.GRADUACAO AS ULTIMA_GRADUACAO,   " +
                 "   EQ.SALARIO AS SALARIO,              " +
-                "   AC.NOME AS ACESSO,                  " +
+                "   AC.NOME AS ACESSO                  " +
                 " FROM                                  " +
                 "   EQUIPE EQ                           " +
                 " JOIN PESSOA P ON                      " +
@@ -129,7 +131,8 @@ public class DaoEquipe extends BancoDeDadosMySql{
                 "   C.ID = EQ.ID_COR                    " +
                 " JOIN ACESSO AC ON                     " +
                 "   AC.ID = EQ.ID_ACESSO                " +
-                " WHERE P.ID = ?                        " ;
+                " WHERE                                 " +
+                "   EQ.ID = ?                            " ;
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -145,13 +148,14 @@ public class DaoEquipe extends BancoDeDadosMySql{
     public ResultSet listarPorNome(String nome){
         try{
             sql =
+                "   SELECT                              " +
                 "   EQ.ID AS ID,                        " +
                 "   P.NOME AS NOME,                     " +
-                "   C.NOME AS CARGO,                    " +
+                "   CG.NOME AS CARGO,                    " +
                 "   C.DESCRICAO AS FAIXA,               " +
                 "   EQ.GRADUACAO AS ULTIMA_GRADUACAO,   " +
                 "   EQ.SALARIO AS SALARIO,              " +
-                "   AC.NOME AS ACESSO,                  " +
+                "   AC.NOME AS ACESSO                  " +
                 " FROM                                  " +
                 "   EQUIPE EQ                           " +
                 " JOIN PESSOA P ON                      " +
@@ -162,7 +166,8 @@ public class DaoEquipe extends BancoDeDadosMySql{
                 "   C.ID = EQ.ID_COR                    " +
                 " JOIN ACESSO AC ON                     " +
                 "   AC.ID = EQ.ID_ACESSO                " +
-                " WHERE P.NOME LIKE = ?                 " ;
+                " WHERE                                 " +
+                "       P.NOME LIKE ?                 " ;
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -178,13 +183,14 @@ public class DaoEquipe extends BancoDeDadosMySql{
     public ResultSet listarPorCargo(String cargo){
         try{
             sql =
+                "   SELECT                              " +
                 "   EQ.ID AS ID,                        " +
                 "   P.NOME AS NOME,                     " +
-                "   C.NOME AS CARGO,                    " +
+                "   CG.NOME AS CARGO,                    " +
                 "   C.DESCRICAO AS FAIXA,               " +
                 "   EQ.GRADUACAO AS ULTIMA_GRADUACAO,   " +
                 "   EQ.SALARIO AS SALARIO,              " +
-                "   AC.NOME AS ACESSO,                  " +
+                "   AC.NOME AS ACESSO                  " +
                 " FROM                                  " +
                 "   EQUIPE EQ                           " +
                 " JOIN PESSOA P ON                      " +
@@ -195,7 +201,8 @@ public class DaoEquipe extends BancoDeDadosMySql{
                 "   C.ID = EQ.ID_COR                    " +
                 " JOIN ACESSO AC ON                     " +
                 "   AC.ID = EQ.ID_ACESSO                " +
-                " WHERE CG.NOME LIKE = ?                        " ;
+                " WHERE                                 " +
+                " CG.NOME LIKE ?                        " ;
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -212,13 +219,14 @@ public class DaoEquipe extends BancoDeDadosMySql{
     public ResultSet listarPorFaixa(String faixa){
         try{
             sql =
+                "   SELECT                              " +
                 "   EQ.ID AS ID,                        " +
                 "   P.NOME AS NOME,                     " +
-                "   C.NOME AS CARGO,                    " +
+                "   CG.NOME AS CARGO,                    " +
                 "   C.DESCRICAO AS FAIXA,               " +
                 "   EQ.GRADUACAO AS ULTIMA_GRADUACAO,   " +
                 "   EQ.SALARIO AS SALARIO,              " +
-                "   AC.NOME AS ACESSO,                  " +
+                "   AC.NOME AS ACESSO                  " +
                 " FROM                                  " +
                 "   EQUIPE EQ                           " +
                 " JOIN PESSOA P ON                      " +
@@ -229,7 +237,8 @@ public class DaoEquipe extends BancoDeDadosMySql{
                 "   C.ID = EQ.ID_COR                    " +
                 " JOIN ACESSO AC ON                     " +
                 "   AC.ID = EQ.ID_ACESSO                " +
-                " WHERE C.DESCRICAO LIKE = ?                        " ;
+                " WHERE                                 " +
+                " C.DESCRICAO LIKE ?            " ;
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -245,13 +254,14 @@ public class DaoEquipe extends BancoDeDadosMySql{
     public ResultSet listarPorAcesso(String acesso){
         try{
             sql =
+                "   SELECT                              " +
                 "   EQ.ID AS ID,                        " +
                 "   P.NOME AS NOME,                     " +
-                "   C.NOME AS CARGO,                    " +
+                "   CG.NOME AS CARGO,                    " +
                 "   C.DESCRICAO AS FAIXA,               " +
                 "   EQ.GRADUACAO AS ULTIMA_GRADUACAO,   " +
                 "   EQ.SALARIO AS SALARIO,              " +
-                "   AC.NOME AS ACESSO,                  " +
+                "   AC.NOME AS ACESSO                  " +
                 " FROM                                  " +
                 "   EQUIPE EQ                           " +
                 " JOIN PESSOA P ON                      " +
@@ -262,7 +272,8 @@ public class DaoEquipe extends BancoDeDadosMySql{
                 "   C.ID = EQ.ID_COR                    " +
                 " JOIN ACESSO AC ON                     " +
                 "   AC.ID = EQ.ID_ACESSO                " +
-                " WHERE AC.NOME LIKE = ?                        " ;
+                " WHERE                                 " +
+                " AC.NOME LIKE ?                " ;
             
             setStatement(getConexao().prepareStatement(sql));
             

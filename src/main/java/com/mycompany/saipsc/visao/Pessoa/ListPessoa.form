@@ -104,12 +104,13 @@
         <Component class="javax.swing.JComboBox" name="jcbTipoFiltro">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="ID"/>
-                <StringItem index="1" value="NOME"/>
-                <StringItem index="2" value="RG"/>
-                <StringItem index="3" value="CPF"/>
-                <StringItem index="4" value="GENERO"/>
+              <StringArray count="6">
+                <StringItem index="0" value="TODOS"/>
+                <StringItem index="1" value="ID"/>
+                <StringItem index="2" value="NOME"/>
+                <StringItem index="3" value="RG"/>
+                <StringItem index="4" value="CPF"/>
+                <StringItem index="5" value="GENERO"/>
               </StringArray>
             </Property>
           </Properties>
@@ -137,8 +138,8 @@
                     <Column editable="false" title="ENDERE&#xc7;O" type="java.lang.Object"/>
                     <Column editable="false" title="CONTATO" type="java.lang.Object"/>
                     <Column editable="false" title="OBS" type="java.lang.Object"/>
-                    <Column editable="true" title="GENERO" type="java.lang.Object"/>
-                    <Column editable="true" title="USUARIO" type="java.lang.Object"/>
+                    <Column editable="false" title="GENERO" type="java.lang.Object"/>
+                    <Column editable="false" title="LOGIN" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

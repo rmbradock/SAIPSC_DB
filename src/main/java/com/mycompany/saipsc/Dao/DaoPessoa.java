@@ -20,9 +20,9 @@ import java.sql.ResultSet;
 public class DaoPessoa extends BancoDeDadosMySql{
     String sql;
     
-    public Boolean inserir(int id, String nome, String rg, String cpf, String endereco, String contato, String obs, String genero, String usuario, String senha){
+    public Boolean inserir(int id, String nome, String rg, String cpf, String endereco, String contato, String obs, String genero, String login, String senha){
         try{
-            sql = "INSERT INTO PESSOA (ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO, USUARIO, SENHA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO PESSOA (ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO, LOGIN, SENHA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -34,7 +34,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
             getStatement().setString(6, contato);
             getStatement().setString(7, obs);
             getStatement().setString(8, genero);
-            getStatement().setString(9, usuario);
+            getStatement().setString(9, login);
             getStatement().setString(10, senha);
             
             getStatement().executeUpdate();
@@ -45,13 +45,13 @@ public class DaoPessoa extends BancoDeDadosMySql{
             return false;
         }
     }
-    public Boolean alterar(int id, String nome, String rg, String cpf, String endereco, String contato, String obs, String genero, String usuario, String senha){
+    public Boolean alterar(int id, String nome, String rg, String cpf, String endereco, String contato, String obs, String genero, String login, String senha){
         try{
-            sql = "UPDATE PESSOA SET NOME = ?, RG = ?, CPF = ?, ENDERECO =?, CONTATO =?, OBS =?, GENERO = ? WHERE ID = ?";
+            sql = "UPDATE PESSOA SET NOME = ?, RG = ?, CPF = ?, ENDERECO =?, CONTATO =?, OBS =?, GENERO = ?, LOGIN =?, SENHA =? WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
-            getStatement().setInt(8, id);
+            getStatement().setInt(10, id);
             getStatement().setString(1, nome);
             getStatement().setString(2, rg);
             getStatement().setString(3, cpf);
@@ -59,6 +59,8 @@ public class DaoPessoa extends BancoDeDadosMySql{
             getStatement().setString(5, contato);
             getStatement().setString(6, obs);
             getStatement().setString(7, genero);
+            getStatement().setString(8, login);
+            getStatement().setString(9, senha);
             
             getStatement().executeUpdate();
             
@@ -104,7 +106,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
     }
     public ResultSet listarTodos(){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO, LOGIN FROM PESSOA";
                 
             
             setStatement(getConexao().prepareStatement(sql));
@@ -118,7 +120,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
     }
     public ResultSet listarPorId(int id){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE ID = ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO, LOGIN FROM PESSOA WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -134,7 +136,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
     
     public ResultSet listarPorNome(String nome){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE NOME LIKE ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO, LOGIN FROM PESSOA WHERE NOME LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -150,7 +152,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
     
     public ResultSet listarPorRg(String rg){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE RG LIKE ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO, LOGIN FROM PESSOA WHERE RG LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -166,7 +168,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
     
     public ResultSet listarPorCpf(String cpf){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE CPF LIKE ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO, LOGIN FROM PESSOA WHERE CPF LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -182,7 +184,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
     
     public ResultSet listarPorGenero(String genero){
         try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE CPF LIKE ?";
+            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO, LOGIN FROM PESSOA WHERE GENERO LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -214,26 +216,8 @@ public class DaoPessoa extends BancoDeDadosMySql{
         }
         return id;
     }
-    public ResultSet listarPorUsuario(String usuario, boolean buscaParcial){
-        try{
-            sql = "SELECT ID, NOME, RG, CPF, ENDERECO, CONTATO, OBS, GENERO FROM PESSOA WHERE RG LIKE ?";
-            
-            setStatement(getConexao().prepareStatement(sql));
-            
-            if(buscaParcial)
-                getStatement().setString(1, usuario + "%");
-            else
-                getStatement().setString(1, usuario);
-            
-            setResultado(getStatement().executeQuery());
-            
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        return getResultado();
-    }
-    
-        public ResultSet recuperaSenha(String usuario){
+       
+        public ResultSet recuperaSenha(String login){
         try{
             sql = 
                 " SELECT                            " +
@@ -245,7 +229,7 @@ public class DaoPessoa extends BancoDeDadosMySql{
             
             setStatement(getConexao().prepareStatement(sql));
             
-            getStatement().setString(1, usuario);
+            getStatement().setString(1, login);
             
             setResultado(getStatement().executeQuery());
         }catch(Exception e){

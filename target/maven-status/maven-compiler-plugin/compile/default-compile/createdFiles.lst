@@ -24,13 +24,11 @@ com\mycompany\saipsc\visao\MenuPrincipalP\MenuProfessores$23.class
 com\mycompany\saipsc\visao\MenuPrincipalP\MenuProfessores.class
 com\mycompany\saipsc\visao\Aluno\CadAluno$4.class
 com\mycompany\saipsc\visao\Investidores\ListInvestidores.class
-com\mycompany\saipsc\visao\MenuPrincipalP\TelaAlteracaoSenha$3.class
 com\mycompany\saipsc\visao\Investidores\ListInvestidores$2.class
 com\mycompany\saipsc\visao\Participacao\ListParticipacao$2.class
 com\mycompany\saipsc\visao\Equipe\ListEquipe$1.class
 com\mycompany\saipsc\visao\Equipe\CadEquipe$4.class
 com\mycompany\saipsc\visao\Equipe\CadEquipe$11.class
-com\mycompany\saipsc\visao\MenuPrincipalP\TelaInicialLogin$4.class
 com\mycompany\saipsc\visao\Patrimonio\ListPatrimonio$2.class
 com\mycompany\saipsc\visao\Marca\ListMarca$1.class
 com\mycompany\saipsc\visao\Cargo\ListCargo$3.class
@@ -62,7 +60,6 @@ com\mycompany\saipsc\visao\Cargo\ListCargo$2.class
 com\mycompany\saipsc\visao\Aluno\ListAluno$5.class
 com\mycompany\saipsc\Modelo\ModCor.class
 com\mycompany\saipsc\visao\MenuPrincipalP\MenuProfessores$30.class
-com\mycompany\saipsc\visao\MenuPrincipalP\TelaAlteracaoSenha$2.class
 com\mycompany\saipsc\Modelo\ModKimonoF.class
 com\mycompany\saipsc\visao\Condicao\CadCondicao.class
 com\mycompany\saipsc\visao\Cargo\CadCargo$1.class
@@ -91,6 +88,7 @@ com\mycompany\saipsc\visao\Patrimonio\ListPatrimonio$3.class
 com\mycompany\saipsc\visao\MenuPrincipalP\MenuProfessores$3.class
 com\mycompany\saipsc\visao\Participacao\CadParticipacao.class
 com\mycompany\saipsc\Dao\DaoMarca.class
+com\mycompany\saipsc\visao\Tamanho\CadTamanho$4.class
 com\mycompany\saipsc\visao\Campeonato\CadCampeonato$4.class
 com\mycompany\saipsc\visao\Equipe\CadEquipe.class
 com\mycompany\saipsc\Dao\DaoAluno.class
@@ -156,8 +154,10 @@ com\mycompany\saipsc\visao\Acesso\CadAcesso$4.class
 com\mycompany\saipsc\visao\Aluno\CadAluno.class
 com\mycompany\saipsc\visao\MenuPrincipalP\MenuProfessores$19.class
 com\mycompany\saipsc\visao\Polos\CadPolos$2.class
+com\mycompany\saipsc\visao\Tamanho\CadTamanho$3.class
 com\mycompany\saipsc\Modelo\ModEquipe.class
 com\mycompany\saipsc\Dao\DaoInvestidores.class
+com\mycompany\saipsc\visao\Condicao\CadCondicao$3.class
 com\mycompany\saipsc\ferramentas\Constantes.class
 com\mycompany\saipsc\visao\Acesso\ListAcesso.class
 com\mycompany\saipsc\visao\Condicao\ListCondicao.class
@@ -180,6 +180,7 @@ com\mycompany\saipsc\visao\Participacao\ListParticipacao$5.class
 com\mycompany\saipsc\visao\Acesso\CadAcesso$3.class
 com\mycompany\saipsc\visao\Patrimonio\CadPatrimonio$6.class
 com\mycompany\saipsc\visao\Cor\CadCor$4.class
+com\mycompany\saipsc\visao\Tamanho\CadTamanho$2.class
 com\mycompany\saipsc\visao\Equipe\CadEquipe$6.class
 com\mycompany\saipsc\visao\Polos\ListPolos$5.class
 com\mycompany\saipsc\visao\Pessoa\CadPessoa$2.class
@@ -187,7 +188,6 @@ com\mycompany\saipsc\visao\Cargo\CadCargo$2.class
 com\mycompany\saipsc\visao\Investidores\CadInvestidores$6.class
 com\mycompany\saipsc\visao\MenuPrincipalP\MenuInstrutores$9.class
 com\mycompany\saipsc\visao\Aluno\ListAluno$4.class
-com\mycompany\saipsc\visao\MenuPrincipalP\TelaAlteracaoSenha$1.class
 com\mycompany\saipsc\visao\CategoriaKF\ListCategoriaKF$4.class
 com\mycompany\saipsc\visao\MenuPrincipalP\MenuInstrutores$4.class
 com\mycompany\saipsc\visao\Patrimonio\ListPatrimonio$4.class
@@ -210,6 +210,7 @@ com\mycompany\saipsc\visao\Participacao\CadParticipacao$2.class
 com\mycompany\saipsc\visao\Participacao\ListParticipacao$4.class
 com\mycompany\saipsc\visao\Pessoa\CadPessoa.class
 com\mycompany\saipsc\visao\Investidores\ListInvestidores$1.class
+com\mycompany\saipsc\visao\KimonoF\CadKimonoF$10.class
 com\mycompany\saipsc\visao\MenuPrincipalP\MenuProfessores$22.class
 com\mycompany\saipsc\Modelo\ModPessoa.class
 com\mycompany\saipsc\visao\KimonoF\CadKimonoF.class
@@ -224,6 +225,7 @@ com\mycompany\saipsc\visao\Investidores\CadInvestidores$1.class
 com\mycompany\saipsc\visao\Investidores\ListInvestidores$4.class
 com\mycompany\saipsc\visao\Pessoa\CadPessoa$4.class
 com\mycompany\saipsc\visao\Participacao\ListParticipacao$3.class
+com\mycompany\saipsc\visao\Condicao\CadCondicao$2.class
 com\mycompany\saipsc\visao\MenuPrincipalP\MenuProfessores$8.class
 com\mycompany\saipsc\visao\Pessoa\ListPessoa$1.class
 com\mycompany\saipsc\visao\Cor\ListCor.class
@@ -242,7 +244,6 @@ com\mycompany\saipsc\visao\Marca\CadMarca$4.class
 com\mycompany\saipsc\visao\MenuPrincipalP\MenuProfessores$18.class
 com\mycompany\saipsc\visao\Campeonato\ListCampeonato.class
 com\mycompany\saipsc\visao\Condicao\ListCondicao$4.class
-com\mycompany\saipsc\visao\MenuPrincipalP\TelaAlteracaoSenha$4.class
 com\mycompany\saipsc\visao\Cor\CadCor.class
 com\mycompany\saipsc\visao\Pessoa\ListPessoa$2.class
 com\mycompany\saipsc\visao\Investidores\CadInvestidores$2.class
@@ -265,7 +266,6 @@ com\mycompany\saipsc\visao\Equipe\CadEquipe$3.class
 com\mycompany\saipsc\visao\Cor\CadCor$1.class
 com\mycompany\saipsc\visao\Polos\ListPolos.class
 com\mycompany\saipsc\visao\Equipe\CadEquipe$10.class
-com\mycompany\saipsc\visao\MenuPrincipalP\TelaAlteracaoSenha.class
 com\mycompany\saipsc\visao\Condicao\ListCondicao$3.class
 com\mycompany\saipsc\visao\Equipe\CadEquipe$2.class
 com\mycompany\saipsc\visao\Pessoa\ListPessoa$3.class

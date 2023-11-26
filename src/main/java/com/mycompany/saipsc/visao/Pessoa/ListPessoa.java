@@ -229,7 +229,7 @@ public class ListPessoa extends javax.swing.JFrame {
             }
         });
 
-        jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "NOME", "RG", "CPF", "GENERO" }));
+        jcbTipoFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODOS", "ID", "NOME", "RG", "CPF", "GENERO" }));
 
         tablePessoa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -239,11 +239,11 @@ public class ListPessoa extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "NOME", "RG", "CPF", "ENDEREÇO", "CONTATO", "OBS", "GENERO", "USUARIO"
+                "ID", "NOME", "RG", "CPF", "ENDEREÇO", "CONTATO", "OBS", "GENERO", "LOGIN"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

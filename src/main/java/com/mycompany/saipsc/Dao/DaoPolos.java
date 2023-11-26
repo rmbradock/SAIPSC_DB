@@ -19,9 +19,9 @@ import java.sql.ResultSet;
 public class DaoPolos extends BancoDeDadosMySql{
     String sql;
     
-    public Boolean inserir(int id, String nome, String endereco, String responsavel, String contato){
+    public Boolean inserir(int id, String nome, String endereco, String responsavel, String contato, String obs){
         try{
-            sql = "INSERT INTO POLOS (ID, NOME, ENDERECO, RESPONSAVEL, CONTATO) VALUES (?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO POLOS (ID, NOME, ENDERECO, RESPONSAVEL, CONTATO, OBS) VALUES (?, ?, ?, ?, ?, ?)";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -30,6 +30,7 @@ public class DaoPolos extends BancoDeDadosMySql{
             getStatement().setString(3, endereco);
             getStatement().setString(4, responsavel);
             getStatement().setString(5, contato);
+            getStatement().setString(6, contato);
             
             getStatement().executeUpdate();
             
@@ -39,17 +40,18 @@ public class DaoPolos extends BancoDeDadosMySql{
             return false;
         }
     }
-    public Boolean alterar(int id, String nome, String endereco, String responsavel, String contato){
+    public Boolean alterar(int id, String nome, String endereco, String responsavel, String contato, String obs){
         try{
-            sql = "UPDATE POLOS SET NOME = ?, ENDERECO = ?, RESPONSAVEL = ?,  =?, CONTATO =? = ? WHERE ID = ?";
+            sql = "UPDATE POLOS SET NOME = ?, ENDERECO = ?, RESPONSAVEL = ?,  =?, CONTATO =? OBS = ? WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
-            getStatement().setInt(5, id);
+            getStatement().setInt(6, id);
             getStatement().setString(1, nome);
             getStatement().setString(2, endereco);
             getStatement().setString(3, responsavel);
             getStatement().setString(4, contato);
+            getStatement().setString(4, obs);
             
             getStatement().executeUpdate();
             

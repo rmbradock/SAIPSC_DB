@@ -64,9 +64,8 @@ public class ListCategoriaKF extends javax.swing.JFrame {
             while (resultSet.next()){
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
-                String descricao = resultSet.getString(3);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, descricao});
+                defaultTableModel.addRow(new Object[]{id, nome});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -87,9 +86,8 @@ public class ListCategoriaKF extends javax.swing.JFrame {
             while (resultSet.next()){
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
-                String descricao = resultSet.getString(3);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, descricao});
+                defaultTableModel.addRow(new Object[]{id, nome});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());

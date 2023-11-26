@@ -30,8 +30,6 @@ public class TelaInicialLogin extends javax.swing.JFrame {
         
         setLocationRelativeTo(null);
         
-        tfUsuario.setText("");
-        pfSenha.setText("");
     }
 
     /**
@@ -46,12 +44,7 @@ public class TelaInicialLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnAcaoI = new javax.swing.JButton();
-        tfUsuario = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        pfSenha = new javax.swing.JPasswordField();
         btnAcaoP = new javax.swing.JButton();
-        RecuperarSenha = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -60,7 +53,7 @@ public class TelaInicialLogin extends javax.swing.JFrame {
 
         jLabel1.setText("Professor");
 
-        jLabel2.setText("Instrutor");
+        jLabel2.setText("Colaboradores");
 
         btnAcaoI.setText("Entrar");
         btnAcaoI.addActionListener(new java.awt.event.ActionListener() {
@@ -69,21 +62,10 @@ public class TelaInicialLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Login");
-
-        jLabel5.setText("Senha");
-
         btnAcaoP.setText("Entrar");
         btnAcaoP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcaoPActionPerformed(evt);
-            }
-        });
-
-        RecuperarSenha.setText("Recuperar senha");
-        RecuperarSenha.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RecuperarSenhaMouseClicked(evt);
             }
         });
 
@@ -107,20 +89,9 @@ public class TelaInicialLogin extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(btnAcaoI)
-                            .addComponent(RecuperarSenha)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnAcaoP))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,19 +111,11 @@ public class TelaInicialLogin extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(28, 28, 28)
                 .addComponent(btnAcaoP)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RecuperarSenha)
-                .addGap(62, 62, 62)
+                .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -166,46 +129,10 @@ public class TelaInicialLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcaoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoPActionPerformed
-        try{
-//            JOptionPane.showMessageDialog(null, tfUsuario.getText());
-//            JOptionPane.showMessageDialog(null, String.valueOf(pfSenha.getPassword()));
-//            
-//            if(tfUsuario.getText().equals("") || String.valueOf(pfSenha.getPassword()).equals(""))
-//                throw new Exception();
-            
-            DaoPessoa daoPessoa = new DaoPessoa();
-            
-            ResultSet resultset = daoPessoa.recuperaSenha(tfUsuario.getText());
-            
-            resultset.next();
-            int id = resultset.getInt("ID");
-            String senha = resultset.getString("SENHA");
-                
-            JOptionPane.showMessageDialog(null, senha);
-            
-            if(senha.equals(String.valueOf(pfSenha.getPassword()))){
-                DadosTemporarios.usuarioLogado = tfUsuario.getText();
-                
-                JOptionPane.showMessageDialog(null, "asdf");
-                
-                ResultSet resultSetEquipe = new DaoEquipe().listarPorId(id);
-                resultSetEquipe.next();
-                int idEquipe = resultSetEquipe.getInt("ID");
-                
-                DadosTemporarios.idUsuarioLogado = id;
-                DadosTemporarios.usuarioLogado = tfUsuario.getText();
-                
-                Formularios.MenuProfessores.setVisible(true);
-                
-                JOptionPane.showMessageDialog(null, "Bem-vindo(a), " + tfUsuario.getText());
-                
-                dispose();
-            }else{
-                JOptionPane.showMessageDialog(null, Constantes.USUARIO_SENHA_INVALIDOS);
-            }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, Constantes.USUARIO_SENHA_INVALIDOS);
-        }
+        if (Formularios.MenuProfessores == null)
+            Formularios.MenuProfessores = new MenuProfessores();
+        
+        Formularios.MenuProfessores.setVisible(true);
     }//GEN-LAST:event_btnAcaoPActionPerformed
 
     private void btnAcaoIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoIActionPerformed
@@ -214,14 +141,6 @@ public class TelaInicialLogin extends javax.swing.JFrame {
         
         Formularios.MenuInstrutores.setVisible(true);
     }//GEN-LAST:event_btnAcaoIActionPerformed
-
-    private void RecuperarSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RecuperarSenhaMouseClicked
-        if (Formularios.TelaAlteracaoSenha == null)
-            Formularios.TelaAlteracaoSenha = new TelaAlteracaoSenha();
-
-        Formularios.TelaAlteracaoSenha.setModal(true);
-        Formularios.TelaAlteracaoSenha.setVisible(true);
-    }//GEN-LAST:event_RecuperarSenhaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -262,17 +181,12 @@ public class TelaInicialLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel RecuperarSenha;
     private javax.swing.JButton btnAcaoI;
     private javax.swing.JButton btnAcaoP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPasswordField pfSenha;
-    private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
 }

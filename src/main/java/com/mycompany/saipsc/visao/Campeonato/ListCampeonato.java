@@ -35,7 +35,6 @@ public class ListCampeonato extends javax.swing.JFrame {
 
             DaoCampeonato daoCampeonato = new DaoCampeonato();
 
-            //Atribui o resultset retornado a uma variável para ser usada.
             ResultSet resultSet = daoCampeonato.listarTodos();
             
             defaultTableModel.setRowCount(0);
@@ -54,7 +53,7 @@ public class ListCampeonato extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }
-    public void listarPorId(){
+    public void listarPorId(int pId){
         try{
             DefaultTableModel defaultTableModel = (DefaultTableModel) tableCampeonato.getModel();
             
@@ -62,7 +61,7 @@ public class ListCampeonato extends javax.swing.JFrame {
 
             DaoCampeonato daoCampeonato = new DaoCampeonato();
 
-            ResultSet resultSet = daoCampeonato.listarPorId(Integer.parseInt(tfFiltro.getText()));
+            ResultSet resultSet = daoCampeonato.listarPorId(pId);
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
@@ -283,11 +282,7 @@ public class ListCampeonato extends javax.swing.JFrame {
                 modCampeonato.setId(Integer.parseInt(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 0))));
                 modCampeonato.setNome(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 1)));
                 modCampeonato.setLocal(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 2)));
-//               modCampeonato.setResponsavel(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 3)));
-//                modCampeonato.setContato(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 4)));
                 modCampeonato.setData(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 3)));
-//                modCampeonato.setInscricao(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 6)));
-                
 
                 DadosTemporarios.tempObject = (ModCampeonato) modCampeonato;
 
@@ -303,7 +298,7 @@ public class ListCampeonato extends javax.swing.JFrame {
             listarTodos();
             break;
             case 1:
-            listarPorId();
+            listarPorId(Integer.parseInt(tfFiltro.getText()));
             break;
             case 2:
             listarPorNome();

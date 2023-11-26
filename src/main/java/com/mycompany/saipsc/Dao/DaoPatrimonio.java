@@ -92,7 +92,7 @@ public class DaoPatrimonio extends BancoDeDadosMySql{
     }
     public ResultSet listarPorId(int id){
         try{
-            sql = "SELECT ID, MATERIAL, IFNULL(DESCRICAO, '') FROM PATRIMONIO WHERE ID = ?";
+            sql = "SELECT ID, MATERIAL, QUANTIDADE, SITUACAO, IFNULL(DESCRICAO, '') FROM PATRIMONIO WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -107,7 +107,7 @@ public class DaoPatrimonio extends BancoDeDadosMySql{
     }
     public ResultSet listarPorMaterial(String material){
         try{
-            sql = "SELECT ID, MATERIAL, IFNULL(DESCRICAO, '') FROM PATRIMONIO WHERE MATERIAL LIKE ?";
+            sql = "SELECT ID, MATERIAL, QUANTIDADE, SITUACAO, IFNULL(DESCRICAO, '') FROM PATRIMONIO WHERE MATERIAL LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -121,7 +121,7 @@ public class DaoPatrimonio extends BancoDeDadosMySql{
     }
     public ResultSet listarPorDescricao(String descricao){
         try{
-            sql = "SELECT ID, MATERIAL, IFNULL(DESCRICAO, '') FROM PATRIMONIO WHERE DESCRICAO LIKE ?";
+            sql = "SELECT ID, MATERIAL, QUANTIDADE, SITUACAO, IFNULL(DESCRICAO, '') FROM PATRIMONIO WHERE DESCRICAO LIKE ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -134,10 +134,10 @@ public class DaoPatrimonio extends BancoDeDadosMySql{
         return getResultado();
     }
     public int buscarProximoId(){
-           int id = -1;
-
-           try{
-               sql = "SELECT MAX(ID) + 1 FROM PATRIMONIO";
+           int id = 0;
+        
+        try{
+            sql = "SELECT IFNULL(MAX(ID), 0) + 1 FROM PATRIMONIO";
 
                setStatement(getConexao().prepareStatement(sql));
 

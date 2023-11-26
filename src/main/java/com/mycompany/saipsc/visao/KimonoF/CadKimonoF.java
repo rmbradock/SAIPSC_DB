@@ -41,16 +41,17 @@ public class CadKimonoF extends javax.swing.JFrame {
             DaoTamanho daoTamanho = new DaoTamanho();
             DaoCor daoCor = new DaoCor();
             DaoMarca daoMarca = new DaoMarca();
+            DaoCondicao daoCondicao = new DaoCondicao();
                          
             int id = daoKimonoF.buscarProximoId();
             if (id>0)
                 tfId.setText(String.valueOf(id));
             
             btnAcao.setText(Constantes.BTN_SALVAR_TEXT);
-            btnExcluir.setVisible(false);
+            btnExcluir1.setVisible(false);
         }else{
             btnAcao.setText(Constantes.BTN_ALTERAR_TEXT);
-            btnExcluir.setVisible(true);  
+            btnExcluir1.setVisible(true);  
         }
         recuperaIdCategoria();
         recuperaIdTamanho();
@@ -100,10 +101,10 @@ public class CadKimonoF extends javax.swing.JFrame {
                 DaoTamanho daoTamanho = new DaoTamanho();
                 ResultSet resultSet = daoTamanho.listarPorId(idTamanho);
                 resultSet.next();
-                String nome = resultSet.getString("NOME");
+                String tamanho = resultSet.getString("TAMANHO");
                 int index = 0;
                 for(int i =0; i<jcbTamanho.getItemCount(); i++){
-                    if(jcbTamanho.getItemAt(i).equals(nome)){
+                    if(jcbTamanho.getItemAt(i).equals(tamanho)){
                         index = i;
                         break;
                     }
@@ -179,14 +180,11 @@ public class CadKimonoF extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possível salvar o Kimono ou Faixa!");
         }
-        ((ListKimonoF) Formularios.listKimonoF).listarTodos();
-        
-        dispose();
     }
     private void alterar(){
         DaoKimonoF daoKimonoF = new DaoKimonoF();
         
-        if (daoKimonoF.inserir(Integer.parseInt(tfId.getText()), tfQuantidade.getText(), Integer.parseInt(tfCategoria.getText()), Integer.parseInt(tfTamanho.getText()), Integer.parseInt(tfCor.getText()),Integer.parseInt(tfMarca.getText()), Integer.parseInt(tfCondicao.getText()))){
+        if (daoKimonoF.alterar(Integer.parseInt(tfId.getText()), tfQuantidade.getText(), Integer.parseInt(tfCategoria.getText()), Integer.parseInt(tfTamanho.getText()), Integer.parseInt(tfCor.getText()),Integer.parseInt(tfMarca.getText()), Integer.parseInt(tfCondicao.getText()))){
             JOptionPane.showMessageDialog(null, "Kimono ou Faixa salvo com sucesso!");
             
             tfId.setText("");
@@ -240,7 +238,7 @@ public class CadKimonoF extends javax.swing.JFrame {
             ResultSet resultSet = daoCategoriaKF.listarPorNome(jcbCategoria.getSelectedItem().toString());
             
             resultSet.next();
-            tfCategoria.setText(resultSet.getString("NOME"));
+            tfCategoria.setText(resultSet.getString("ID"));
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -252,7 +250,8 @@ public class CadKimonoF extends javax.swing.JFrame {
             ResultSet resultSet = daoTamanho.listarTodos();
 
             while(resultSet.next())
-                jcbTamanho.addItem(resultSet.getString("NOME"));
+                jcbTamanho.addItem(resultSet.getString("TAM"));
+        
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -265,7 +264,7 @@ public class CadKimonoF extends javax.swing.JFrame {
             ResultSet resultSet = daoTamanho.listarPorNome(jcbTamanho.getSelectedItem().toString());
             
             resultSet.next();
-            tfTamanho.setText(resultSet.getString("NOME"));
+            tfTamanho.setText(resultSet.getString("ID"));
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -277,7 +276,7 @@ public void carregarCores(){
             ResultSet resultSet = daoCor.listarTodos();
 
             while(resultSet.next())
-                jcbCor.addItem(resultSet.getString("NOME"));
+                jcbCor.addItem(resultSet.getString("DESCRICAO"));
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -290,7 +289,7 @@ public void carregarCores(){
             ResultSet resultSet = daoCor.listarPorDescricao(jcbCor.getSelectedItem().toString());
             
             resultSet.next();
-            tfCor.setText(resultSet.getString("DESCRICAO"));
+            tfCor.setText(resultSet.getString("ID"));
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -315,7 +314,7 @@ public void carregarMarcas(){
             ResultSet resultSet = daoMarca.listarPorNome(jcbMarca.getSelectedItem().toString());
             
             resultSet.next();
-            tfMarca.setText(resultSet.getString("MARCA"));
+            tfMarca.setText(resultSet.getString("ID"));
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -340,7 +339,7 @@ public void carregarMarcas(){
             ResultSet resultSet = daoCondicao.listarPorEstado(jcbCondicao.getSelectedItem().toString());
             
             resultSet.next();
-            tfCondicao.setText(resultSet.getString("ESTADO"));
+            tfCondicao.setText(resultSet.getString("ID"));
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -363,18 +362,18 @@ public void carregarMarcas(){
         jLabel7 = new javax.swing.JLabel();
         tfId = new javax.swing.JTextField();
         jcbCategoria = new javax.swing.JComboBox<>();
-        jcbTamanho = new javax.swing.JComboBox<>();
         jcbCor = new javax.swing.JComboBox<>();
         jcbMarca = new javax.swing.JComboBox<>();
         jcbCondicao = new javax.swing.JComboBox<>();
         btnAcao = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
         tfQuantidade = new javax.swing.JTextField();
         tfCategoria = new javax.swing.JTextField();
         tfTamanho = new javax.swing.JTextField();
         tfCor = new javax.swing.JTextField();
         tfMarca = new javax.swing.JTextField();
         tfCondicao = new javax.swing.JTextField();
+        btnExcluir1 = new javax.swing.JButton();
+        jcbTamanho = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -408,12 +407,6 @@ public void carregarMarcas(){
             }
         });
 
-        jcbTamanho.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jcbTamanhoItemStateChanged(evt);
-            }
-        });
-
         jcbCor.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcbCorItemStateChanged(evt);
@@ -432,14 +425,25 @@ public void carregarMarcas(){
             }
         });
 
-        btnAcao.setText("SALVA");
+        btnAcao.setText("SALVAR");
         btnAcao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcaoActionPerformed(evt);
             }
         });
 
-        btnExcluir.setText("EXCLUIR");
+        btnExcluir1.setText("EXCLUIR");
+        btnExcluir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluir1ActionPerformed(evt);
+            }
+        });
+
+        jcbTamanho.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbTamanhoItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -449,9 +453,9 @@ public void carregarMarcas(){
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAcao)
+                        .addComponent(btnAcao, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnExcluir))
+                        .addComponent(btnExcluir1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -461,19 +465,11 @@ public void carregarMarcas(){
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(22, 22, 22)
                                 .addComponent(jcbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(25, 25, 25)
-                                .addComponent(jcbTamanho, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(61, 61, 61)
-                                .addComponent(jcbCor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
@@ -481,14 +477,23 @@ public void carregarMarcas(){
                                 .addGap(23, 23, 23)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jcbMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jcbCondicao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(jcbCondicao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4))
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jcbTamanho, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jcbCor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfCategoria)
-                            .addComponent(tfTamanho)
-                            .addComponent(tfCor)
-                            .addComponent(tfMarca)
-                            .addComponent(tfCondicao, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(tfMarca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                            .addComponent(tfCor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfTamanho, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfCategoria, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfCondicao))
+                        .addGap(0, 19, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -510,8 +515,8 @@ public void carregarMarcas(){
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jcbTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -530,7 +535,7 @@ public void carregarMarcas(){
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAcao)
-                    .addComponent(btnExcluir))
+                    .addComponent(btnExcluir1))
                 .addContainerGap())
         );
 
@@ -544,10 +549,6 @@ public void carregarMarcas(){
     private void jcbCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbCategoriaItemStateChanged
         recuperaIdCategoria();
     }//GEN-LAST:event_jcbCategoriaItemStateChanged
-
-    private void jcbTamanhoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbTamanhoItemStateChanged
-        recuperaIdTamanho();
-    }//GEN-LAST:event_jcbTamanhoItemStateChanged
 
     private void jcbCorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbCorItemStateChanged
         recuperaIdCor();
@@ -565,7 +566,7 @@ public void carregarMarcas(){
         if (btnAcao.getText() == Constantes.BTN_SALVAR_TEXT){
             inserir();
             
-            if(Formularios.cadAluno != null){
+            if(Formularios.cadKimonoF != null){
              
                 dispose();
             }
@@ -574,22 +575,30 @@ public void carregarMarcas(){
     }                                       
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        int escolha = 
-                JOptionPane.showConfirmDialog(
-                        null, 
-                        "Deseja realmente excluir o item " + tfCategoria.getText() + "?");
         
-        if(escolha == JOptionPane.YES_OPTION)
-            excluir();
     }//GEN-LAST:event_btnAcaoActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Formularios.cadAluno = null;
+        Formularios.cadKimonoF = null;
         
-        if(Formularios.cadAluno != null){
+        if(Formularios.cadKimonoF != null){
         
         }
     }//GEN-LAST:event_formWindowClosed
+
+    private void btnExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir1ActionPerformed
+        int escolha = 
+                JOptionPane.showConfirmDialog(
+                        null, 
+                        "Deseja realmente excluir o/a " + tfCategoria.getText() + "?");
+        
+        if(escolha == JOptionPane.YES_OPTION)
+            excluir();
+    }//GEN-LAST:event_btnExcluir1ActionPerformed
+
+    private void jcbTamanhoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbTamanhoItemStateChanged
+        recuperaIdTamanho();
+    }//GEN-LAST:event_jcbTamanhoItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -628,7 +637,7 @@ public void carregarMarcas(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcao;
-    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnExcluir1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

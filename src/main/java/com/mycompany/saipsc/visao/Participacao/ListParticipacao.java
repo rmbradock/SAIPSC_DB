@@ -42,11 +42,11 @@ public class ListParticipacao extends javax.swing.JFrame {
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
                 String id = resultSet.getString(1);
-                String nome = resultSet.getString(2);
+                String idAluno = resultSet.getString(2);
                 String competicao = resultSet.getString(3);
                 String resultado = resultSet.getString(4);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, competicao, resultado});
+                defaultTableModel.addRow(new Object[]{id, idAluno, competicao, resultado});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -65,11 +65,11 @@ public class ListParticipacao extends javax.swing.JFrame {
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
                 String id = resultSet.getString(1);
-                String nome = resultSet.getString(2);
+                String idAluno = resultSet.getString(2);
                 String competicao = resultSet.getString(3);
                 String resultado = resultSet.getString(4);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, competicao, resultado});
+                defaultTableModel.addRow(new Object[]{id, idAluno, competicao, resultado});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -88,11 +88,11 @@ public class ListParticipacao extends javax.swing.JFrame {
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
                 String id = resultSet.getString(1);
-                String nome = resultSet.getString(2);
+                String idAluno = resultSet.getString(2);
                 String competicao = resultSet.getString(3);
                 String resultado = resultSet.getString(4);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, competicao, resultado});
+                defaultTableModel.addRow(new Object[]{id, idAluno, competicao, resultado});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -111,11 +111,11 @@ public class ListParticipacao extends javax.swing.JFrame {
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
                 String id = resultSet.getString(1);
-                String nome = resultSet.getString(2);
+                String idAluno = resultSet.getString(2);
                 String competicao = resultSet.getString(3);
                 String resultado = resultSet.getString(4);
                 
-                defaultTableModel.addRow(new Object[]{id, nome, competicao, resultado});
+                defaultTableModel.addRow(new Object[]{id, idAluno, competicao, resultado});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -238,19 +238,16 @@ public class ListParticipacao extends javax.swing.JFrame {
                 modParticipacao.setId(Integer.parseInt(String.valueOf(tableParticipacao.getValueAt(tableParticipacao.getSelectedRow(), 0))));
                 modParticipacao.setResultado(String.valueOf(tableParticipacao.getValueAt(tableParticipacao.getSelectedRow(), 3)));
 
-                DaoParticipacao daoParticipacao = new DaoParticipacao();
-                ResultSet resultSet = daoParticipacao.listarPorNome(String.valueOf(tableParticipacao.getValueAt(tableParticipacao.getSelectedRow(), 1)));
+                DaoAluno daoAluno = new DaoAluno();
+                ResultSet resultSet = daoAluno.listarPorNome(String.valueOf(tableParticipacao.getValueAt(tableParticipacao.getSelectedRow(), 1)));
                 int idAluno = -1;
-                while(resultSet.next())
-                idAluno = resultSet.getInt("NOME");
+                idAluno = resultSet.getInt("ID");
                 modParticipacao.setIdAluno(idAluno);
-                DadosTemporarios.tempObject = (ModParticipacao) modParticipacao;
-
+                
                 DaoCampeonato daoCampeonato = new DaoCampeonato();
                 resultSet = daoCampeonato.listarPorNome(String.valueOf(tableParticipacao.getValueAt(tableParticipacao.getSelectedRow(), 2)));
                 int idCompeticao = -1;
-                while(resultSet.next())
-                idCompeticao = resultSet.getInt("NOME");
+                idCompeticao = resultSet.getInt("ID");
                 modParticipacao.setIdAluno(idCompeticao);
                 
                 
