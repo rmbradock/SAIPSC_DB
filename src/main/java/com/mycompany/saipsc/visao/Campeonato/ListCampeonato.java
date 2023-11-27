@@ -282,8 +282,11 @@ public class ListCampeonato extends javax.swing.JFrame {
                 modCampeonato.setId(Integer.parseInt(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 0))));
                 modCampeonato.setNome(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 1)));
                 modCampeonato.setLocal(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 2)));
-                modCampeonato.setData(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 3)));
-
+                modCampeonato.setResponsavel(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 3)));
+                modCampeonato.setContato(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 4)));
+                modCampeonato.setData(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 5)));
+                modCampeonato.setInscricao(String.valueOf(tableCampeonato.getValueAt(tableCampeonato.getSelectedRow(), 6)));
+                                
                 DadosTemporarios.tempObject = (ModCampeonato) modCampeonato;
 
                 CadCampeonato cadCampeonato = new CadCampeonato();
@@ -309,7 +312,7 @@ public class ListCampeonato extends javax.swing.JFrame {
             case 4:
             listarPorData();
             break;
-            
+                        
         }
     }//GEN-LAST:event_jcbBuscarActionPerformed
 

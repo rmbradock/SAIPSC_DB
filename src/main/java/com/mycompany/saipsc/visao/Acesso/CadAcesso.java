@@ -99,7 +99,6 @@ public class CadAcesso extends javax.swing.JFrame {
 
                 tfId.setText("");
                 tfNome.setText("");
-                taDescricao.setText("");
             }else{
                 JOptionPane.showMessageDialog(null, "Não foi possível excluir a Acesso!");
             }
@@ -137,6 +136,12 @@ public class CadAcesso extends javax.swing.JFrame {
         });
 
         jLabel1.setText("ID");
+
+        tfId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nome");
 
@@ -254,6 +259,10 @@ public class CadAcesso extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         Formularios.cadAcesso = null;
     }//GEN-LAST:event_formWindowClosed
+
+    private void tfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdActionPerformed
 
     /**
      * @param args the command line arguments

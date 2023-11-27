@@ -86,7 +86,7 @@ public class CadCampeonato extends javax.swing.JFrame {
         private void alterar(){
         DaoCampeonato daoCampeonato = new DaoCampeonato();
         
-        if (daoCampeonato.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), tfLocal.getText(), tfResponsavel.getText(), tfContato.getText(), tfData.getText(), tfInscricao.getText())){
+        if (daoCampeonato.alterar(Integer.parseInt(tfId.getText()), tfNome.getText(), tfLocal.getText(), tfResponsavel.getText(), tfContato.getText(), tfData.getText(), tfInscricao.getText())){
             JOptionPane.showMessageDialog(null, "Campeonato alterado com sucesso!");
             
             tfId.setText("");

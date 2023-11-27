@@ -474,8 +474,11 @@ public class ListAluno extends javax.swing.JFrame {
                 modAluno.setId(Integer.parseInt(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 0))));
                 modAluno.setNascimento(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 3)));
                 modAluno.setIdade(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 4)));
-                modAluno.setUGrad(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 5)));
-                modAluno.setPGrad(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 6)));
+                modAluno.setResponsavel(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 5)));
+                modAluno.setUGrad(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 6)));
+                modAluno.setPGrad(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 7)));
+                modAluno.setFaltas(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 8)));
+                modAluno.setCpfResp(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 10)));
                         
                 DaoPessoa daoPessoa = new DaoPessoa();
                 ResultSet resultSet = daoPessoa.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 1)));
@@ -483,16 +486,16 @@ public class ListAluno extends javax.swing.JFrame {
                 resultSet.next();
                 idPessoa = resultSet.getInt("ID");
                 modAluno.setIdPessoa(idPessoa);
-                
+//                
                 DaoCor daoCor = new DaoCor();
                 resultSet = daoCor.listarPorDescricao(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 2)));
                 int idCor = -1;
                 resultSet.next();
                 idCor = resultSet.getInt("ID");
                 modAluno.setIdCor(idCor);
-                
+//                
                 DaoPolos daoPolos = new DaoPolos();
-                resultSet = daoPolos.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 7)));
+                resultSet = daoPolos.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 9)));
                 int idPolo = -1;
                 resultSet.next();
                 idCor = resultSet.getInt("ID");
@@ -502,7 +505,7 @@ public class ListAluno extends javax.swing.JFrame {
                 
                 CadAluno cadAluno = new CadAluno();
                 cadAluno.setVisible(true);
-                }
+            }
         }catch(Exception e){
             System.err.println(e.getMessage());
         }

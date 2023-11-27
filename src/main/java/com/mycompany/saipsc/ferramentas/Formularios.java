@@ -69,6 +69,7 @@ public class Formularios {
     
     public static JFrame TelaLogin;
     
+
     public static JDialog TelaAlteracaoSenha;
     
     public static JDialog TelaAlteracaoSenha1;

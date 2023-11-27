@@ -42,7 +42,6 @@ public class ListEquipe extends javax.swing.JFrame {
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
-//int id, int idPessoa, int idCor, String nascimento, String idade, String responsavel, String uGrad, String pGrad, String faltas, int idPolo, String cpfResp
                 String id = resultSet.getString(1);
                 String nome = resultSet.getString(2);
                 String cargo = resultSet.getString(3);
@@ -66,7 +65,6 @@ public class ListEquipe extends javax.swing.JFrame {
 
             DaoEquipe daoEquipe = new DaoEquipe();
 
-            //Atribui o resultset retornado a uma variável para ser usada.
             ResultSet resultSet = daoEquipe.listarPorId(Integer.parseInt(tfFiltro.getText()));
             
             defaultTableModel.setRowCount(0);
@@ -222,7 +220,7 @@ public class ListEquipe extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, true
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -235,11 +233,6 @@ public class ListEquipe extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tableEquipe);
-        if (tableEquipe.getColumnModel().getColumnCount() > 0) {
-            tableEquipe.getColumnModel().getColumn(4).setHeaderValue("GRADUAÇÃO");
-            tableEquipe.getColumnModel().getColumn(5).setHeaderValue("SALARIO");
-            tableEquipe.getColumnModel().getColumn(6).setHeaderValue("ACESSO");
-        }
 
         jcbBuscar.setText("Buscar");
         jcbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -318,43 +311,34 @@ public class ListEquipe extends javax.swing.JFrame {
 
                 modEquipe.setId(Integer.parseInt(String.valueOf(tableEquipe.getValueAt(tableEquipe.getSelectedRow(), 0))));
                 modEquipe.setGraduacao(String.valueOf(tableEquipe.getValueAt(tableEquipe.getSelectedRow(), 4)));
-                modEquipe.setSalario(String.valueOf(tableEquipe.getValueAt(tableEquipe.getSelectedRow(), 6)));
+                modEquipe.setSalario(String.valueOf(tableEquipe.getValueAt(tableEquipe.getSelectedRow(), 5)));
                                
                 DaoPessoa daoPessoa = new DaoPessoa();
-
                 ResultSet resultSet = daoPessoa.listarPorNome(String.valueOf(tableEquipe.getValueAt(tableEquipe.getSelectedRow(), 1)));
                 int idPessoa = -1;
-                while (resultSet.next ())
-                    idPessoa = resultSet.getInt("ID");
+                resultSet.next();
+                idPessoa = resultSet.getInt("ID");
                 modEquipe.setIdPessoa(idPessoa);
-                DadosTemporarios.tempObject = (ModEquipe) modEquipe;
-
-                String cargo = resultSet.getString(2);
+                
                 DaoCargo daoCargo = new DaoCargo();
                 resultSet = daoCargo.listarPorNome(String.valueOf(tableEquipe.getValueAt(tableEquipe.getSelectedRow(), 2)));
                 int idCargo = -1;
-                while (resultSet.next ())
-                    idCargo = resultSet.getInt("ID");
+                idCargo = resultSet.getInt("ID");
                 modEquipe.setIdCor(idCargo);
-                DadosTemporarios.tempObject2 = (ModEquipe) modEquipe;
-
-                String faixa = resultSet.getString(3);
+                
                 DaoCor daoCor = new DaoCor();
                 resultSet = daoCor.listarPorDescricao(String.valueOf(tableEquipe.getValueAt(tableEquipe.getSelectedRow(), 3)));
                 int idCor = -1;
-                while (resultSet.next ())
                 idCor = resultSet.getInt("ID");
                 modEquipe.setIdCor(idCor);
-                DadosTemporarios.tempObject3 = (ModEquipe) modEquipe;
-
-                String acesso = resultSet.getString(6);
+                
                 DaoAcesso daoAcesso = new DaoAcesso();
                 resultSet = daoAcesso.listarPorNome(String.valueOf(tableEquipe.getValueAt(tableEquipe.getSelectedRow(), 6)));
                 int idAcesso = -1;
-                while (resultSet.next ())
                 idAcesso = resultSet.getInt("ID");
                 modEquipe.setIdAcesso(idAcesso);
-                DadosTemporarios.tempObject4 = (ModEquipe) modEquipe;
+                
+                DadosTemporarios.tempObject = (ModEquipe) modEquipe;
 
                 CadEquipe cadEquipe = new CadEquipe();
                 cadEquipe.setVisible(true);

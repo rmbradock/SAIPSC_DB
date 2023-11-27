@@ -39,7 +39,7 @@ public class DaoCampeonato extends BancoDeDadosMySql{
     }
     public Boolean alterar(int id, String nome, String local, String responsavel, String contato, String data, String inscricao){
         try{
-            sql = "UPDATE CAMPEONATO SET NOME = ?, LOCAL = ?, RESPONSAVEL = ?, CONTATO = ?, DATA = ?, INSCRICAO? = ? WHERE ID = ?";
+            sql = "UPDATE CAMPEONATO SET NOME = ?, LOCAL = ?, RESPONSAVEL = ?, CONTATO = ?, DATA = ?, INSCRICAO = ? WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
