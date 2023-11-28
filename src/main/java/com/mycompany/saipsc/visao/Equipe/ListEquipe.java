@@ -323,18 +323,21 @@ public class ListEquipe extends javax.swing.JFrame {
                 DaoCargo daoCargo = new DaoCargo();
                 resultSet = daoCargo.listarPorNome(String.valueOf(tableEquipe.getValueAt(tableEquipe.getSelectedRow(), 2)));
                 int idCargo = -1;
+                resultSet.next();
                 idCargo = resultSet.getInt("ID");
                 modEquipe.setIdCor(idCargo);
                 
                 DaoCor daoCor = new DaoCor();
                 resultSet = daoCor.listarPorDescricao(String.valueOf(tableEquipe.getValueAt(tableEquipe.getSelectedRow(), 3)));
                 int idCor = -1;
+                resultSet.next();
                 idCor = resultSet.getInt("ID");
                 modEquipe.setIdCor(idCor);
                 
                 DaoAcesso daoAcesso = new DaoAcesso();
                 resultSet = daoAcesso.listarPorNome(String.valueOf(tableEquipe.getValueAt(tableEquipe.getSelectedRow(), 6)));
                 int idAcesso = -1;
+                resultSet.next();
                 idAcesso = resultSet.getInt("ID");
                 modEquipe.setIdAcesso(idAcesso);
                 

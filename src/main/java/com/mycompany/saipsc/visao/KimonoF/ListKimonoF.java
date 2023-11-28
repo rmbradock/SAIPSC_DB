@@ -32,26 +32,25 @@ public class ListKimonoF extends javax.swing.JFrame {
     }
     public void listarTodos(){
         try{
-            //Pega o model da tabela definido no design
             DefaultTableModel defaultTableModel = (DefaultTableModel) tableKimonoF.getModel();
             
             tableKimonoF.setModel(defaultTableModel);
 
             DaoKimonoF daoKimonoF = new DaoKimonoF();
 
-            //Atribui o resultset retornado a uma variável para ser usada.
             ResultSet resultSet = daoKimonoF.listarTodos();
             
             defaultTableModel.setRowCount(0);
             while (resultSet.next()){
                 String id = resultSet.getString(1);
-                String categoria = resultSet.getString(2);
-                String marca = resultSet.getString(3);
-                String nome =  resultSet.getString(4);
-                String descricao =  resultSet.getString(5);
-                String preco = resultSet.getString(6);
+                String quantidade = resultSet.getString(2);
+                String categoria = resultSet.getString(3);
+                String tamanho = resultSet.getString(4);
+                String cor =  resultSet.getString(5);
+                String marca =  resultSet.getString(6);
+                String condicao = resultSet.getString(7);
                 
-                defaultTableModel.addRow(new Object[]{id, categoria, marca, nome, descricao, preco});
+                defaultTableModel.addRow(new Object[]{id, quantidade, categoria, tamanho, marca, cor, condicao});
             }
         }catch(Exception e){
             
@@ -71,13 +70,13 @@ public class ListKimonoF extends javax.swing.JFrame {
             while (resultSet.next()){
                 String id = resultSet.getString(1);
                 String quantidade = resultSet.getString(2);
-                String idCategoria = resultSet.getString(3);
-                String idTamanho = resultSet.getString(4);
-                String idCor = resultSet.getString(5);
-                String idMarca = resultSet.getString(6);
-                String idCondicao = resultSet.getString(7);
-                                
-                defaultTableModel.addRow(new Object[]{id, quantidade, idCategoria, idTamanho, idCor, idMarca, idCondicao});
+                String categoria = resultSet.getString(3);
+                String tamanho = resultSet.getString(4);
+                String cor =  resultSet.getString(5);
+                String marca =  resultSet.getString(6);
+                String condicao = resultSet.getString(7);
+                
+                defaultTableModel.addRow(new Object[]{id, quantidade, categoria, tamanho, marca, cor, condicao});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -97,13 +96,13 @@ public class ListKimonoF extends javax.swing.JFrame {
             while (resultSet.next()){
                 String id = resultSet.getString(1);
                 String quantidade = resultSet.getString(2);
-                String idCategoria = resultSet.getString(3);
-                String idTamanho = resultSet.getString(4);
-                String idCor = resultSet.getString(5);
-                String idMarca = resultSet.getString(6);
-                String idCondicao = resultSet.getString(7);
-                                
-                defaultTableModel.addRow(new Object[]{id, quantidade, idCategoria, idTamanho, idCor, idMarca, idCondicao});
+                String categoria = resultSet.getString(3);
+                String tamanho = resultSet.getString(4);
+                String cor =  resultSet.getString(5);
+                String marca =  resultSet.getString(6);
+                String condicao = resultSet.getString(7);
+                
+                defaultTableModel.addRow(new Object[]{id, quantidade, categoria, tamanho, marca, cor, condicao});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -123,13 +122,13 @@ public class ListKimonoF extends javax.swing.JFrame {
             while (resultSet.next()){
                 String id = resultSet.getString(1);
                 String quantidade = resultSet.getString(2);
-                String idCategoria = resultSet.getString(3);
-                String idTamanho = resultSet.getString(4);
-                String idCor = resultSet.getString(5);
-                String idMarca = resultSet.getString(6);
-                String idCondicao = resultSet.getString(7);
-                                
-                defaultTableModel.addRow(new Object[]{id, quantidade, idCategoria, idTamanho, idCor, idMarca, idCondicao});
+                String categoria = resultSet.getString(3);
+                String tamanho = resultSet.getString(4);
+                String cor =  resultSet.getString(5);
+                String marca =  resultSet.getString(6);
+                String condicao = resultSet.getString(7);
+                
+                defaultTableModel.addRow(new Object[]{id, quantidade, categoria, tamanho, marca, cor, condicao});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -149,13 +148,13 @@ public class ListKimonoF extends javax.swing.JFrame {
             while (resultSet.next()){
                 String id = resultSet.getString(1);
                 String quantidade = resultSet.getString(2);
-                String idCategoria = resultSet.getString(3);
-                String idTamanho = resultSet.getString(4);
-                String idCor = resultSet.getString(5);
-                String idMarca = resultSet.getString(6);
-                String idCondicao = resultSet.getString(7);
-                                
-                defaultTableModel.addRow(new Object[]{id, quantidade, idCategoria, idTamanho, idCor, idMarca, idCondicao});
+                String categoria = resultSet.getString(3);
+                String tamanho = resultSet.getString(4);
+                String cor =  resultSet.getString(5);
+                String marca =  resultSet.getString(6);
+                String condicao = resultSet.getString(7);
+                
+                defaultTableModel.addRow(new Object[]{id, quantidade, categoria, tamanho, marca, cor, condicao});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -175,13 +174,13 @@ public class ListKimonoF extends javax.swing.JFrame {
             while (resultSet.next()){
                 String id = resultSet.getString(1);
                 String quantidade = resultSet.getString(2);
-                String idCategoria = resultSet.getString(3);
-                String idTamanho = resultSet.getString(4);
-                String idCor = resultSet.getString(5);
-                String idMarca = resultSet.getString(6);
-                String idCondicao = resultSet.getString(7);
-                                
-                defaultTableModel.addRow(new Object[]{id, quantidade, idCategoria, idTamanho, idCor, idMarca, idCondicao});
+                String categoria = resultSet.getString(3);
+                String tamanho = resultSet.getString(4);
+                String cor =  resultSet.getString(5);
+                String marca =  resultSet.getString(6);
+                String condicao = resultSet.getString(7);
+                
+                defaultTableModel.addRow(new Object[]{id, quantidade, categoria, tamanho, marca, cor, condicao});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -201,13 +200,13 @@ public class ListKimonoF extends javax.swing.JFrame {
             while (resultSet.next()){
                 String id = resultSet.getString(1);
                 String quantidade = resultSet.getString(2);
-                String idCategoria = resultSet.getString(3);
-                String idTamanho = resultSet.getString(4);
-                String idCor = resultSet.getString(5);
-                String idMarca = resultSet.getString(6);
-                String idCondicao = resultSet.getString(7);
-                                
-                defaultTableModel.addRow(new Object[]{id, quantidade, idCategoria, idTamanho, idCor, idMarca, idCondicao});
+                String categoria = resultSet.getString(3);
+                String tamanho = resultSet.getString(4);
+                String cor =  resultSet.getString(5);
+                String marca =  resultSet.getString(6);
+                String condicao = resultSet.getString(7);
+                
+                defaultTableModel.addRow(new Object[]{id, quantidade, categoria, tamanho, marca, cor, condicao});
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -336,36 +335,39 @@ public class ListKimonoF extends javax.swing.JFrame {
                 ModKimonoF modKimonoF = new ModKimonoF();
 
                 modKimonoF.setId(Integer.parseInt(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 0))));
+                modKimonoF.setQuantidade(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 1)));
                                 
                 DaoKimonoF daoKimonoF = new DaoKimonoF();
-                ResultSet resultSet = daoKimonoF.listarPorCategoria(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 1)));
+                ResultSet resultSet = daoKimonoF.listarPorCategoria(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 2)));
                 int idCategoria = -1;
                 resultSet.next ();
                 idCategoria = resultSet.getInt("ID");
                 modKimonoF.setIdCategoria(idCategoria);
                 
                 DaoTamanho daoTamanho = new DaoTamanho();
-                resultSet = daoTamanho.listarPorNome(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 2)));
+                resultSet = daoTamanho.listarPorNome(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 3)));
                 int idTamanho = -1;
                 idTamanho = resultSet.getInt("ID");
                 modKimonoF.setIdTamanho(idTamanho);
                 
                 DaoCor daoCor = new DaoCor();
-                resultSet = daoCor.listarPorDescricao(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 3)));
+                resultSet = daoCor.listarPorDescricao(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 4)));
                 int idCor = -1;
+                resultSet.next();
                 idCor = resultSet.getInt("ID");
                 modKimonoF.setIdCor(idCor);
-                DadosTemporarios.tempObject3 = (ModKimonoF) modKimonoF;
-                
+                                
                 DaoMarca daoMarca = new DaoMarca();
                 resultSet = daoMarca.listarPorNome(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 5)));
                 int idMarca = -1;
+                resultSet.next();
                 idMarca = resultSet.getInt("ID");
                 modKimonoF.setIdTamanho(idMarca);
                 
                 DaoCondicao daoCondicao = new DaoCondicao();
                 resultSet = daoCondicao.listarPorEstado(String.valueOf(tableKimonoF.getValueAt(tableKimonoF.getSelectedRow(), 6)));
                 int idCondicao = -1;
+                resultSet.next();
                 idCondicao = resultSet.getInt("ID");
                 modKimonoF.setIdTamanho(idCondicao);
                 

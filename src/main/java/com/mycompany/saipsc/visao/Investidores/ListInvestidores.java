@@ -309,6 +309,7 @@ public class ListInvestidores extends javax.swing.JFrame {
                 DaoPessoa daoPessoa = new DaoPessoa();
                 ResultSet resultSet = daoPessoa.listarPorNome(String.valueOf(tableInvestidores.getValueAt(tableInvestidores.getSelectedRow(), 1)));
                 int idPessoa = -1;
+                resultSet.next();
                 idPessoa = resultSet.getInt("ID");
                 modInvestidores.setIdPessoa(idPessoa);
                 

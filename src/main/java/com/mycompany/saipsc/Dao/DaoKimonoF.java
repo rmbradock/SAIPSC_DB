@@ -22,7 +22,7 @@ public class DaoKimonoF extends BancoDeDadosMySql {
     
     public Boolean inserir(int id, String quantidade, int idCategoria, int idTamanho, int idCor, int idMarca, int idCondicao){
         try{
-            sql = "INSERT INTO KIMONOF (ID, QUANTIDADE, ID_CATEGORIAKF, ID_TAMANHO, ID_COR, ID_MARCA, ID_CONDICAO) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO KIMONOF (ID, QUANTIDADE, ID_CATEGORIA, ID_TAMANHO, ID_COR, ID_MARCA, ID_CONDICAO) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
             setStatement(getConexao().prepareStatement(sql));
             
@@ -44,7 +44,7 @@ public class DaoKimonoF extends BancoDeDadosMySql {
     }
     public Boolean alterar(int id, String quantidade, int idCategoria, int idTamanho, int idCor, int idMarca, int idCondicao){
         try{
-            sql = "UPDATE KIMONOF SET QUANTIDADE = ?, ID_CATEGORIAKF = ?, ID_TAMANHO = ?, ID_COR = ?, ID_MARCA = ?, ID_CONDICAO = ? WHERE ID = ?";
+            sql = "UPDATE KIMONOF SET QUANTIDADE = ?, ID_CATEGORIA = ?, ID_TAMANHO = ?, ID_COR = ?, ID_MARCA = ?, ID_CONDICAO = ? WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
