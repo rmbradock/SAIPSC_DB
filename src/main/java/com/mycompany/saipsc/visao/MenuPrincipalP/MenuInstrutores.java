@@ -9,7 +9,7 @@ import com.mycompany.saipsc.Visao.Campeonato.ListCampeonato;
 import com.mycompany.saipsc.ferramentas.Formularios;
 import com.mycompany.saipsc.visao.Equipe.ListEquipe;
 import com.mycompany.saipsc.visao.Investidores.ListInvestidores;
-import com.mycompany.saipsc.visao.KimonoF.ListKimonoF;
+import com.mycompany.saipsc.Visao.Uniforme.ListUnifome;
 import com.mycompany.saipsc.visao.Participacao.ListParticipacao;
 import com.mycompany.saipsc.visao.Patrimonio.ListPatrimonio;
 import com.mycompany.saipsc.visao.Polos.ListPolos;
@@ -52,7 +52,7 @@ public class MenuInstrutores extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setText("SAIPSC");
+        jLabel1.setText("SAI");
 
         jLabel2.setText("Instrutores");
 
@@ -66,7 +66,7 @@ public class MenuInstrutores extends javax.swing.JFrame {
         });
         jMenuListar.add(jMLAluno);
 
-        jmlCampeonato.setText("Campeonatos");
+        jmlCampeonato.setText("Competições");
         jmlCampeonato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmlCampeonatoActionPerformed(evt);
@@ -90,7 +90,7 @@ public class MenuInstrutores extends javax.swing.JFrame {
         });
         jMenuListar.add(jmlInvestidores);
 
-        jmlKimonoF.setText("Kimonos e Faixas");
+        jmlKimonoF.setText("Uniforme");
         jmlKimonoF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmlKimonoFActionPerformed(evt);
@@ -98,7 +98,7 @@ public class MenuInstrutores extends javax.swing.JFrame {
         });
         jMenuListar.add(jmlKimonoF);
 
-        jmlParticipacao.setText("Participação em Campeonatos");
+        jmlParticipacao.setText("Participação em Competições");
         jmlParticipacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmlParticipacaoActionPerformed(evt);
@@ -134,7 +134,8 @@ public class MenuInstrutores extends javax.swing.JFrame {
                 .addContainerGap(161, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(151, 151, 151))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +173,7 @@ public class MenuInstrutores extends javax.swing.JFrame {
 
     private void jmlKimonoFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlKimonoFActionPerformed
         if (Formularios.listKimonoF == null)
-        Formularios.listKimonoF = new ListKimonoF();
+        Formularios.listKimonoF = new ListUnifome();
 
         Formularios.listKimonoF.setVisible(true);
     }//GEN-LAST:event_jmlKimonoFActionPerformed

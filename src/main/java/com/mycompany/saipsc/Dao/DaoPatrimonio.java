@@ -40,9 +40,9 @@ public class DaoPatrimonio extends BancoDeDadosMySql{
             return false;
         }
     }
-    public Boolean alterar(int id, String material, String quantidade, String situacao, String descricao, Date data, String inscricao){
+    public Boolean alterar(int id, String material, String quantidade, String situacao, String descricao){
         try{
-            sql = "UPDATE PATRIMONIO SET MATERIAL = ?, QUANTIDADE = ?, SITUACAO = ?, DESCRICAO = ? = ? WHERE ID = ?";
+            sql = "UPDATE PATRIMONIO SET MATERIAL = ?, QUANTIDADE = ?, SITUACAO = ?, DESCRICAO = ? WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -134,10 +134,10 @@ public class DaoPatrimonio extends BancoDeDadosMySql{
         return getResultado();
     }
     public int buscarProximoId(){
-           int id = 0;
+           int id = -1;
         
         try{
-            sql = "SELECT IFNULL(MAX(ID), 0) + 1 FROM PATRIMONIO";
+            sql = "SELECT MAX(ID) + 1 FROM PATRIMONIO";
 
                setStatement(getConexao().prepareStatement(sql));
 

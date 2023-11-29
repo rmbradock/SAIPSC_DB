@@ -41,7 +41,7 @@ public class DaoParticipacao extends BancoDeDadosMySql{
     }
     public Boolean alterar(int id, int idAluno, int idCampeonato, String resultado){
         try{
-            sql = "UPDATE ALUNO SET ID_ALUNO = ?, ID_CAMPONATO = ?, RESULTADO = ? WHERE ID = ?";
+            sql = "UPDATE PARTICIPACAO SET ID_ALUNO = ?, ID_CAMPEONATO = ?, RESULTADO = ? WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             

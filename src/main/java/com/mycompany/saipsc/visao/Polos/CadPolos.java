@@ -86,7 +86,7 @@ public class CadPolos extends javax.swing.JFrame {
     private void alterar(){
         DaoPolos daoPolos = new DaoPolos();
         
-        if (daoPolos.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), tfEndereco.getText(), tfResponsavel.getText(), tfContato.getText(), taObs.getText())){
+        if (daoPolos.alterar(Integer.parseInt(tfId.getText()), tfNome.getText(), tfEndereco.getText(), tfResponsavel.getText(), tfContato.getText(), taObs.getText())){
             JOptionPane.showMessageDialog(null, "Polo alterado com sucesso!");
             
             tfId.setText(String.valueOf(daoPolos.buscarProximoId()));
@@ -107,7 +107,7 @@ public class CadPolos extends javax.swing.JFrame {
     private void excluir(){
         DaoPolos daoPolos = new DaoPolos();
         
-        if (daoPolos.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), tfEndereco.getText(), tfResponsavel.getText(), tfContato.getText(), taObs.getText())){
+        if (daoPolos.excluir(Integer.parseInt(tfId.getText()))){
             JOptionPane.showMessageDialog(null, "Polo excluido com sucesso!");
             
             tfId.setText(String.valueOf(daoPolos.buscarProximoId()));

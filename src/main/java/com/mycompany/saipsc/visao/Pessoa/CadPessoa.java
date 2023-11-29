@@ -92,7 +92,7 @@ public class CadPessoa extends javax.swing.JFrame {
         private void alterar(){
         DaoPessoa daoPessoa = new DaoPessoa();
         
-        if (daoPessoa.inserir(Integer.parseInt(tfId.getText()), tfNome.getText(), tfRg.getText(), tfCpf.getText(), tfEndereco.getText(), tfContato.getText(), taObs.getText(), tfGenero.getText(), tfUsuario.getText(), String.valueOf(pfSenha.getPassword()))){
+        if (daoPessoa.alterar(Integer.parseInt(tfId.getText()), tfNome.getText(), tfRg.getText(), tfCpf.getText(), tfEndereco.getText(), tfContato.getText(), taObs.getText(), tfGenero.getText(), tfUsuario.getText(), String.valueOf(pfSenha.getPassword()))){
             JOptionPane.showMessageDialog(null, "Pessoa alterada com sucesso!");
             
             tfId.setText("");

@@ -498,7 +498,7 @@ public class ListAluno extends javax.swing.JFrame {
                 resultSet = daoPolos.listarPorNome(String.valueOf(tableAluno.getValueAt(tableAluno.getSelectedRow(), 9)));
                 int idPolo = -1;
                 resultSet.next();
-                idCor = resultSet.getInt("ID");
+                idPolo = resultSet.getInt("ID");
                 modAluno.setIdPolo(idPolo);
                 
                 DadosTemporarios.tempObject = (ModAluno) modAluno;

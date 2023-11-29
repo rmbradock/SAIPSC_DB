@@ -241,17 +241,20 @@ public class ListParticipacao extends javax.swing.JFrame {
                 DaoAluno daoAluno = new DaoAluno();
                 ResultSet resultSet = daoAluno.listarPorNome(String.valueOf(tableParticipacao.getValueAt(tableParticipacao.getSelectedRow(), 1)));
                 int idAluno = -1;
+                resultSet.next();
                 idAluno = resultSet.getInt("ID");
                 modParticipacao.setIdAluno(idAluno);
                 
                 DaoCampeonato daoCampeonato = new DaoCampeonato();
                 resultSet = daoCampeonato.listarPorNome(String.valueOf(tableParticipacao.getValueAt(tableParticipacao.getSelectedRow(), 2)));
                 int idCompeticao = -1;
+                resultSet.next();
                 idCompeticao = resultSet.getInt("ID");
                 modParticipacao.setIdAluno(idCompeticao);
                 
                 
                 DadosTemporarios.tempObject = (ModParticipacao) modParticipacao;
+                
                 CadParticipacao cadParticipacao = new CadParticipacao();
                 cadParticipacao.setVisible(true);
             }

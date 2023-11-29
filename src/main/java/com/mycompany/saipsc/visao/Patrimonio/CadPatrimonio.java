@@ -79,10 +79,10 @@ public class CadPatrimonio extends javax.swing.JFrame {
         private void alterar(){
         DaoPatrimonio daoPatrimonio = new DaoPatrimonio();
         
-        if (daoPatrimonio.inserir(Integer.parseInt(tfId.getText()), tfMaterial.getText(), tfQuantidade.getText(), tfSituacao.getText(), taDescricao.getText())){
+        if (daoPatrimonio.alterar(Integer.parseInt(tfId.getText()), tfMaterial.getText(), tfQuantidade.getText(), tfSituacao.getText(), taDescricao.getText())){
             JOptionPane.showMessageDialog(null, "Patrimonio salvo com sucesso!");
             
-            tfId.setText(String.valueOf(daoPatrimonio.buscarProximoId()));
+            tfId.setText("");
             tfMaterial.setText("");
             tfQuantidade.setText("");
             tfSituacao.setText("");

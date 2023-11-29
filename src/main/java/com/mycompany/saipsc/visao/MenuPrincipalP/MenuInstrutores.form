@@ -19,7 +19,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmlCampeonato">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Campeonatos"/>
+                <Property name="text" type="java.lang.String" value="Competi&#xe7;&#xf5;es"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmlCampeonatoActionPerformed"/>
@@ -43,7 +43,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmlKimonoF">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Kimonos e Faixas"/>
+                <Property name="text" type="java.lang.String" value="Uniforme"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmlKimonoFActionPerformed"/>
@@ -51,7 +51,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmlParticipacao">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Participa&#xe7;&#xe3;o em Campeonatos"/>
+                <Property name="text" type="java.lang.String" value="Participa&#xe7;&#xe3;o em Competi&#xe7;&#xf5;es"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmlParticipacaoActionPerformed"/>
@@ -105,8 +105,9 @@
               <EmptySpace pref="161" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="239" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="88" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -128,7 +129,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="48" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="SAIPSC"/>
+        <Property name="text" type="java.lang.String" value="SAI"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

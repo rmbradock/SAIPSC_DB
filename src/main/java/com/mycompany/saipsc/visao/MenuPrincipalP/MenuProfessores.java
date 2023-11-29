@@ -16,8 +16,8 @@ import com.mycompany.saipsc.visao.Acesso.CadAcesso;
 import com.mycompany.saipsc.visao.Acesso.ListAcesso;
 import com.mycompany.saipsc.visao.Cargo.CadCargo;
 import com.mycompany.saipsc.visao.Cargo.ListCargo;
-import com.mycompany.saipsc.visao.CategoriaKF.CadCategoriaKF;
-import com.mycompany.saipsc.visao.CategoriaKF.ListCategoriaKF;
+import com.mycompany.saipsc.Visao.CategoriaU.CadCategoriaU;
+import com.mycompany.saipsc.Visao.CategoriaU.ListCategoriaU;
 import com.mycompany.saipsc.visao.Condicao.CadCondicao;
 import com.mycompany.saipsc.visao.Condicao.ListCondicao;
 import com.mycompany.saipsc.visao.Cor.CadCor;
@@ -26,8 +26,8 @@ import com.mycompany.saipsc.visao.Equipe.CadEquipe;
 import com.mycompany.saipsc.visao.Equipe.ListEquipe;
 import com.mycompany.saipsc.visao.Investidores.CadInvestidores;
 import com.mycompany.saipsc.visao.Investidores.ListInvestidores;
-import com.mycompany.saipsc.visao.KimonoF.CadKimonoF;
-import com.mycompany.saipsc.visao.KimonoF.ListKimonoF;
+import com.mycompany.saipsc.Visao.Uniforme.CadUniforme;
+import com.mycompany.saipsc.Visao.Uniforme.ListUnifome;
 import com.mycompany.saipsc.visao.Marca.CadMarca;
 import com.mycompany.saipsc.visao.Marca.ListMarca;
 import com.mycompany.saipsc.visao.Participacao.CadParticipacao;
@@ -118,7 +118,7 @@ public class MenuProfessores extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setText("SAIPSC");
+        jLabel1.setText("SAI");
 
         jLabel2.setText("Professores");
 
@@ -140,7 +140,7 @@ public class MenuProfessores extends javax.swing.JFrame {
         });
         jmcParticipacao.add(jMCAluno);
 
-        jmcCampeonato.setText("Campeonato");
+        jmcCampeonato.setText("Competições");
         jmcCampeonato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmcCampeonatoActionPerformed(evt);
@@ -156,7 +156,7 @@ public class MenuProfessores extends javax.swing.JFrame {
         });
         jmcParticipacao.add(jmcCargo);
 
-        jmcCategoriaKF.setText("CategoriaKF");
+        jmcCategoriaKF.setText("Categoria uniforme");
         jmcCategoriaKF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmcCategoriaKFActionPerformed(evt);
@@ -196,7 +196,7 @@ public class MenuProfessores extends javax.swing.JFrame {
         });
         jmcParticipacao.add(jmcInvestidores);
 
-        jmcKimonoF.setText("Kimonos e Faixa");
+        jmcKimonoF.setText("Uniforme");
         jmcKimonoF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmcKimonoFActionPerformed(evt);
@@ -272,7 +272,7 @@ public class MenuProfessores extends javax.swing.JFrame {
         });
         jMenuListar.add(jMLAluno);
 
-        jmlCampeonato.setText("Campeonatos");
+        jmlCampeonato.setText("Competições");
         jmlCampeonato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmlCampeonatoActionPerformed(evt);
@@ -288,7 +288,7 @@ public class MenuProfessores extends javax.swing.JFrame {
         });
         jMenuListar.add(jmlCargo);
 
-        jmlCategoriaKF.setText("Categoria");
+        jmlCategoriaKF.setText("Categoria uniforme");
         jmlCategoriaKF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmlCategoriaKFActionPerformed(evt);
@@ -328,7 +328,7 @@ public class MenuProfessores extends javax.swing.JFrame {
         });
         jMenuListar.add(jmlInvestidores);
 
-        jmlKimonoF.setText("Kimonos e Faixas");
+        jmlKimonoF.setText("Uniforme");
         jmlKimonoF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmlKimonoFActionPerformed(evt);
@@ -344,7 +344,7 @@ public class MenuProfessores extends javax.swing.JFrame {
         });
         jMenuListar.add(jmlMarca);
 
-        jmlParticipacao.setText("Participação em Campeonatos");
+        jmlParticipacao.setText("Participação em Competições");
         jmlParticipacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmlParticipacaoActionPerformed(evt);
@@ -392,18 +392,22 @@ public class MenuProfessores extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 161, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
+                .addContainerGap(112, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(64, 64, 64)
                 .addComponent(jLabel2)
                 .addContainerGap())
         );
@@ -462,7 +466,7 @@ public class MenuProfessores extends javax.swing.JFrame {
 
     private void jmcCategoriaKFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmcCategoriaKFActionPerformed
         if (Formularios.cadCategoriaKF == null)
-            Formularios.cadCategoriaKF = new CadCategoriaKF();
+            Formularios.cadCategoriaKF = new CadCategoriaU();
         
         Formularios.cadCategoriaKF.setVisible(true);
     }//GEN-LAST:event_jmcCategoriaKFActionPerformed
@@ -490,7 +494,7 @@ public class MenuProfessores extends javax.swing.JFrame {
 
     private void jmcKimonoFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmcKimonoFActionPerformed
         if (Formularios.cadKimonoF == null)
-            Formularios.cadKimonoF = new CadKimonoF();
+            Formularios.cadKimonoF = new CadUniforme();
         
         Formularios.cadKimonoF.setVisible(true);
     }//GEN-LAST:event_jmcKimonoFActionPerformed
@@ -553,7 +557,7 @@ public class MenuProfessores extends javax.swing.JFrame {
 
     private void jmlCategoriaKFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlCategoriaKFActionPerformed
         if (Formularios.listCategoriaKF == null)
-            Formularios.listCategoriaKF = new ListCategoriaKF();
+            Formularios.listCategoriaKF = new ListCategoriaU();
         
         Formularios.listCategoriaKF.setVisible(true);
     }//GEN-LAST:event_jmlCategoriaKFActionPerformed
@@ -588,7 +592,7 @@ public class MenuProfessores extends javax.swing.JFrame {
 
     private void jmlKimonoFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlKimonoFActionPerformed
         if (Formularios.listKimonoF == null)
-            Formularios.listKimonoF = new ListKimonoF();
+            Formularios.listKimonoF = new ListUnifome();
         
         Formularios.listKimonoF.setVisible(true);
     }//GEN-LAST:event_jmlKimonoFActionPerformed
