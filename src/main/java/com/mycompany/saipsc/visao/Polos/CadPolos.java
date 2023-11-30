@@ -89,7 +89,7 @@ public class CadPolos extends javax.swing.JFrame {
         if (daoPolos.alterar(Integer.parseInt(tfId.getText()), tfNome.getText(), tfEndereco.getText(), tfResponsavel.getText(), tfContato.getText(), taObs.getText())){
             JOptionPane.showMessageDialog(null, "Polo alterado com sucesso!");
             
-            tfId.setText(String.valueOf(daoPolos.buscarProximoId()));
+            tfId.setText("");
             tfNome.setText("");
             tfEndereco.setText("");
             tfResponsavel.setText("");

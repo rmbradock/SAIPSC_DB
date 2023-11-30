@@ -38,16 +38,15 @@ public class MenuInstrutores extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnAluno = new javax.swing.JButton();
+        btnComp = new javax.swing.JButton();
+        btnEquipe = new javax.swing.JButton();
+        btnInv = new javax.swing.JButton();
+        btnUniforme = new javax.swing.JButton();
+        btnCompe = new javax.swing.JButton();
+        btnPatrimonio = new javax.swing.JButton();
+        btnPolos = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuListar = new javax.swing.JMenu();
-        jMLAluno = new javax.swing.JMenuItem();
-        jmlCampeonato = new javax.swing.JMenuItem();
-        jmlEquipe = new javax.swing.JMenuItem();
-        jmlInvestidores = new javax.swing.JMenuItem();
-        jmlKimonoF = new javax.swing.JMenuItem();
-        jmlParticipacao = new javax.swing.JMenuItem();
-        jmlPatrimonio = new javax.swing.JMenuItem();
-        jMenuItem27 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -56,155 +55,183 @@ public class MenuInstrutores extends javax.swing.JFrame {
 
         jLabel2.setText("Instrutores");
 
-        jMenuListar.setText("Listar");
-
-        jMLAluno.setText("Aluno");
-        jMLAluno.addActionListener(new java.awt.event.ActionListener() {
+        btnAluno.setText("Aluno");
+        btnAluno.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMLAlunoActionPerformed(evt);
+                btnAlunoActionPerformed(evt);
             }
         });
-        jMenuListar.add(jMLAluno);
 
-        jmlCampeonato.setText("Competições");
-        jmlCampeonato.addActionListener(new java.awt.event.ActionListener() {
+        btnComp.setText("Competições");
+        btnComp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnComp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmlCampeonatoActionPerformed(evt);
+                btnCompActionPerformed(evt);
             }
         });
-        jMenuListar.add(jmlCampeonato);
 
-        jmlEquipe.setText("Equipe");
-        jmlEquipe.addActionListener(new java.awt.event.ActionListener() {
+        btnEquipe.setText("Equipe");
+        btnEquipe.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmlEquipeActionPerformed(evt);
+                btnEquipeActionPerformed(evt);
             }
         });
-        jMenuListar.add(jmlEquipe);
 
-        jmlInvestidores.setText("Investidores");
-        jmlInvestidores.addActionListener(new java.awt.event.ActionListener() {
+        btnInv.setText("Investidores");
+        btnInv.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnInv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmlInvestidoresActionPerformed(evt);
+                btnInvActionPerformed(evt);
             }
         });
-        jMenuListar.add(jmlInvestidores);
 
-        jmlKimonoF.setText("Uniforme");
-        jmlKimonoF.addActionListener(new java.awt.event.ActionListener() {
+        btnUniforme.setText("Uniforme");
+        btnUniforme.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnUniforme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmlKimonoFActionPerformed(evt);
+                btnUniformeActionPerformed(evt);
             }
         });
-        jMenuListar.add(jmlKimonoF);
 
-        jmlParticipacao.setText("Participação em Competições");
-        jmlParticipacao.addActionListener(new java.awt.event.ActionListener() {
+        btnCompe.setText("Part. em Competições");
+        btnCompe.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCompe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmlParticipacaoActionPerformed(evt);
+                btnCompeActionPerformed(evt);
             }
         });
-        jMenuListar.add(jmlParticipacao);
 
-        jmlPatrimonio.setText("Patrimonio");
-        jmlPatrimonio.addActionListener(new java.awt.event.ActionListener() {
+        btnPatrimonio.setText("Patrimonio");
+        btnPatrimonio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPatrimonio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmlPatrimonioActionPerformed(evt);
+                btnPatrimonioActionPerformed(evt);
             }
         });
-        jMenuListar.add(jmlPatrimonio);
 
-        jMenuItem27.setText("Polos");
-        jMenuItem27.addActionListener(new java.awt.event.ActionListener() {
+        btnPolos.setText("Polos");
+        btnPolos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPolos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem27ActionPerformed(evt);
+                btnPolosActionPerformed(evt);
             }
         });
-        jMenuListar.add(jMenuItem27);
-
-        jMenuBar1.add(jMenuListar);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(161, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnAluno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInv, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                    .addComponent(btnPatrimonio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(151, 151, 151))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnComp)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(btnCompe)))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUniforme, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPolos, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(14, 19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(203, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnComp, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnInv, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnUniforme, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
                 .addComponent(jLabel2)
-                .addGap(10, 10, 10))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPatrimonio, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCompe, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPolos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem27ActionPerformed
-        if (Formularios.listPolos == null)
-        Formularios.listPolos = new ListPolos();
-
-        Formularios.listPolos.setVisible(true);
-    }//GEN-LAST:event_jMenuItem27ActionPerformed
-
-    private void jmlPatrimonioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlPatrimonioActionPerformed
-        if (Formularios.listPatrimonio == null)
-        Formularios.listPatrimonio = new ListPatrimonio();
-
-        Formularios.listPatrimonio.setVisible(true);
-    }//GEN-LAST:event_jmlPatrimonioActionPerformed
-
-    private void jmlParticipacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlParticipacaoActionPerformed
-        if (Formularios.listParticipacao == null)
-        Formularios.listParticipacao = new ListParticipacao();
-
-        Formularios.listParticipacao.setVisible(true);
-    }//GEN-LAST:event_jmlParticipacaoActionPerformed
-
-    private void jmlKimonoFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlKimonoFActionPerformed
-        if (Formularios.listKimonoF == null)
-        Formularios.listKimonoF = new ListUnifome();
-
-        Formularios.listKimonoF.setVisible(true);
-    }//GEN-LAST:event_jmlKimonoFActionPerformed
-
-    private void jmlInvestidoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlInvestidoresActionPerformed
-        if (Formularios.listInvestidores == null)
-        Formularios.listInvestidores = new ListInvestidores();
-
-        Formularios.listInvestidores.setVisible(true);
-    }//GEN-LAST:event_jmlInvestidoresActionPerformed
-
-    private void jmlEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlEquipeActionPerformed
-        if (Formularios.listEquipe == null)
-        Formularios.listEquipe = new ListEquipe();
-
-        Formularios.listEquipe.setVisible(true);
-    }//GEN-LAST:event_jmlEquipeActionPerformed
-
-    private void jmlCampeonatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmlCampeonatoActionPerformed
-        if (Formularios.listCampeonato == null)
-        Formularios.listCampeonato = new ListCampeonato();
-
-        Formularios.listCampeonato.setVisible(true);
-    }//GEN-LAST:event_jmlCampeonatoActionPerformed
-
-    private void jMLAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMLAlunoActionPerformed
+    private void btnAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlunoActionPerformed
         if (Formularios.listAluno == null)
         Formularios.listAluno = new ListAluno();
 
         Formularios.listAluno.setVisible(true);
-    }//GEN-LAST:event_jMLAlunoActionPerformed
+    }//GEN-LAST:event_btnAlunoActionPerformed
+
+    private void btnCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompActionPerformed
+        if (Formularios.listCampeonato == null)
+        Formularios.listCampeonato = new ListCampeonato();
+
+        Formularios.listCampeonato.setVisible(true);
+    }//GEN-LAST:event_btnCompActionPerformed
+
+    private void btnEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEquipeActionPerformed
+        if (Formularios.listEquipe == null)
+        Formularios.listEquipe = new ListEquipe();
+
+        Formularios.listEquipe.setVisible(true);
+    }//GEN-LAST:event_btnEquipeActionPerformed
+
+    private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvActionPerformed
+        if (Formularios.listInvestidores == null)
+        Formularios.listInvestidores = new ListInvestidores();
+
+        Formularios.listInvestidores.setVisible(true);
+    }//GEN-LAST:event_btnInvActionPerformed
+
+    private void btnUniformeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUniformeActionPerformed
+        if (Formularios.listKimonoF == null)
+        Formularios.listKimonoF = new ListUnifome();
+
+        Formularios.listKimonoF.setVisible(true);
+    }//GEN-LAST:event_btnUniformeActionPerformed
+
+    private void btnPatrimonioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatrimonioActionPerformed
+        if (Formularios.listPatrimonio == null)
+        Formularios.listPatrimonio = new ListPatrimonio();
+
+        Formularios.listPatrimonio.setVisible(true);
+    }//GEN-LAST:event_btnPatrimonioActionPerformed
+
+    private void btnCompeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompeActionPerformed
+        if (Formularios.listParticipacao == null)
+        Formularios.listParticipacao = new ListParticipacao();
+
+        Formularios.listParticipacao.setVisible(true);
+    }//GEN-LAST:event_btnCompeActionPerformed
+
+    private void btnPolosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPolosActionPerformed
+        if (Formularios.listPolos == null)
+        Formularios.listPolos = new ListPolos();
+
+        Formularios.listPolos.setVisible(true);
+    }//GEN-LAST:event_btnPolosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,17 +269,16 @@ public class MenuInstrutores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAluno;
+    private javax.swing.JButton btnComp;
+    private javax.swing.JButton btnCompe;
+    private javax.swing.JButton btnEquipe;
+    private javax.swing.JButton btnInv;
+    private javax.swing.JButton btnPatrimonio;
+    private javax.swing.JButton btnPolos;
+    private javax.swing.JButton btnUniforme;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenuItem jMLAluno;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem27;
-    private javax.swing.JMenu jMenuListar;
-    private javax.swing.JMenuItem jmlCampeonato;
-    private javax.swing.JMenuItem jmlEquipe;
-    private javax.swing.JMenuItem jmlInvestidores;
-    private javax.swing.JMenuItem jmlKimonoF;
-    private javax.swing.JMenuItem jmlParticipacao;
-    private javax.swing.JMenuItem jmlPatrimonio;
     // End of variables declaration//GEN-END:variables
 }

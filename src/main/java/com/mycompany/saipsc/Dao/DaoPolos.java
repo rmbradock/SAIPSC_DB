@@ -42,7 +42,7 @@ public class DaoPolos extends BancoDeDadosMySql{
     }
     public Boolean alterar(int id, String nome, String endereco, String responsavel, String contato, String obs){
         try{
-            sql = "UPDATE POLOS SET NOME = ?, ENDERECO = ?, RESPONSAVEL = ?, CONTATO =? OBS = ? WHERE ID = ?";
+            sql = "UPDATE POLOS SET NOME = ?, ENDERECO = ?, RESPONSAVEL = ?, CONTATO =?, OBS = ? WHERE ID = ?";
             
             setStatement(getConexao().prepareStatement(sql));
             
@@ -51,7 +51,7 @@ public class DaoPolos extends BancoDeDadosMySql{
             getStatement().setString(2, endereco);
             getStatement().setString(3, responsavel);
             getStatement().setString(4, contato);
-            getStatement().setString(4, obs);
+            getStatement().setString(5, obs);
             
             getStatement().executeUpdate();
             

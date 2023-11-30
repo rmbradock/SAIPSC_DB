@@ -224,6 +224,7 @@ public class ListPolos extends javax.swing.JFrame {
             modPolos.setEndereco(String.valueOf(tablePolos.getValueAt(tablePolos.getSelectedRow(), 2)));
             modPolos.setResponsavel(String.valueOf(tablePolos.getValueAt(tablePolos.getSelectedRow(), 3)));
             modPolos.setContato(String.valueOf(tablePolos.getValueAt(tablePolos.getSelectedRow(), 4)));
+            modPolos.setObs(String.valueOf(tablePolos.getValueAt(tablePolos.getSelectedRow(), 5)));
             
             DadosTemporarios.tempObject = (ModPolos) modPolos;
 

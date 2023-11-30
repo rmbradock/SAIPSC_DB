@@ -246,6 +246,7 @@ com\mycompany\saipsc\visao\Marca\CadMarca$4.class
 com\mycompany\saipsc\visao\MenuPrincipalP\MenuProfessores$18.class
 com\mycompany\saipsc\visao\Campeonato\ListCampeonato.class
 com\mycompany\saipsc\visao\Condicao\ListCondicao$4.class
+com\mycompany\saipsc\visao\MenuPrincipalP\MenuInstrutores$10.class
 com\mycompany\saipsc\visao\Cor\CadCor.class
 com\mycompany\saipsc\visao\Pessoa\ListPessoa$2.class
 com\mycompany\saipsc\visao\Investidores\CadInvestidores$2.class
@@ -279,5 +280,6 @@ com\mycompany\saipsc\visao\Participacao\ListParticipacao$1.class
 com\mycompany\saipsc\visao\Condicao\CadCondicao$1.class
 com\mycompany\saipsc\visao\Polos\ListPolos$1.class
 com\mycompany\saipsc\visao\Investidores\ListInvestidores$3.class
+com\mycompany\saipsc\visao\MenuPrincipalP\MenuInstrutores$11.class
 com\mycompany\saipsc\Modelo\ModAcesso.class
 com\mycompany\saipsc\visao\Campeonato\ListCampeonato$3.class
